@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Route, Routes as Routess } from 'react-router-dom'
 import './App.css'
+import Auctions from './Components/Auctions'
 import Footer from './Components/Footer'
 import Home from './Components/Home'
 import Nav from './Components/Nav'
@@ -13,6 +14,7 @@ function App() {
       <div className="container">
         <Routess>
           <Route  path='/' element={<Home />}></Route>
+          <Route  path='/auctions' element={<Auctions />}></Route>
         </Routess>
       </div>
     <footer>
