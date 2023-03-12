@@ -14,15 +14,9 @@ function App() {
 
   return (
     <div className="App">
-      <Nav2/>
+      <Nav/>
       <div className="container">
-        <Routess>
-          <Route  path='/' element={<Home />}></Route>
-          <Route  path='/about' element={<AboutUs />}></Route>
-          <Route  path='/auctions' element={<Auctions />}></Route>
-          <Route  path='/contact' element={<ContactUs />}></Route>
-          <Route  path='/login' element={<Login />}></Route>
-        </Routess>
+        
       </div>
     <footer>
     <Footer/>

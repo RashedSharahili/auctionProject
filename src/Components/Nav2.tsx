@@ -32,8 +32,18 @@ import {
     if(action.type === 'user logIn') return {user: state.user =  true} 
     if(action.type === 'user LogOut')return {user: state.user   = false}
 }
+
+const ref = React.useRef<HTMLDivElement | null>(null);
+const [y, setY] = React.useState(0);
+const height = ref.current ? ref.current.getBoundingClientRect() : 0;
+
+const { scrollY } = useScroll();
+React.useEffect(() => {
+    // return scrollY.onChange(() => setY(scrollY.get()));
+    return scrollY.on("change", () => { setY(scrollY.get()) })
+}, [scrollY]);
   
-  export default function WithSubnavigation() {
+  export default function Nav() {
 
 
     const { isOpen, onToggle } = useDisclosure();
