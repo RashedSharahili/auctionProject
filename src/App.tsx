@@ -8,6 +8,7 @@ import Footer from './Components/Footer'
 import Home from './Components/Home'
 import Login from './Components/Login'
 import Nav from './Components/Nav'
+import Routes from './Components/Routes'
 
 function App() {
 
@@ -15,13 +16,7 @@ function App() {
     <div className="App">
       <Nav/>
       <div className="container">
-        <Routess>
-          <Route  path='/' element={<Home />}></Route>
-          <Route  path='/about' element={<AboutUs />}></Route>
-          <Route  path='/auctions' element={<Auctions />}></Route>
-          <Route  path='/contact' element={<ContactUs />}></Route>
-          <Route  path='/login' element={<Login />}></Route>
-        </Routess>
+        <Routes />
       </div>
     <footer>
     <Footer/>
