@@ -141,12 +141,12 @@ function Nav() {
             justifyContent="space-between"
             >
             <Flex align="flex-start">
-                <Link href="/">
+                <RouteLink to="/">
                 <HStack>
                     {/* <Logo /> */}
                     <Avatar src={Logo} w= {{ base: '27vw', md: '15vw',lg:  "11vw" }}></Avatar>
                 </HStack>
-                </Link>
+                </RouteLink>
                 <Flex>
                 <HStack spacing="5" display={{ base: "none", md: "flex" }}>
                     <RouteLink to={'/'}>
