@@ -15,30 +15,31 @@ Admin
 }
 
 model Users {
-id Int @id @default(autoincrement())
+id String @id @default(uuid())
 email String
 password String
 role Role
-
+profile Profile?
 }
 
 model Categories {
-id Int @id @default(autoincrement())
+id String @id @default(uuid())
 name String
 
 }
 
 
 model Profile {
-id Int @id @default(autoincrement())
+id String @id @default(uuid())
 name String
 phone_numper String
-userId Int
+userId String @unique
+user Users @relation(fields: [userId], references: [id])
 }
 
 
 model Auctions {
-id Int @id @default(autoincrement())
+id String @id @default(uuid())
 auction_type Int
 title String
 started_date DateTime @default(now())
@@ -54,13 +55,13 @@ created_at DateTime @default(now())
 }
 
  model Auction_images{
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   name String
 
 
  }
  model userAuctions {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   acutionId Int
   userId Int
   acution_deposit Int
