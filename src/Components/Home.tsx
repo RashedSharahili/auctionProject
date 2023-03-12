@@ -9,13 +9,13 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   return (
     <div>
-      <Routess>
-        <Route path="/" element={<Home />}></Route>
+      {/* <Routess>
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/auctions" element={<Auctions />}></Route>
         <Route path="/contact" element={<ContactUs />}></Route>
         <Route path="/login" element={<Login />}></Route>
-      </Routess>
+      </Routess> */}
     </div>
   );
 }

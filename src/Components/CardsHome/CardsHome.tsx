@@ -22,8 +22,11 @@ import {
     return (
      // {.map((, index)=>{
       <>
-  
+      <Center py={5} >
+  <Heading>يحدث الان </Heading>
+  </Center>
       <Grid templateColumns=  {{ base: "none", md: "", lg: 'repeat(3, 1fr)' }} gap={3} py="100px">
+        
       <Center py={12}>
           <Box
             role={'group'}
