@@ -18,8 +18,10 @@ model Users {
 id String @id @default(uuid())
 email String
 password String
-role Role
+role Role @default(User)
 profile Profile?
+auctions Auctions[]
+userAuctions userAuctions[]
 }
 
 model Categories {
@@ -42,31 +44,37 @@ model Auctions {
 id String @id @default(uuid())
 auction_type Int
 title String
-started_date DateTime @default(now())
-end_date DateTime @default(now())
+started_date DateTime 
+end_date DateTime 
 auction_status Boolean
 is_accepted String
-userId Int
+userId String
+user Users @relation(fields: [userId], references: [id])
 auction_price Int
 auction_min_price Int
 auction_max_price Int
 is_online Boolean
 created_at DateTime @default(now())
+auctions_images Auction_images[]
+userAuctions userAuctions[]
 }
 
  model Auction_images{
   id String @id @default(uuid())
   name String
-
-
+  auctionId String
+  auction Auctions @relation(fields: [auctionId], references: [id])
  }
+ 
  model userAuctions {
   id String @id @default(uuid())
-  acutionId Int
-  userId Int
-  acution_deposit Int
-  accepted_privace Boolean
-  acution_price Int
-  acution_data DateTime @default(now())
+  auctionId String
+  userId String
+  auction_deposit Int
+  accepted_privacy Boolean
+  auction_price Int
+  auction_date DateTime @default(now())
+  auctions Auctions @relation(fields: [auctionId], references: [id])
+  user Users @relation(fields: [userId], references: [id])
 
  }
