@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import { Route, Routes as Routess } from 'react-router-dom'
 import './App.css'
-import AboutUs from './Components/AboutUs'
-import Auctions from './Components/Auctions'
-import ContactUs from './Components/ContactUs'
 import Footer from './Components/Footer'
-import Home from './Components/Home'
-import Login from './Components/Login'
 import Nav from './Components/Nav'
 import Routes from './Components/Routes'
 
