@@ -6,6 +6,7 @@ import Auctions from './Components/Auctions'
 import ContactUs from './Components/ContactUs'
 import Footer from './Components/Footer'
 import Home from './Components/Home'
+import Login from './Components/Login'
 import Nav from './Components/Nav'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route  path='/about' element={<AboutUs />}></Route>
           <Route  path='/auctions' element={<Auctions />}></Route>
           <Route  path='/contact' element={<ContactUs />}></Route>
+          <Route  path='/login' element={<Login />}></Route>
         </Routess>
       </div>
     <footer>
