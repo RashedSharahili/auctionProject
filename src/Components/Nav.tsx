@@ -54,7 +54,7 @@ function Nav() {
     const { toggleColorMode: toggleMode } = useColorMode();
     const text = useColorModeValue("dark", "light");
     const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-    const bg = useColorModeValue("white", "gray.800");
+    const bg = useColorModeValue("#769589", "gray.800");
     const ref = React.useRef<HTMLDivElement | null>(null);
     const [y, setY] = React.useState(0);
     const height = ref.current ? ref.current.getBoundingClientRect() : 0;
@@ -64,7 +64,7 @@ function Nav() {
         // return scrollY.onChange(() => setY(scrollY.get()));
         return scrollY.on("change", () => { setY(scrollY.get()) })
     }, [scrollY]);
-    const cl = useColorModeValue("gray.800", "white");
+    const cl = useColorModeValue("gray.600", "white");
     const mobileNav = useDisclosure();
 
     const MobileNavContent = (
@@ -82,6 +82,7 @@ function Nav() {
         spacing={3}
         rounded="sm"
         shadow="sm"
+        color={useColorModeValue('gray.600', 'white')}
         >
         <CloseButton
             aria-label="Close menu"
@@ -116,21 +117,18 @@ function Nav() {
     );
 
     return (
-        <chakra.header
+        <Box
         ref={ref}
-        shadow={y > height ? "sm" : undefined}
-        boxShadow={"1px 1px 5px 0px lightgrey"}
-        zIndex={1}
-        transition="box-shadow 0.2s"
-        bg={bg}
-        borderTopColor="brand.400"
-        w="full"
-        pos={"relative"}
-        overflowY="hidden"
-        // color="gray.200"
-        _dark={{ color: "gray.900" }}
-        id="header"
-        >
+        bg={useColorModeValue('#769589', 'gray.800')}
+        color={useColorModeValue('gray.600', 'white')}
+        minH={'60px'}
+        py={{ base: 2 }}
+        px={{ base: 4 }}
+        borderBottom={1}
+        borderStyle={'solid'}
+        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        align={'center'}>
+        
         <chakra.div h="4.5rem" mx="auto" maxW="1200px">
             <Flex
             w="full"
@@ -164,7 +162,7 @@ function Nav() {
                 <RouteLink to={'/about'}>
                     <Button
                     bg={bg}
-                    color="gray.500"
+                    color={useColorModeValue('gray.600', 'white')}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
@@ -176,7 +174,7 @@ function Nav() {
                     <RouteLink to={'/auctions'}>
                 <Button
                     bg={bg}
-                    color="gray.500"
+                    color={useColorModeValue('gray.600', 'white')}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
@@ -188,7 +186,7 @@ function Nav() {
                 <RouteLink to={'/contact'}>
                 <Button
                     bg={bg}
-                    color="gray.500"
+                    color={useColorModeValue('gray.600', 'white')}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
@@ -235,7 +233,7 @@ function Nav() {
             </Flex>
             {MobileNavContent}
         </chakra.div>
-        </chakra.header>
+        </Box>
     )
 }
 
