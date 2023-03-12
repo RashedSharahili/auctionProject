@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+enum Role {
+User
+Admin
+}
+
+model Users {
+id Int @id @default(autoincrement())
+email String
+password String
+role Role
+
+}
+
+model Categories {
+id Int @id @default(autoincrement())
+name String
+
+}
+
+
+model Profile {
+id Int @id @default(autoincrement())
+name String
+phone_numper String
+userId Int
+}
+
+
+model Auctions {
+id Int @id @default(autoincrement())
+auction_type Int
+title String
+started_date DateTime @default(now())
+end_date DateTime @default(now())
+auction_status Boolean
+is_accepted String
+userId Int
+auction_price Int
+auction_min_price Int
+auction_max_price Int
+is_online Boolean
+created_at DateTime @default(now())
+}
+
+ model Auction_images{
+  id Int @id @default(autoincrement())
+  name String
+
+
+ }
+ model userAuctions {
+  id Int @id @default(autoincrement())
+  acutionId Int
+  userId Int
+  acution_deposit Int
+  accepted_privace Boolean
+  acution_price Int
+  acution_data DateTime @default(now())
+
+ }
