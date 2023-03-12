@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { Route, Routes as Routess } from 'react-router-dom'
 import './App.css'
+import AboutUs from './Components/AboutUs'
 import Auctions from './Components/Auctions'
+import ContactUs from './Components/ContactUs'
 import Footer from './Components/Footer'
 import Home from './Components/Home'
 import Nav from './Components/Nav'
@@ -14,7 +16,9 @@ function App() {
       <div className="container">
         <Routess>
           <Route  path='/' element={<Home />}></Route>
+          <Route  path='/about' element={<AboutUs />}></Route>
           <Route  path='/auctions' element={<Auctions />}></Route>
+          <Route  path='/contact' element={<ContactUs />}></Route>
         </Routess>
       </div>
     <footer>

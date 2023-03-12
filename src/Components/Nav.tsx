@@ -90,19 +90,27 @@ function Nav() {
             onClick={mobileNav.onClose}
         />
         <Button w="full" variant="ghost">
+            <RouteLink to={'/'}>
             الصفحة الرئيسية
+            </RouteLink>
         </Button>
         <Button
             w="full"
             variant="ghost"
             leftIcon={<AiOutlineInbox />}>
+            <RouteLink to={'/about'}>
             من نحن
+            </RouteLink>
         </Button>
         <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
+            <RouteLink to={'/auctions'}>
             المزادات
+            </RouteLink>
         </Button>
         <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
+            <RouteLink to={'/contact'}>
             تواصل معنا
+            </RouteLink>
         </Button>
         </VStack>
     );
@@ -141,6 +149,7 @@ function Nav() {
             </Flex>
             <Flex>
                 <HStack spacing="5" display={{ base: "none", md: "flex" }}>
+                    <RouteLink to={'/'}>
                 <Button
                     bg={bg}
                     color="gray.500"
@@ -151,6 +160,8 @@ function Nav() {
                     _focus={{ boxShadow: "none" }}>
                     الصفحة الرئيسية
                 </Button>
+                </RouteLink>
+                <RouteLink to={'/about'}>
                     <Button
                     bg={bg}
                     color="gray.500"
@@ -161,6 +172,8 @@ function Nav() {
                     _focus={{ boxShadow: "none" }}>
                         من نحن
                     </Button>
+                    </RouteLink>
+                    <RouteLink to={'/auctions'}>
                 <Button
                     bg={bg}
                     color="gray.500"
@@ -171,6 +184,8 @@ function Nav() {
                     _focus={{ boxShadow: "none" }}>
                         المزادات
                 </Button>
+                </RouteLink>
+                <RouteLink to={'/contact'}>
                 <Button
                     bg={bg}
                     color="gray.500"
@@ -182,6 +197,7 @@ function Nav() {
                 >
                     تواصل معنا
                 </Button>
+                </RouteLink>
                 </HStack>
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400" gap={2}>
