@@ -18,7 +18,8 @@ import {
     useColorMode,
     useColorModeValue,
     useDisclosure,
-    Image
+    Image,
+    Avatar
 } from "@chakra-ui/react";
 import { useScroll } from "framer-motion";
 
@@ -27,7 +28,7 @@ import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Link as RouteLink, useNavigate } from 'react-router-dom'
-import Logo from "./../assets/images/rashed_logo.png";
+import Logo from '../assets/logo.png';
 
 const reduser =(state:any,action:any)=>{
     
@@ -54,7 +55,7 @@ function Nav() {
     const { toggleColorMode: toggleMode } = useColorMode();
     const text = useColorModeValue("dark", "light");
     const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-    const bg = useColorModeValue("#769589", "gray.800");
+    const bg = useColorModeValue("white", "gray.800");
     const ref = React.useRef<HTMLDivElement | null>(null);
     const [y, setY] = React.useState(0);
     const height = ref.current ? ref.current.getBoundingClientRect() : 0;
@@ -64,7 +65,7 @@ function Nav() {
         // return scrollY.onChange(() => setY(scrollY.get()));
         return scrollY.on("change", () => { setY(scrollY.get()) })
     }, [scrollY]);
-    const cl = useColorModeValue("gray.600", "white");
+    const cl = useColorModeValue("gray.800", "white");
     const mobileNav = useDisclosure();
 
     const MobileNavContent = (
@@ -82,7 +83,6 @@ function Nav() {
         spacing={3}
         rounded="sm"
         shadow="sm"
-        color={useColorModeValue('gray.600', 'white')}
         >
         <CloseButton
             aria-label="Close menu"
@@ -117,18 +117,21 @@ function Nav() {
     );
 
     return (
-        <Box
+        <chakra.header
         ref={ref}
-        bg={useColorModeValue('#769589', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
-        minH={'60px'}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}>
-        
+        shadow={y > height ? "sm" : undefined}
+        boxShadow={"1px 1px 5px 0px lightgrey"}
+        zIndex={1}
+        transition="box-shadow 0.2s"
+        bg={"#769589"}
+        borderTopColor="brand.400"
+        w="full"
+        pos={"relative"}
+        overflowY="hidden"
+        // color="gray.200"
+        _dark={{ color: "gray.900" }}
+        id="header"
+        >
         <chakra.div h="4.5rem" mx="auto" maxW="1200px">
             <Flex
             w="full"
@@ -141,84 +144,72 @@ function Nav() {
                 <Link href="/">
                 <HStack>
                     {/* <Logo /> */}
-                    {/* <Image src={Logo} w={"64px"} h={"64px"} borderRadius={"50%"}></Image> */}
+                    <Avatar src={Logo} w= {{ base: '27vw', md: '15vw',lg:  "11vw" }}></Avatar>
                 </HStack>
                 </Link>
-            </Flex>
-            <Flex>
+                <Flex>
                 <HStack spacing="5" display={{ base: "none", md: "flex" }}>
                     <RouteLink to={'/'}>
                 <Button
-                    bg={bg}
-                    color="gray.500"
+                    bg={"transparent"}
+                    color={"#D4CCA7"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: cl }}
+                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
                     _focus={{ boxShadow: "none" }}>
                     الصفحة الرئيسية
                 </Button>
                 </RouteLink>
                 <RouteLink to={'/about'}>
                     <Button
-                    bg={bg}
-                    color={useColorModeValue('gray.600', 'white')}
+                    bg={"transparent"}
+                    color={"#D4CCA7"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: cl }}
+                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
                     _focus={{ boxShadow: "none" }}>
                         من نحن
                     </Button>
                     </RouteLink>
                     <RouteLink to={'/auctions'}>
                 <Button
-                    bg={bg}
-                    color={useColorModeValue('gray.600', 'white')}
+                    bg={"transparent"}
+                    color={"#D4CCA7"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: cl }}
+                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
                     _focus={{ boxShadow: "none" }}>
                         المزادات
                 </Button>
                 </RouteLink>
                 <RouteLink to={'/contact'}>
                 <Button
-                    bg={bg}
-                    color={useColorModeValue('gray.600', 'white')}
+                    bg={"transparent"}
+                    color={"#D4CCA7"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: cl }}
-                    _focus={{ boxShadow: "none" }}
-                >
+                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
+                    _focus={{ boxShadow: "none" }}>
                     تواصل معنا
                 </Button>
                 </RouteLink>
                 </HStack>
             </Flex>
+            </Flex>
             <Flex justify="flex-end" align="center" color="gray.400" gap={2}>
 
             {user === null?
                 <RouteLink to={"/login"}> 
-                <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} color={cl}>
+                <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={'#5E8978'} color={"#D4CCA7"} _hover={{bg: '#4B7967'}}>
                 تسجيل دخول
                 </Button></RouteLink>  
                 :    <Button onClick={()=>removeUser()} mr={"2"} color={cl}>
                 تسجيل خروج
             </Button>}
-                
-                <IconButton
-                size="md"
-                fontSize="lg"
-                aria-label={`Switch to ${text} mode`}
-                variant="ghost"
-                color="current"
-                ml={{ base: "0", md: "3" }}
-                onClick={toggleMode}
-                icon={<SwitchIcon />}
-                />
                 <IconButton
                 display={{ base: "flex", md: "none" }}
                 aria-label="Open menu"
@@ -233,7 +224,7 @@ function Nav() {
             </Flex>
             {MobileNavContent}
         </chakra.div>
-        </Box>
+        </chakra.header>
     )
 }
 
