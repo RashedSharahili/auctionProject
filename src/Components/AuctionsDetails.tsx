@@ -3,7 +3,7 @@ import React from 'react'
 
 function AuctionsDetails() {
   return (
-    <Box>
+    <Box className="container">
         <Box>
         <Flex
   bg="#edf3f8"

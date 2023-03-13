@@ -120,16 +120,13 @@ function Nav() {
         <chakra.header
         ref={ref}
         shadow={y > height ? "sm" : undefined}
-        boxShadow={"1px 1px 5px 0px lightgrey"}
-        zIndex={1}
         transition="box-shadow 0.2s"
         bg={"#769589"}
-        borderTopColor="brand.400"
         w="full"
         pos={"relative"}
         overflowY="hidden"
-        // color="gray.200"
-        _dark={{ color: "gray.900" }}
+        color="gray.200"
+        
         id="header"
         >
         <chakra.div h="4.5rem" mx="auto" maxW="1200px">
@@ -204,10 +201,10 @@ function Nav() {
 
             {user === null?
                 <RouteLink to={"/login"}> 
-                <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={'#5E8978'} color={"#D4CCC1"} _hover={{bg: '#D4CCC1'}}>
+                <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={"white"} color={"#769589"} _hover={{bg: 'white'}}>
                 تسجيل دخول
                 </Button></RouteLink>  
-                :    <Button onClick={()=>removeUser()} mr={"2"} bg={'#5E8978'} color={"#D4CCC1"} _hover={{bg: '#D4CCC1'}}>
+                :    <Button onClick={()=>removeUser()} mr={"2"} bg={"white"} color={"#769589"} _hover={{bg: 'white'}}>
                 تسجيل خروج
             </Button>}
                 <IconButton

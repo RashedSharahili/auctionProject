@@ -17,7 +17,7 @@ export default function App(){
   return (
     <chakra.header>
       <chakra.nav bg={bg} shadow="base">
-        <Box mx="auto" px={2} py={1} maxW="full">
+        <Box mx="auto" px={2} maxW="full">
           <Box
             display={{ md: "flex" }}
             alignItems={{ md: "center" }}
