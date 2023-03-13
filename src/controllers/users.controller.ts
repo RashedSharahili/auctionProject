@@ -50,11 +50,11 @@ export const login = async (req:Request, res:Response) => {
 
             if (await argon2.verify(user.password, l_user.password)) {
 
-                let enToken = jwt.sign({ id: user.id, name: user, email: user.email }, process.env.API_SECRET as string, { expiresIn: "10h" })
+                let enToken = jwt.sign({ id: user.id, email: user.email }, process.env.TOKEN_SECRET as string, { expiresIn: "300000ms" })
 
                 // console.log(enToken);
 
-                return res.status(200).json({ message: `Welcome Back ${user}`, token: enToken })
+                return res.status(200).json({ message: `Welcome Back ${user.email}`, token: enToken })
 
             } else {
 
