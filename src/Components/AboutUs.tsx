@@ -32,14 +32,7 @@ export default function WithBackgroundImage() {
           </Text>
           <Stack direction={'row'}>
            
-            <Button
-            as='a' href='#'
-              bg={'whiteAlpha.700'}
-              rounded={'full'}
-              color={'black'}
-              _hover={{ bg: 'whiteAlpha.500' }}>
-              ابدأ    الان  
-            </Button>
+
           </Stack>
         </Stack>
       </VStack>
