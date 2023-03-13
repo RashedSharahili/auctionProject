@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,72 +6,59 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-enum Role {
-User
-Admin
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+  role     Role   @default(User)
 }
 
-model Users {
-id String @id @default(uuid())
-email String @unique
-password String
-role Role @default(User)
-profile Profile?
-auctions Auctions[]
-userAuctions userAuctions[]
+model Categorie {
+  id   String @id @default(uuid())
+  name String
 }
-
-model Categories {
-id String @id @default(uuid())
-name String
-
-}
-
 
 model Profile {
-id String @id @default(uuid())
-name String
-phone_numper String
-userId String @unique
-user Users @relation(fields: [userId], references: [id])
+  id           String @id @default(uuid())
+  name         String
+  phone_numper String
+  userId       String @unique
 }
 
-
-model Auctions {
-id String @id @default(uuid())
-auction_type Int
-title String
-started_date DateTime 
-end_date DateTime 
-auction_status Boolean
-is_accepted String
-userId String
-user Users @relation(fields: [userId], references: [id])
-auction_price Int
-auction_min_price Int
-auction_max_price Int
-is_online Boolean
-created_at DateTime @default(now())
-auctions_images Auction_images[]
-userAuctions userAuctions[]
+model Auction {
+  id                String   @id @default(uuid())
+  auction_type      Int
+  title             String
+  started_date      DateTime
+  end_date          DateTime
+  auction_status    Boolean
+  is_accepted       Boolean
+  userId            String
+  auction_price     Int
+  auction_min_price Int
+  auction_max_price Int
+  is_online         Boolean
+  created_at        DateTime @default(now())
 }
 
- model Auction_images{
-  id String @id @default(uuid())
-  name String
+model Auction_images {
+  id        String @id @default(uuid())
+  name      String
   auctionId String
-  auction Auctions @relation(fields: [auctionId], references: [id])
- }
- 
- model userAuctions {
-  id String @id @default(uuid())
-  auctionId String
-  userId String
-  auction_deposit Int
+}
+
+model userAuction {
+  id               String   @id @default(uuid())
+  auctionId        String
+  userId           String
+  auction_deposit  Int
   accepted_privacy Boolean
-  auction_price Int
-  auction_date DateTime @default(now())
-  auctions Auctions @relation(fields: [auctionId], references: [id])
-  user Users @relation(fields: [userId], references: [id])
+  auction_price    Int
+  auction_date     DateTime @default(now())
+}
 
- }
+enum Role {
+  User
+  Admin
+}
