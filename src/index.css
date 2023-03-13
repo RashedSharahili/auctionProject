@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+@font-face {
+    font-family:"ArefRuqaa" ;
+    src: url("./assets/Font/ArefRuqaa-Regular-1.ttf");
+} 
 
+@font-face {
+    font-family:"MCS-Rika-S_U-normal" ;
+    src: url("./assets/Font/MCS-Rika-S_U-normal.-1.ttf");
+}
 * {
     
     font-family: 'Cairo', sans-serif;
