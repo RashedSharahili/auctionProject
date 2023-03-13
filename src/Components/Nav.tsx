@@ -164,7 +164,7 @@ function Nav() {
                 <RouteLink to={'/about'}>
                     <Button
                     bg={"transparent"}
-                    color={"#D4CCA7"}
+                    color={"#D4CCC1"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
@@ -176,7 +176,7 @@ function Nav() {
                     <RouteLink to={'/auctions'}>
                 <Button
                     bg={"transparent"}
-                    color={"#D4CCA7"}
+                    color={"#D4CCC1"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
@@ -188,7 +188,7 @@ function Nav() {
                 <RouteLink to={'/contact'}>
                 <Button
                     bg={"transparent"}
-                    color={"#D4CCA7"}
+                    color={"#D4CCC1"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
@@ -204,10 +204,10 @@ function Nav() {
 
             {user === null?
                 <RouteLink to={"/login"}> 
-                <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={'#5E8978'} color={"#D4CCA7"} _hover={{bg: '#4B7967'}}>
+                <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={'#5E8978'} color={"#D4CCC1"} _hover={{bg: '#D4CCC1'}}>
                 تسجيل دخول
                 </Button></RouteLink>  
-                :    <Button onClick={()=>removeUser()} mr={"2"} color={cl}>
+                :    <Button onClick={()=>removeUser()} mr={"2"} bg={'#5E8978'} color={"#D4CCC1"} _hover={{bg: '#D4CCC1'}}>
                 تسجيل خروج
             </Button>}
                 <IconButton
