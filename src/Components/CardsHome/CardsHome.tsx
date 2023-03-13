@@ -107,7 +107,7 @@ import {
                 py='6'
                 px='8'
                 _hover={{ bg: '#4B7967' }}>
-                    Buy
+                    التفاصيل
                 </Button>)
                 }
                 
@@ -167,7 +167,7 @@ import {
                 height={230}
                 width={350}
                 objectFit={'cover'}
-                src={"https://sa.aqar.fm/blog/wp-content/uploads/2021/01/%D8%A7%D9%84%D8%A7%D8%B1%D8%B63.jpg"}
+                src={"https://haraj-plus.sa/storage/products/zzkfsjx6.jpeg"}
               />
             </Box>
             <Stack pt={10} align={'center'}>
@@ -193,7 +193,7 @@ import {
                 py='6'
                 px='8'
                 _hover={{ bg: '#221409' }}>
-                    Buy
+                    التفاصيل
                 </Button>)
                 :
                 (<Button 
@@ -208,7 +208,7 @@ import {
                 py='6'
                 px='8'
                 _hover={{ bg: '#4B7967' }}>
-                    Buy
+                    التفاصيل
                 </Button>)
                 }
                 
@@ -260,7 +260,7 @@ import {
                 height={230}
                 width={350}
                 objectFit={'cover'}
-                src={"https://sa.aqar.fm/blog/wp-content/uploads/2021/01/%D8%A7%D9%84%D8%A7%D8%B1%D8%B63.jpg"}
+                src={"https://auto.ahram.org.eg/Media/News/2021/6/24/2021-637601438478302953-830.jpg"}
               />
             </Box>
             <Stack pt={10} align={'center'}>
@@ -286,7 +286,7 @@ import {
                 py='6'
                 px='8'
                 _hover={{ bg: '#221409' }}>
-                    Buy
+                    التفاصيل
                 </Button>)
                 :
                 (<Button 
@@ -301,7 +301,7 @@ import {
                 py='6'
                 px='8'
                 _hover={{ bg: '#4B7967' }}>
-                    Buy
+                    التفاصيل
                 </Button>)
                 }
                 

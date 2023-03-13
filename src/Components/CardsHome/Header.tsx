@@ -44,7 +44,7 @@ export default function App(){
       <Box
         w={{base:"none",lg:"full"}}
         h={{base:"50vh",lg:"container.sm"}}
-        backgroundImage="url(https://nextmillennium.io/wp-content/uploads/2022/02/08.png)"
+        backgroundImage="url(https://www.econlib.org/wp-content/uploads/2018/02/auction.jpg)"
         bgPos="center"
         bgSize="cover"
       >
