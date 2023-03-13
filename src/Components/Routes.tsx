@@ -7,6 +7,8 @@ import CardHome from "./CardsHome/CardsHome";
 import ContactUs from "./ContactUs";
 import Home from "./Home";
 import Login from "./Login";
+import SignUp from "./SignUp";
+import FormAcution from "./FormAcution";
 
 function Routes() {
   return (
@@ -17,6 +19,9 @@ function Routes() {
       <Route path="/auctionDetails/:id" element={<AuctionsDetails />}></Route>
       <Route path="/contact" element={<ContactUs />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/signup" element={<SignUp />}></Route>
+      <Route path="/FormAuction" element={<FormAcution/>}></Route>
+
     </Routess>
   );
 }
