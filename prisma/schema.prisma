@@ -16,7 +16,7 @@ Admin
 
 model Users {
 id String @id @default(uuid())
-email String
+email String @unique
 password String
 role Role @default(User)
 profile Profile?
