@@ -61,7 +61,7 @@ export default function ResetPasswordForm(): JSX.Element {
               </MenuList>
               </Menu> */}
           
-          <FormLabel fontSize={14} as='a' href='#'>انشاء حساب جديد ؟</FormLabel>
+          <FormLabel fontSize={14} as='a' href='signup'>انشاء حساب جديد ؟</FormLabel>
         </Stack>
       </Stack>
     </Flex>
