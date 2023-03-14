@@ -7,66 +7,58 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id       String @id @default(uuid())
-  email    String @unique
-  password String
-  role     Role   @default(User)
-}
-
-model Categories {
-  id   String @id @default(uuid())
-  name String
-}
-
 model Profile {
   id           String @id @default(uuid())
   name         String
   phone_numper String
   userId       String @unique
-
-  @@index([userId])
 }
 
-model Auctions {
-  id                String   @id @default(uuid())
+model Auction {
+  id                String   @id
   auction_type      Int
   title             String
   started_date      DateTime
   end_date          DateTime
   auction_status    Boolean
-  is_accepted       String
+  is_accepted       Boolean
   userId            String
   auction_price     Int
   auction_min_price Int
   auction_max_price Int
   is_online         Boolean
   created_at        DateTime @default(now())
-
-  @@index([userId])
 }
 
-model Auction_images {
-  id        String @id @default(uuid())
+model Auction_image {
+  id        String @id
   name      String
   auctionId String
-
-  @@index([auctionId])
 }
 
-model userAuctions {
-  id               String   @id @default(uuid())
+model Categorie {
+  id   String @id
+  name String
+}
+
+model User {
+  id       String    @id
+  email    String    @unique
+  password String
+  role     User_role @default(User)
+}
+
+model userAuction {
+  id               String   @id
   auctionId        String
   userId           String
   auction_deposit  Int
   accepted_privacy Boolean
   auction_price    Int
   auction_date     DateTime @default(now())
-
-  @@index([userId, auctionId])
 }
 
-enum Role {
+enum User_role {
   User
   Admin
 }

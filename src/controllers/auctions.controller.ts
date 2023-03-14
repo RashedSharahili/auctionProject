@@ -2,6 +2,7 @@ import {Request, Response} from 'express';
 import {prisma} from '../config/db';
 
 
+
 //GetallAuctions
 
 export const GetallAuctions = async (req: Request, res: Response) => {
@@ -38,7 +39,7 @@ export const GetallAuctions = async (req: Request, res: Response) => {
 
         //Add Auctoins
         
-        export const auctions = async (req:Request, res:Response) => {
+        export const createauctions = async (req:Request, res:Response) => {
 
             try {
         

@@ -1,5 +1,5 @@
 import  express  from "express";
-import {NewRegistration,login} from '../controllear/users.controllear'
+import {NewRegistration,login} from '../controllers/users.controller'
 import auth from "../middleware/auth";
 
 

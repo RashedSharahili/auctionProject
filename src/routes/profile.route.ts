@@ -1,20 +1,17 @@
 import  express  from "express";
 import auth from "../middleware/auth";
-import validate from "../middleware/vildate";
-import { createProfile, updateProfile } from "../controllear/profile.controllear";
-import { auctions } from "../controllear/auctions.controllear";
-import { createAuctionSchema } from "../zod.schema/auction.zod";
+import validate from "../middleware/validate";
+import { updateProfile } from "../controllers/profile.controller";
 import { updateProfileSchema } from "../zod.schema/profile.zod";
-// import { auctionsSchema } from "../zod.schema/auction.zod";
 
 let router = express.Router();
 
 // create 
-router.post('/',validate(createAuctionSchema),auth,createProfile);
+// router.post('/',validate(updateProfileSchema),auth,createProfile);
 
 
 // update
-router.put('/:name',validate(updateProfileSchema),updateProfile);
+router.put('/:name',validate(updateProfileSchema),updateProfile)
 
 
 

@@ -1,35 +1,34 @@
 import {Request, Response} from 'express';
 import {prisma} from '../config/db';
 import { Profile } from '@prisma/client';
-import { profile } from 'console';
 
 
 //post profile
 
 
-export const createProfile = async (req:Request, res:Response) => {
+// export const createProfile = async (req:Request, res:Response) => {
 
-    try {
+//     try {
 
-        const profile = req.body 
+//         const profile = req.body 
 
-        await prisma.profile.create({
-            data:profile,
+//         await prisma.profile.create({
+//             data:profile,
              
             
 
     
-        });
+//         });
         
 
-        res.json({ message: "profile successfully" });
+//         res.json({ message: "profile successfully" });
 
-    } catch(err) {
+//     } catch(err) {
 
-        res.json(err);
-    }
+//         res.json(err);
+//     }
 
-}
+// }
 
 
 
