@@ -5,6 +5,10 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+<<<<<<< HEAD
+=======
+  relationMode = "prisma"
+>>>>>>> 486b35dce4c5f25f616ed36721f7cfb1baef8ea1
 }
 
 model Profile {
@@ -12,6 +16,10 @@ model Profile {
   name         String
   phone_numper String
   userId       String @unique
+<<<<<<< HEAD
+=======
+  user User @relation(fields: [userId], references: [id])
+>>>>>>> 486b35dce4c5f25f616ed36721f7cfb1baef8ea1
 }
 
 model Auction {
@@ -23,11 +31,13 @@ model Auction {
   auction_status    Boolean
   is_accepted       Boolean
   userId            String
+  user User @relation(fields: [userId], references: [id])
   auction_price     Int
   auction_min_price Int
   auction_max_price Int
   is_online         Boolean
   created_at        DateTime @default(now())
+<<<<<<< HEAD
 }
 
 model Auction_image {
@@ -41,11 +51,30 @@ model Categorie {
   name String
 }
 
+=======
+  auctions_images Auction_image[]
+  userAuctions userAuction[]
+
+  @@index([userId])
+}
+
+model Categorie {
+  id   String @id
+  name String
+}
+
+>>>>>>> 486b35dce4c5f25f616ed36721f7cfb1baef8ea1
 model User {
   id       String    @id
   email    String    @unique
   password String
   role     User_role @default(User)
+<<<<<<< HEAD
+=======
+  profile Profile?
+auctions Auction[]
+userAuctions userAuction[]
+>>>>>>> 486b35dce4c5f25f616ed36721f7cfb1baef8ea1
 }
 
 model userAuction {
@@ -56,8 +85,27 @@ model userAuction {
   accepted_privacy Boolean
   auction_price    Int
   auction_date     DateTime @default(now())
+<<<<<<< HEAD
 }
 
+=======
+  auctions Auction @relation(fields: [auctionId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([auctionId])
+}
+
+model Auction_image {
+  id        String @id
+  name      String
+  auctionId String
+  auction Auction @relation(fields: [auctionId], references: [id])
+
+  @@index([auctionId])
+}
+
+>>>>>>> 486b35dce4c5f25f616ed36721f7cfb1baef8ea1
 enum User_role {
   User
   Admin

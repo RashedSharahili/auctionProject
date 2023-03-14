@@ -1,13 +1,11 @@
 import express from 'express'
 import usersRoute from '../routes/users.route';
-import auctionsRoute from '../routes/auctions.rote';
-import profileRoute from '../routes/profile.route';
+import categoriesRoute from '../routes/categorise.route';
 let router = express.Router()
 
 
 router.use('/users',usersRoute);
-router.use('/auctions',auctionsRoute);
-router.use('/auctions',profileRoute);
+router.use('/categories',categoriesRoute);
 
 
 

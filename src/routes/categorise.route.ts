@@ -13,3 +13,5 @@ router.post('/', auth, validate(createCategorySchema), createCategory);
 
 // update
 router.put('/updateCategory/:id', auth, validate(updateCategorySchema), updateCategory);
+
+export default router;
