@@ -10,7 +10,7 @@ import {User} from '@prisma/client';
 export const NewRegistration = async (req:Request, res:Response) =>{
     const hash = await argon2.hash(req.body.password);
     try{
-        const user = await prisma.users.create({
+        const user = await prisma.user.create({
             data:{
                 email: req.body.email,
                 password: hash
@@ -39,7 +39,7 @@ export const login = async (req:Request, res:Response) => {
         let l_user = req.body as User
         
 
-        let user = await prisma.users.findFirst({
+        let user = await prisma.user.findFirst({
             where: {
                 email: l_user.email
             }
