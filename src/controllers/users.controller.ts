@@ -36,6 +36,8 @@ export const NewRegistration = async (req:Request, res:Response) =>{
 export const login = async (req:Request, res:Response) => {
     try {
         let l_user = req.body as User
+        
+
         let user = await prisma.user.findFirst({
             where: {
                 email: l_user.email
