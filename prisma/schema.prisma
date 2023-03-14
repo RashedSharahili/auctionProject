@@ -52,7 +52,7 @@ model userAuction {
   auction_date     DateTime @default(now())
 }
 
-model Auction_images {
+model Auction_image {
   id        String @id
   name      String
   auctionId String
