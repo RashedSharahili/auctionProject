@@ -8,10 +8,16 @@ datasource db {
   relationMode = "prisma"
 }
 
+enum Gender {
+  Male
+  Female
+}
+
 model Profile {
   id           String @id @default(uuid())
-  name         String
-  phone_numper String
+  name         String?
+  phone_numper String?
+  gender Gender?
   userId       String @unique
   user         User   @relation(fields: [userId], references: [id])
 }
