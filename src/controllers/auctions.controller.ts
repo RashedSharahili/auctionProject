@@ -6,7 +6,7 @@ import {prisma} from '../config/db';
 
 export const addAuction=async (req:Request,res:Response)=>{
 
-let Auctions=await prisma.auction.create({
+let Auctions=await prisma.auctions.create({
 
   data:{
     userId:res.locals.id,
@@ -30,3 +30,13 @@ res.status(200).json({
   });
 
 }
+
+export const GetallAuctions= async (req: Request, res: Response) => {
+  try {
+    let Auctoins = await prisma.auctions.findMany();
+
+    res.json({ "Auctoins": Auctoins });
+  } catch (err) {
+    console.log(err);
+  }
+};

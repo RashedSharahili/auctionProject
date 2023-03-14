@@ -6,7 +6,7 @@ let router = express.Router()
 
 router.use('/users',usersRoute);
 router.use('/categories',categoriesRoute);
-router.use('/profile',categoriesRoute);
+
 
 
 
