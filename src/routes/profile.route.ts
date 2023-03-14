@@ -2,7 +2,7 @@ import  express  from "express";
 import auth from "../middleware/auth";
 import validate from "../middleware/validate";
 import { updateProfile } from "../controllers/profile.controller";
-import { updateProfileSchema } from "../zod.schema/profile.zod";
+import { updateProfileSchema } from "../schema.zod/profile.zod";
 
 let router = express.Router();
 

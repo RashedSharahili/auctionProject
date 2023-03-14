@@ -17,11 +17,11 @@ model Profile {
 }
 
 model Auction {
-  id                String          @id @default(uuid())
-  auction_type      Int
+  id           String @id @default(uuid())
+  auction_type      String
   title             String
-  started_date      DateTime
-  end_date          DateTime
+  started_date      String
+  end_date          String
   auction_status    Boolean
   is_accepted       Boolean
   userId            String
@@ -32,14 +32,17 @@ model Auction {
   created_at        DateTime        @default(now())
   auctions_images   Auction_image[]
   userAuctions      userAuction[]
-  User              User?           @relation(fields: [userId], references: [id])
+  User              User?            @relation(fields: [userId], references: [id])
+  category Categorie @relation(fields: [auction_type], references: [id])
 
   @@index([userId])
+  @@index([auction_type])
 }
 
 model Categorie {
   id   String @id @default(uuid())
   name String
+  category Auction[]
 }
 
 model User {
