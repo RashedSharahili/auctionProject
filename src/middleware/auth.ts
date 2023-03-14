@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken';
 
 interface User{
     id: string,
-    name: string
+    email: string
 }
 const auth = (req:Request, res:Response, next:NextFunction)=>{
     try{
