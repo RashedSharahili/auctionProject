@@ -19,45 +19,45 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ResetPasswordForm() {
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  const toast = useToast();
-  const submitLogin = async () => {
-    try {
-      const request = await fetch('/api/v1/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      const data = await request.json();
-      if (request.status !== 200) {
-        toast({
-          title: data.message,
-          status: 'error',
-          duration: 3000,
-          position: 'top',
-        });
-        return;
-      }
-      toast({
-        title: data.message,
-        status: 'success',
-        duration: 3000,
-        position: 'top',
-      });
-      localStorage.setItem('token', data.token);
-      navigate('/');
-    } catch (error) {
-      toast({
-        title: 'Server Error !',
-        status: 'error',
-        duration: 3000,
-        position: 'top',
-      });
-    }
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
+  // const navigate = useNavigate();
+  // const toast = useToast();
+  // const submitLogin = async () => {
+  //   try {
+  //     const request = await fetch('/api/v1/auth/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ username, password }),
+  //     });
+  //     const data = await request.json();
+  //     if (request.status !== 200) {
+  //       toast({
+  //         title: data.message,
+  //         status: 'error',
+  //         duration: 3000,
+  //         position: 'top',
+  //       });
+  //       return;
+  //     }
+  //     toast({
+  //       title: data.message,
+  //       status: 'success',
+  //       duration: 3000,
+  //       position: 'top',
+  //     });
+  //     localStorage.setItem('token', data.token);
+  //     navigate('/');
+  //   } catch (error) {
+  //     toast({
+  //       title: 'Server Error !',
+  //       status: 'error',
+  //       duration: 3000,
+  //       position: 'top',
+  //     });
+  //   }
 
 
   
@@ -122,4 +122,4 @@ export default function ResetPasswordForm() {
 //       navigate("/")
 //   }
   );
-}}
+}
