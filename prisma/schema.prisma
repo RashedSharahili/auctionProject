@@ -29,7 +29,7 @@ model Auction {
   started_date      String
   end_date          String
   auction_status    Boolean
-  is_accepted       Boolean
+  is_accepted       Boolean @default(false)
   userId            String
   auction_price     Int
   auction_min_price Int

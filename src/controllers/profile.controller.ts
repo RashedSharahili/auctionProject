@@ -3,34 +3,6 @@ import {prisma} from '../config/db';
 import { Profile } from '@prisma/client';
 
 
-//post profile
-
-
-// export const createProfile = async (req:Request, res:Response) => {
-
-//     try {
-
-//         const profile = req.body 
-
-//         await prisma.profile.create({
-//             data:profile,
-             
-            
-
-    
-//         });
-        
-
-//         res.json({ message: "profile successfully" });
-
-//     } catch(err) {
-
-//         res.json(err);
-//     }
-
-// }
-
-
 
 export const updateProfile = async(req:Request, res:Response) => {
     

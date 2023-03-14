@@ -63,3 +63,13 @@ export const GetallAuctions = async (req: Request, res: Response) => {
     res.status(500).json(err)
   }
 };
+
+export const deleteAuctions = async(req:Request, res:Response) => {
+
+  let auctions = await prisma.auction.deleteMany()
+
+  if(auctions) {
+
+    res.status(200).json({ message: "auctions deleted successfully!" })
+  }
+}
