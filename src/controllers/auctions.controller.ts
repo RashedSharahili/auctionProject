@@ -18,7 +18,7 @@ export const addAuction=async (req:Request,res:Response)=>{
         auction_min_price:req.body.auction_min_price,
         auction_max_price:req.body.auction_max_price,
         is_online:req.body.is_online,
-        Auction_image:req.body.Auction_image
+        auction_image:req.body.auction_image
     
       }
     
