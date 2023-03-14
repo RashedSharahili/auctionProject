@@ -6,7 +6,7 @@ import { prisma } from "../config/db";
 
 export const addAuction=async (req:Request,res:Response)=>{
 
-    let Auctions=await prisma.auction.create({
+    let Auctions=await prisma.auctions.create({
     
       data:{
         userId:res.locals.id,
@@ -18,7 +18,7 @@ export const addAuction=async (req:Request,res:Response)=>{
         auction_min_price:req.body.auction_min_price,
         auction_max_price:req.body.auction_max_price,
         is_online:req.body.is_online,
-        auction_images:req.body.auction_images
+        Auction_image:req.body.Auction_image
     
       }
     
