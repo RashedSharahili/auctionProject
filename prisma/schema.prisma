@@ -38,7 +38,7 @@ model Auction {
 }
 
 model Categorie {
-  id   String @id
+  id   String @id @default(uuid())
   name String
 }
 
