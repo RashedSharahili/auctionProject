@@ -8,17 +8,22 @@ datasource db {
   relationMode = "prisma"
 }
 
+enum Gender {
+  Male
+  Female
+}
+
 model Profile {
-  id           String          @id @default(uuid())
+  id           String @id @default(uuid())
   name         String?
   phone_numper String?
-  userId       String          @unique
-  gender       Profile_gender?
-  user         User            @relation(fields: [userId], references: [id])
+  gender Gender?
+  userId       String @unique
+  user         User   @relation(fields: [userId], references: [id])
 }
 
 model Auction {
-  id                String          @id @default(uuid())
+  id           String @id @default(uuid())
   auction_type      String
   title             String
   started_date      String
@@ -33,7 +38,8 @@ model Auction {
   created_at        DateTime        @default(now())
   auctions_images   Auction_image[]
   userAuctions      userAuction[]
-  User              User?           @relation(fields: [userId], references: [id])
+  User              User?            @relation(fields: [userId], references: [id])
+  category Categorie @relation(fields: [auction_type], references: [id])
 
   @@index([userId])
   @@index([auction_type])
@@ -42,6 +48,7 @@ model Auction {
 model Categorie {
   id   String @id @default(uuid())
   name String
+  category Auction[]
 }
 
 model User {

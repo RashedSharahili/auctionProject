@@ -18,7 +18,18 @@ export const NewRegistration = async (req:Request, res:Response) =>{
             }
         });
         if(user){
-            res.status(200).json({msg:"user created!"})
+
+            const profile = await prisma.profile.create({
+                data: {
+                    userId: user.id
+                }
+            })
+
+            if(profile) {
+
+                res.status(200).json({msg:"user created successfully!"})
+            }
+
         }
     }catch(e){
         res.status(500).json({msg:`Error: ${e}`});
@@ -43,10 +54,16 @@ export const login = async (req:Request, res:Response) => {
                 email: l_user.email
             }
         })
+        
+        
+
         if(user) {
             if (await argon2.verify(user.password, l_user.password)) {
 
-                let enToken = jwt.sign({ id: user.id, email: user.email }, process.env.TOKEN_SECRET as string, { expiresIn: "300000ms" })
+                console.log(user);
+
+                let enToken = jwt.sign({ id: user.id, email: user.email }, process.env.API_SECRET as string, { expiresIn: "1 day" })
+
                 // console.log(enToken);
 
                 return res.status(200).json({ message: `Welcome Back ${user.email}`, token: enToken })
@@ -74,20 +91,20 @@ export const login = async (req:Request, res:Response) => {
 
 
 
-export const UpdateProfile = async (req:Request, res:Response)=>{
-    try{
-        let users= await prisma.profile.update({
-            where:{
-                userId: res.locals.user.id,
-            },
-            data:{
-            name: req.body.name
-            }
-        }
-        )
-        }
-catch(e){}
-}
+// export const UpdateProfile = async (req:Request, res:Response)=>{
+//     try{
+//         let users= await prisma.profile.update({
+//             where:{
+//                 userId: res.locals.user.id,
+//             },
+//             data:{
+//             name: req.body.name
+//             }
+//         }
+//         )
+//         }
+// catch(e){}
+// }
 
 
 
