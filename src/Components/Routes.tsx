@@ -9,6 +9,7 @@ import Home from "./Home";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import FormAcution from "./FormAcution";
+import AdminPanel from "./AdminPanel";
 
 function Routes() {
   return (
@@ -21,6 +22,7 @@ function Routes() {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/FormAuction" element={<FormAcution/>}></Route>
+      <Route path="/adminPanel" element={<AdminPanel children={undefined}/>}></Route>
 
     </Routess>
   );

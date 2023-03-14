@@ -7,7 +7,7 @@ function Auctions() {
     const navigate = useNavigate();
 
   return (
-    <Box>
+    <Box className="container">
         <br></br>
         <Box>
             <Heading fontFamily={"Cairo"} textAlign={"center"}>المزادات</Heading>
