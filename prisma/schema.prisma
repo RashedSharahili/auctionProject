@@ -7,14 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
   id       String @id @default(uuid())
   email    String @unique
   password String
   role     Role   @default(User)
 }
 
-model Categories {
+model Categorie {
   id   String @id @default(uuid())
   name String
 }
@@ -24,37 +24,25 @@ model Profile {
   name         String
   phone_numper String
   userId       String @unique
-
-  @@index([userId])
 }
 
-model Auctions {
+model Auction {
   id                String   @id @default(uuid())
   auction_type      Int
   title             String
   started_date      DateTime
   end_date          DateTime
   auction_status    Boolean
-  is_accepted       String
+  is_accepted       Boolean
   userId            String
   auction_price     Int
   auction_min_price Int
   auction_max_price Int
   is_online         Boolean
   created_at        DateTime @default(now())
-
-  @@index([userId])
 }
 
-model Auction_images {
-  id        String @id @default(uuid())
-  name      String
-  auctionId String
-
-  @@index([auctionId])
-}
-
-model userAuctions {
+model userAuction {
   id               String   @id @default(uuid())
   auctionId        String
   userId           String
@@ -62,8 +50,12 @@ model userAuctions {
   accepted_privacy Boolean
   auction_price    Int
   auction_date     DateTime @default(now())
+}
 
-  @@index([userId, auctionId])
+model Auction_images {
+  id        String @id
+  name      String
+  auctionId String
 }
 
 enum Role {

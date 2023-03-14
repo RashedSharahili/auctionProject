@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import {prisma} from '../config/db';
 import * as argon2 from 'argon2';
 import * as jwt from 'jsonwebtoken';
-import { User } from '@prisma/client';
+import { Users } from '@prisma/client';
 
 
 ////////////////////////////////////////////////////////////////////
@@ -10,7 +10,7 @@ import { User } from '@prisma/client';
 export const NewRegistration = async (req:Request, res:Response) =>{
     const hash = await argon2.hash(req.body.password);
     try{
-        const user = await prisma.user.create({
+        const user = await prisma.users.create({
             data:{
                 email: req.body.email,
                 password: hash
@@ -36,7 +36,7 @@ export const login = async (req:Request, res:Response) => {
 
     try {
 
-        let l_user = req.body as User
+        let l_user = req.body as Users
         
 
         let user = await prisma.users.findFirst({

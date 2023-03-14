@@ -1,5 +1,7 @@
 import {Request, Response} from 'express';
 import {prisma} from '../config/db';
+import { Auction } from '@prisma/client';
+
 
 
 
