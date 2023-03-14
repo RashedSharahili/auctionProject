@@ -24,20 +24,24 @@ import {
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
+import { Route, Routes as Routess, Link as RouteLink, useNavigate, To } from "react-router-dom";
+import AuctionsReq from './AuctionsReq';
+import Routes from './AdminRoutes';
 
 interface LinkItemProps {
   name: string;
   icon: IconType;
+  route: String;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'الصفحة الرئيسية', icon: FiHome },
-  { name: 'طلبات المزادات', icon: FiTrendingUp },
-  { name: 'التصنيفات', icon: FiCompass },
+  { name: 'الصفحة الرئيسية', icon: FiHome, route: "#" },
+  { name: 'طلبات المزادات', icon: FiTrendingUp, route: "/adminPanel/auctionsRequests" },
+  { name: 'التصنيفات', icon: FiCompass, route: "#" },
 //   { name: 'Favourites', icon: FiStar },
 //   { name: 'Settings', icon: FiSettings },
 ];
 
-export default function SimpleSidebar({ children }: { children: ReactNode }) {
+export default function Admin({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh">
@@ -80,8 +84,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       pos={"absolute"}
       h="full"
       {...rest}>
+        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} gap={2} color={"white"}>
+        <NavItem key={link.name} icon={link.icon} gap={2} color={"white"} route={link.route}>
           {link.name}
         </NavItem>
       ))}
@@ -92,10 +97,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
+  route: String;
 }
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, route, children, ...rest }: NavItemProps) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <RouteLink to={route as To} style={{ textDecoration: 'none' }}>
       <Flex
         align="center"
         p="4"
@@ -120,7 +126,7 @@ const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
         )}
         {children}
       </Flex>
-    </Link>
+    </RouteLink>
   );
 };
 
@@ -134,7 +140,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={"#769589"}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       justifyContent="flex-start"
@@ -145,10 +151,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
-      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
-      </Text>
     </Flex>
   );
 };
