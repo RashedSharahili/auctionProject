@@ -55,7 +55,11 @@ export const addAuction = async (req: Request, res: Response) => {
 
 export const GetallAuctions = async (req: Request, res: Response) => {
   try {
-    let Auctoins = await prisma.auction.findMany();
+    let Auctoins = await prisma.auction.findMany({
+      include: {
+        userAuctions: true
+      }
+    });
 
     res.json({ "Auctoins": Auctoins });
   } catch (err) {

@@ -16,7 +16,7 @@ enum Gender {
 model Profile {
   id           String @id @default(uuid())
   name         String?
-  phone_numper String?
+  phone_number String?
   gender Gender?
   userId       String @unique
   user         User   @relation(fields: [userId], references: [id])

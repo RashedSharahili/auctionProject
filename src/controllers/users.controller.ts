@@ -4,6 +4,17 @@ import * as argon2 from 'argon2';
 import * as jwt from 'jsonwebtoken';
 import {User} from '@prisma/client';
 
+export const getAllUsers = async(req:Request, res:Response) => {
+    
+    let users = await prisma.user.findMany({
+        include: {
+            profile: true
+        }
+    })
+
+    res.status(200).json({ users, status: res.statusCode })
+}
+
 
 ////////////////////////////////////////////////////////////////////
 
@@ -89,32 +100,6 @@ export const login = async (req:Request, res:Response) => {
     }
 
 }
-
-
-
-
-// export const UpdateProfile = async (req:Request, res:Response)=>{
-
-//     try{
-
-//         let users= await prisma.profile.update({
-//             where:{
-//                 userId: res.locals.user.id,
-            
-//             },
-//             data:{
-//             name: req.body.name
-//             }
-
-//         }
-
-//         )
-
-//     }
-
-// catch(e){}
-
-// }
 
 
 
