@@ -18,7 +18,7 @@ model Profile {
 
 model Auction {
   id           String @id @default(uuid())
-  auction_type      String @unique
+  auction_type      String
   title             String
   started_date      String
   end_date          String
@@ -35,13 +35,14 @@ model Auction {
   User              User?            @relation(fields: [userId], references: [id])
   category Categorie @relation(fields: [auction_type], references: [id])
 
-  @@index([userId, auction_type])
+  @@index([userId])
+  @@index([auction_type])
 }
 
 model Categorie {
   id   String @id @default(uuid())
   name String
-  category Auction?
+  category Auction[]
 }
 
 model User {
