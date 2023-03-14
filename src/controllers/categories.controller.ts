@@ -1,6 +1,6 @@
 import { prisma } from '../config/db';
 import {Request, Response} from 'express';
-import { Categories } from '@prisma/client';
+import { Categorie } from '@prisma/client';
 
 // Read Categories
 export const getAllCategories = async(req:Request, res:Response) => {
@@ -8,7 +8,7 @@ export const getAllCategories = async(req:Request, res:Response) => {
     try {
         
 
-        let categories = await prisma.categories.findMany()
+        let categories = await prisma.categorie.findMany()
 
         if(categories) {
 
@@ -28,9 +28,9 @@ export const createCategory = async(req:Request, res:Response) => {
 
     try {
 
-        let c_category = req.body as Categories
+        let c_category = req.body as Categorie
 
-        let category = await prisma.categories.create({
+        let category = await prisma.categorie.create({
             data: {
                 name: c_category.name
             }
@@ -54,11 +54,11 @@ export const updateCategory = async(req:Request, res:Response) => {
 
     try {
 
-        let u_category = req.body as Categories
+        let u_category = req.body as Categorie
 
         let { id } = req.params
 
-        let category = await prisma.categories.update({
+        let category = await prisma.categorie.update({
             where: {
                 id: id,
                 // userId: res.locals.user.id
