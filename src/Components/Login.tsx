@@ -11,9 +11,55 @@ import {
   MenuList,
   Stack,
   useColorModeValue,
+  useToast,
 } from '@chakra-ui/react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function ResetPasswordForm(): JSX.Element {
+export default function ResetPasswordForm() {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const toast = useToast();
+  const submitLogin = async () => {
+    try {
+      const request = await fetch('/api/v1/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await request.json();
+      if (request.status !== 200) {
+        toast({
+          title: data.message,
+          status: 'error',
+          duration: 3000,
+          position: 'top',
+        });
+        return;
+      }
+      toast({
+        title: data.message,
+        status: 'success',
+        duration: 3000,
+        position: 'top',
+      });
+      localStorage.setItem('token', data.token);
+      navigate('/');
+    } catch (error) {
+      toast({
+        title: 'Server Error !',
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+      });
+    }
+
+
+  
   return (
     <Flex
       minH={'100vh'}
@@ -33,7 +79,11 @@ export default function ResetPasswordForm(): JSX.Element {
           تسجيل الدخول
         </Heading>
         <FormControl id="email" isRequired>
-          <FormLabel>البريد الالكتروني</FormLabel>
+          <FormLabel
+             //  onChange={(e) => setEmail(e.target.value)}
+          //  value={Email}
+          
+          >البريد الالكتروني</FormLabel>
           <Input
             placeholder="your-email@example.com"
             _placeholder={{ color: 'gray.500' }}
@@ -41,7 +91,11 @@ export default function ResetPasswordForm(): JSX.Element {
           />
         </FormControl>
         <FormControl id="password" isRequired>
-          <FormLabel>كلمة المرور</FormLabel>
+          <FormLabel
+       
+             //  onChange={(e) => setpass(e.target.value)}
+          //  value={pass}
+          >كلمة المرور</FormLabel>
           <Input type="password" />
         </FormControl>
         <Stack spacing={6}>
@@ -72,4 +126,4 @@ export default function ResetPasswordForm(): JSX.Element {
 //       navigate("/")
 //   }
   );
-}
+}}

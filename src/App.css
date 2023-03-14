@@ -8,3 +8,8 @@
 .chakra-ui-light{
   background-color: rgb(248, 243, 240);
 }
+
+html,body{
+  margin: 0px;
+  padding: 0px;
+}
