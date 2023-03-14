@@ -17,7 +17,18 @@ export const NewRegistration = async (req:Request, res:Response) =>{
             }
         });
         if(user){
-            res.status(200).json({msg:"user created!"})
+
+            const profile = await prisma.profile.create({
+                data: {
+                    userId: user.id
+                }
+            })
+
+            if(profile) {
+
+                res.status(200).json({msg:"user created successfully!"})
+            }
+
         }
     }catch(e){
         res.status(500).json({msg:`Error: ${e}`});
