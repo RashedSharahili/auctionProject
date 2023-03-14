@@ -63,57 +63,57 @@ import { useNavigate } from 'react-router-dom';
 
   export default function ResetPasswordForm(): JSX.Element {
     
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [date, setDate] = useState('');
-    const [id, setId] = useState('');
-    const [phone, setPhone] = useState('');
-    const [password, setPassword] = useState('');
+    // const [name, setName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [date, setDate] = useState('');
+    // const [id, setId] = useState('');
+    // const [phone, setPhone] = useState('');
+    // const [password, setPassword] = useState('');
     
-    const navigate = useNavigate();
-    const toast = useToast();
-    const submitLogin = async () => {
-      try {
-        const request = await fetch('/api/v1/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        const data = await request.json();
-        if (request.status !== 200) {
+    // const navigate = useNavigate();
+    // const toast = useToast();
+    // const submitLogin = async () => {
+    //   try {
+    //     const request = await fetch('/api/v1/auth/login', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({ email, password }),
+    //     });
+    //     const data = await request.json();
+    //     if (request.status !== 200) {
 
 
-          alert('error');
+    //       alert('error');
 
-          // toast({
-          //   title: data.message,
-          //   status: 'error',
-          //   duration: 3000, 
-          //   position: 'top',
-          // });
-          return;
-        }
-        alert('success');
-        // toast({
-        //   title: data.message,
-        //   status: 'success',
-        //   duration: 3000,
-        //   position: 'top',
-        // });
-        localStorage.setItem('token', data.token);
-        navigate('/');
-      } catch (error) {
+    //       // toast({
+    //       //   title: data.message,
+    //       //   status: 'error',
+    //       //   duration: 3000, 
+    //       //   position: 'top',
+    //       // });
+    //       return;
+    //     }
+    //     alert('success');
+    //     // toast({
+    //     //   title: data.message,
+    //     //   status: 'success',
+    //     //   duration: 3000,
+    //     //   position: 'top',
+    //     // });
+    //     localStorage.setItem('token', data.token);
+    //     navigate('/');
+    //   } catch (error) {
 
-        alert('server error');
-        // toast({
-        //   title: 'Server Error !',
-        //   status: 'error',
-        //   duration: 3000,
-        //   position: 'top',
-        // });
-      }
+    //     alert('server error');
+    //     // toast({
+    //     //   title: 'Server Error !',
+    //     //   status: 'error',
+    //     //   duration: 3000,
+    //     //   position: 'top',
+    //     // });
+    //   }
 
 
 
@@ -208,5 +208,5 @@ import { useNavigate } from 'react-router-dom';
     );
   }
 
-  }
+// }
  

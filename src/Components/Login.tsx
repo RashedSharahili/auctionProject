@@ -38,52 +38,52 @@ export default function ResetPasswordForm(): JSX.Element {
 
 
   
-      const [email, setEmail] = useState('');
-      const [password, setPassword] = useState('');
-      const navigate = useNavigate();
-      const toast = useToast();
-      const submitLogin = async () => {
-        try {
-          const request = await fetch('/api/v1/auth/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-          });
-          const data = await request.json();
-          if (request.status !== 200) {
+      // const [email, setEmail] = useState('');
+      // const [password, setPassword] = useState('');
+      // const navigate = useNavigate();
+      // const toast = useToast();
+      // const submitLogin = async () => {
+      //   try {
+      //     const request = await fetch('/api/v1/auth/login', {
+      //       method: 'POST',
+      //       headers: {
+      //         'Content-Type': 'application/json',
+      //       },
+      //       body: JSON.stringify({ email, password }),
+      //     });
+      //     const data = await request.json();
+      //     if (request.status !== 200) {
 
 
-            alert('error');
+      //       alert('error');
 
-            // toast({
-            //   title: data.message,
-            //   status: 'error',
-            //   duration: 3000, 
-            //   position: 'top',
-            // });
-            return;
-          }
-          alert('success');
-          // toast({
-          //   title: data.message,
-          //   status: 'success',
-          //   duration: 3000,
-          //   position: 'top',
-          // });
-          localStorage.setItem('token', data.token);
-          navigate('/');
-        } catch (error) {
+      //       // toast({
+      //       //   title: data.message,
+      //       //   status: 'error',
+      //       //   duration: 3000, 
+      //       //   position: 'top',
+      //       // });
+      //       return;
+      //     }
+      //     alert('success');
+      //     // toast({
+      //     //   title: data.message,
+      //     //   status: 'success',
+      //     //   duration: 3000,
+      //     //   position: 'top',
+      //     // });
+      //     localStorage.setItem('token', data.token);
+      //     navigate('/');
+      //   } catch (error) {
 
-          alert('server error');
-          // toast({
-          //   title: 'Server Error !',
-          //   status: 'error',
-          //   duration: 3000,
-          //   position: 'top',
-          // });
-        }
+      //     alert('server error');
+      //     // toast({
+      //     //   title: 'Server Error !',
+      //     //   status: 'error',
+      //     //   duration: 3000,
+      //     //   position: 'top',
+      //     // });
+      //   }
      
 
   return (
@@ -126,13 +126,7 @@ export default function ResetPasswordForm(): JSX.Element {
                 }}>
                 دخول
               </Button>
-                  {/* <Menu>
-                  <MenuButton>Open menu</MenuButton>
-                  <MenuList>
-                  <MenuItem as='a' href='#'>Link 1</MenuItem>
-                  <MenuItem as='a' href='#'>Link 2</MenuItem>
-                  </MenuList>
-                  </Menu> */}
+               
               
               <FormLabel fontSize={14} as='a' href='signup'>انشاء حساب جديد ؟</FormLabel>
             </Stack>
@@ -142,5 +136,4 @@ export default function ResetPasswordForm(): JSX.Element {
     </Box>
 
   );
-}
 }
