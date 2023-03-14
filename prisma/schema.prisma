@@ -32,18 +32,18 @@ model Auction {
   created_at        DateTime        @default(now())
   auctions_images   Auction_image[] 
   userAuctions      userAuction[]
-  User              User            @relation(fields: [userId], references: [id])
+  User              User?            @relation(fields: [userId], references: [id])
 
   @@index([userId])
 }
 
 model Categorie {
-  id   String @id
+  id   String @id @default(uuid())
   name String
 }
 
 model User {
-  id           String        @id
+  id           String        @id  @default(uuid())
   email        String        @unique
   password     String
   role         User_role     @default(User)
@@ -53,9 +53,9 @@ model User {
 }
 
 model userAuction {
-  id               String   @id
-  auctionId        String
-  userId           String
+  id               String   @id @default(uuid())
+  auctionId        String?
+  userId           String?
   auction_deposit  Int
   accepted_privacy Boolean
   auction_price    Int
@@ -68,7 +68,7 @@ model userAuction {
 }
 
 model Auction_image  {
-  id        String  @id
+  id        String  @id @default(uuid())
   name      String
   auctionId String
   auction   Auction? @relation(fields: [auctionId], references: [id])
