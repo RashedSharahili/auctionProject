@@ -9,19 +9,20 @@ datasource db {
 }
 
 model Profile {
-  id           String @id @default(uuid())
-  name         String
-  phone_numper String
-  userId       String @unique
-  user         User   @relation(fields: [userId], references: [id])
+  id           String          @id @default(uuid())
+  name         String?
+  phone_numper String?
+  userId       String          @unique
+  gender       Profile_gender?
+  user         User            @relation(fields: [userId], references: [id])
 }
 
 model Auction {
   id                String          @id @default(uuid())
-  auction_type      Int
+  auction_type      String
   title             String
-  started_date      DateTime
-  end_date          DateTime
+  started_date      String
+  end_date          String
   auction_status    Boolean
   is_accepted       Boolean
   userId            String
@@ -32,9 +33,10 @@ model Auction {
   created_at        DateTime        @default(now())
   auctions_images   Auction_image[]
   userAuctions      userAuction[]
-  User              User?            @relation(fields: [userId], references: [id])
+  User              User?           @relation(fields: [userId], references: [id])
 
   @@index([userId])
+  @@index([auction_type])
 }
 
 model Categorie {
@@ -43,7 +45,7 @@ model Categorie {
 }
 
 model User {
-  id           String        @id  @default(uuid())
+  id           String        @id @default(uuid())
   email        String        @unique
   password     String
   role         User_role     @default(User)
@@ -67,8 +69,8 @@ model userAuction {
   @@index([auctionId])
 }
 
-model Auction_image  {
-  id        String  @id @default(uuid())
+model Auction_image {
+  id        String   @id @default(uuid())
   name      String
   auctionId String
   auction   Auction? @relation(fields: [auctionId], references: [id])
@@ -79,4 +81,9 @@ model Auction_image  {
 enum User_role {
   User
   Admin
+}
+
+enum Profile_gender {
+  Male
+  Female
 }

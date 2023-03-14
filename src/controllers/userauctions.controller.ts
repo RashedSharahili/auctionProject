@@ -14,7 +14,7 @@ let Auctions=await prisma.userAuction.create({
     auction_deposit :req.body.auction_deposit, 
     accepted_privacy :req.body.accepted_privacy,
     auctionId:res.locals.id,
-  userId:res.locals.id
+    userId:res.locals.id
 
   }  
 

@@ -74,20 +74,20 @@ export const login = async (req:Request, res:Response) => {
 
 
 
-// export const UpdateProfile = async (req:Request, res:Response)=>{
-//     try{
-//         let users= await prisma.profile.update({
-//             where:{
-//                 userId: res.locals.user.id,
-//             },
-//             data:{
-//             name: req.body.name
-//             }
-//         }
-//         )
-//         }
-// catch(e){}
-// }
+export const UpdateProfile = async (req:Request, res:Response)=>{
+    try{
+        let users= await prisma.profile.update({
+            where:{
+                userId: res.locals.user.id,
+            },
+            data:{
+            name: req.body.name
+            }
+        }
+        )
+        }
+catch(e){}
+}
 
 
 
