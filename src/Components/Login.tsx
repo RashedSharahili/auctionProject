@@ -17,75 +17,50 @@ import {
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+export default function ResetPasswordForm() {
 
-
-
-export default function ResetPasswordForm(): JSX.Element {
-
-    // const [email, setEmail]= useState("")
-    // const [pass, setPass ] = useState<any>()
-    // const navigate = useNavigate()
-
-    // const getInfo = ()=>{
-    //   const emailValue = localStorage.getItem('email');
-    //   if(email === emailValue){   
-    //       navigate("/")
-    //   }else if(email.length <3 || pass.length <3){
-    //       alert("Please, enter the correct information.")
-
-    //   }
-    // }
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
+  // const navigate = useNavigate();
+  // const toast = useToast();
+  // const submitLogin = async () => {
+  //   try {
+  //     const request = await fetch('/api/v1/auth/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ username, password }),
+  //     });
+  //     const data = await request.json();
+  //     if (request.status !== 200) {
+  //       toast({
+  //         title: data.message,
+  //         status: 'error',
+  //         duration: 3000,
+  //         position: 'top',
+  //       });
+  //       return;
+  //     }
+  //     toast({
+  //       title: data.message,
+  //       status: 'success',
+  //       duration: 3000,
+  //       position: 'top',
+  //     });
+  //     localStorage.setItem('token', data.token);
+  //     navigate('/');
+  //   } catch (error) {
+  //     toast({
+  //       title: 'Server Error !',
+  //       status: 'error',
+  //       duration: 3000,
+  //       position: 'top',
+  //     });
+  //   }
 
 
   
-      // const [email, setEmail] = useState('');
-      // const [password, setPassword] = useState('');
-      // const navigate = useNavigate();
-      // const toast = useToast();
-      // const submitLogin = async () => {
-      //   try {
-      //     const request = await fetch('/api/v1/auth/login', {
-      //       method: 'POST',
-      //       headers: {
-      //         'Content-Type': 'application/json',
-      //       },
-      //       body: JSON.stringify({ email, password }),
-      //     });
-      //     const data = await request.json();
-      //     if (request.status !== 200) {
-
-
-      //       alert('error');
-
-      //       // toast({
-      //       //   title: data.message,
-      //       //   status: 'error',
-      //       //   duration: 3000, 
-      //       //   position: 'top',
-      //       // });
-      //       return;
-      //     }
-      //     alert('success');
-      //     // toast({
-      //     //   title: data.message,
-      //     //   status: 'success',
-      //     //   duration: 3000,
-      //     //   position: 'top',
-      //     // });
-      //     localStorage.setItem('token', data.token);
-      //     navigate('/');
-      //   } catch (error) {
-
-      //     alert('server error');
-      //     // toast({
-      //     //   title: 'Server Error !',
-      //     //   status: 'error',
-      //     //   duration: 3000,
-      //     //   position: 'top',
-      //     // });
-      //   }
-     
-
   return (
     <Box className="container">
       <Box>
