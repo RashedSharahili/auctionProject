@@ -71,6 +71,7 @@ function Nav() {
     const MobileNavContent = (
         <VStack
         pos="fixed"
+        zIndex={1}
         top={0}
         left={0}
         right={0}
@@ -125,7 +126,6 @@ function Nav() {
         w="full"
         pos={"relative"}
         overflowY="hidden"
-        color="gray.200"
         
         id="header"
         >
