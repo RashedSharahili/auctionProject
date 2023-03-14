@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import {prisma} from '../config/db';
 import * as argon2 from 'argon2';
 import * as jwt from 'jsonwebtoken';
-import { Users } from '@prisma/client';
+import {User} from '@prisma/client';
 
 
 ////////////////////////////////////////////////////////////////////
@@ -36,7 +36,7 @@ export const login = async (req:Request, res:Response) => {
 
     try {
 
-        let l_user = req.body as Users
+        let l_user = req.body as User
         
 
         let user = await prisma.users.findFirst({
