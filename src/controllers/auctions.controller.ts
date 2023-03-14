@@ -6,7 +6,10 @@ import {prisma} from '../config/db';
 
 export const addAuction=async (req:Request,res:Response)=>{
 
-let Auctions=await prisma.auctions.create({
+  console.log(res.locals.id);
+  
+
+let Auctions=await prisma.auction.create({
 
   data:{
     userId:res.locals.id,
@@ -19,7 +22,6 @@ let Auctions=await prisma.auctions.create({
     auction_min_price:req.body.auction_min_price,
     auction_max_price:req.body.auction_max_price,
     is_online:req.body.is_online,
-    created_at:req.body.created_at,
     auction_status:req.body.auction_status
 
   }  
@@ -33,7 +35,7 @@ res.status(200).json({
 
 export const GetallAuctions= async (req: Request, res: Response) => {
   try {
-    let Auctoins = await prisma.auctions.findMany();
+    let Auctoins = await prisma.auction.findMany();
 
     res.json({ "Auctoins": Auctoins });
   } catch (err) {
