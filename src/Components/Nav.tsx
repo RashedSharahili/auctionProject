@@ -19,7 +19,12 @@ import {
     useColorModeValue,
     useDisclosure,
     Image,
-    Avatar
+    Avatar,
+    Menu,
+    MenuButton,
+    MenuDivider,
+    MenuItem,
+    MenuList
 } from "@chakra-ui/react";
 import { useScroll } from "framer-motion";
 
@@ -40,11 +45,11 @@ function Nav() {
 
     const navigate = useNavigate();
 
-    const user=localStorage.getItem("userName")
+    const userToken=localStorage.getItem("token")
 
     const removeUser =()=>{
 
-        localStorage.removeItem("userName")
+        localStorage.removeItem("token")
         navigate('/login')
 
     }
@@ -124,7 +129,6 @@ function Nav() {
         transition="box-shadow 0.2s"
         bg={"#769589"}
         w="full"
-        pos={"relative"}
         overflowY="hidden"
         
         id="header"
@@ -199,14 +203,37 @@ function Nav() {
             </Flex>
             <Flex justify="flex-end" align="center" color="gray.400" gap={2}>
 
-            {user === null?
+            {
+            userToken === null?
                 <RouteLink to={"/login"}> 
-                <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={"white"} color={"#769589"} _hover={{bg: 'white'}}>
-                تسجيل دخول
-                </Button></RouteLink>  
-                :    <Button onClick={()=>removeUser()} mr={"2"} bg={"white"} color={"#769589"} _hover={{bg: 'white'}}>
-                تسجيل خروج
-            </Button>}
+                    <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={"white"} color={"#769589"} _hover={{bg: 'white'}}>
+                    تسجيل دخول
+                    </Button>
+                </RouteLink>  
+                :    
+                <Menu>
+                    <MenuButton
+                        as={Button}
+                        rounded={'full'}
+                        variant={'link'}
+                        cursor={'pointer'}
+                        border={"1px"}
+                        borderColor={"whiteAlpha.600"}
+                        minW={0}>
+                        <Avatar
+                        size={'sm'}
+                        src={
+                            '../assets/user.png'
+                        }
+                        />
+                    </MenuButton>
+                    <MenuList color={"black"}>
+                        <MenuItem>الملف الشخصي</MenuItem>
+                        <MenuDivider />
+                        <MenuItem>تسجيل خروج</MenuItem>
+                    </MenuList>
+                </Menu>
+            }
                 <IconButton
                 display={{ base: "flex", md: "none" }}
                 aria-label="Open menu"
