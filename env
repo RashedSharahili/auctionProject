@@ -1,0 +1,4 @@
+DATABASE_URL="mysql://root@localhost:3306/project full"
+PORT = 3000
+
+API_SECRET = "MY_SECRET"

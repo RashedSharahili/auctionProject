@@ -113,13 +113,7 @@ export default function ResetPasswordForm() {
                 >
                 دخول
               </Button>
-                  {/* <Menu>
-                  <MenuButton>Open menu</MenuButton>
-                  <MenuList>
-                  <MenuItem as='a' href='#'>Link 1</MenuItem>
-                  <MenuItem as='a' href='#'>Link 2</MenuItem>
-                  </MenuList>
-                  </Menu> */}
+               
               
               <FormLabel fontSize={14} as='a' href='signup'>انشاء حساب جديد ؟</FormLabel>
             </Stack>
@@ -128,10 +122,5 @@ export default function ResetPasswordForm() {
       </Box>
     </Box>
 
-// const getInfo = ()=>{
-//   const nameValue = localStorage.getItem('name');
-//   if(name === nameValue){   
-//       navigate("/")
-//   }
   );
 }
