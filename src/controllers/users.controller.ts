@@ -8,6 +8,8 @@ export const getAllUsers = async(req:Request, res:Response) => {
     
     let users = await prisma.user.findMany({
         include: {
+
+            
             profile: true
         }
     })
