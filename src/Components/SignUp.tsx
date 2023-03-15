@@ -12,7 +12,11 @@ import {
     MenuList,
     Stack,
     useColorModeValue,
+    useToast,
   } from '@chakra-ui/react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
   
   export default function ResetPasswordForm() {
     return (
@@ -106,32 +110,5 @@ import {
     );
   }
 
-
+// }
  
-const dateOfBirth = new Date(1998, 12, 5);
-console.log(`${dateOfBirth}`);
-
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const monthOfBirth = months[dateOfBirth.getMonth()];
-console.log(`${monthOfBirth}`);
-
-
-const dayOfBirth = dateOfBirth.getDate();
-console.log(`${dayOfBirth}`);
-
-const currentDate = new Date();
-console.log(`${currentDate}`);
-
-const currentMonth = months[currentDate.getMonth()];
-console.log(` ${currentMonth}`);
-
-const currentDay = currentDate.getDate();
-console.log(` ${currentDay}`);
-
-if(dayOfBirth == currentDay && monthOfBirth == currentMonth) {
-  console.log('yes');
-  
-}
-else{
-  'يجب ان يكون عمرك اكبر من 18 سنه'
-}

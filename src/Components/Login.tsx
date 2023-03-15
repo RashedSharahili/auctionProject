@@ -19,37 +19,44 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ResetPasswordForm() {
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const toast = useToast();
+
+  const loginUrl = "https://acution.onrender.com/users/login";
+
   const submitLogin = async () => {
     try {
-      const request = await fetch('/api/v1/auth/login', {
+      const request = await fetch(loginUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
       const data = await request.json();
       if (request.status !== 200) {
-        toast({
+
+        return toast({
           title: data.message,
           status: 'error',
           duration: 3000,
           position: 'top',
         });
-        return;
+        
+      } else {
+
+        toast({
+          title: data.message,
+          status: 'success',
+          duration: 3000,
+          position: 'top',
+        });
+        localStorage.setItem('token', data.token);
+        navigate('/');
       }
-      toast({
-        title: data.message,
-        status: 'success',
-        duration: 3000,
-        position: 'top',
-      });
-      localStorage.setItem('token', data.token);
-      navigate('/');
+
     } catch (error) {
       toast({
         title: 'Server Error !',
@@ -58,6 +65,7 @@ export default function ResetPasswordForm() {
         position: 'top',
       });
     }
+  }
 
 
   
@@ -83,6 +91,7 @@ export default function ResetPasswordForm() {
             <FormControl id="email" isRequired>
               <FormLabel>البريد الالكتروني</FormLabel>
               <Input
+              onChange={(e) => setEmail(e.target.value)}
                 placeholder="your-email@example.com"
                 _placeholder={{ color: 'gray.500' }}
                 type="email"
@@ -90,24 +99,21 @@ export default function ResetPasswordForm() {
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>كلمة المرور</FormLabel>
-              <Input type="password" />
+              <Input type="password" onChange={ (e) => setPassword(e.target.value) } />
             </FormControl>
             <Stack spacing={6}>
               <Button
+              type='submit'
                 bg={'#AFCBAE'}
                 color={'white'}
                 _hover={{
                   bg: '#728d71',
-                }}>
+                }}
+                onClick={ submitLogin }
+                >
                 دخول
               </Button>
-                  {/* <Menu>
-                  <MenuButton>Open menu</MenuButton>
-                  <MenuList>
-                  <MenuItem as='a' href='#'>Link 1</MenuItem>
-                  <MenuItem as='a' href='#'>Link 2</MenuItem>
-                  </MenuList>
-                  </Menu> */}
+               
               
               <FormLabel fontSize={14} as='a' href='signup'>انشاء حساب جديد ؟</FormLabel>
             </Stack>
@@ -116,10 +122,5 @@ export default function ResetPasswordForm() {
       </Box>
     </Box>
 
-// const getInfo = ()=>{
-//   const nameValue = localStorage.getItem('name');
-//   if(name === nameValue){   
-//       navigate("/")
-//   }
   );
-}}
+}
