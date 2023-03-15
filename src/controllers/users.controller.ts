@@ -8,6 +8,8 @@ export const getAllUsers = async(req:Request, res:Response) => {
     
     let users = await prisma.user.findMany({
         include: {
+
+            
             profile: true
         }
     })
@@ -23,6 +25,7 @@ export const NewRegistration = async (req:Request, res:Response) =>{
     try{
         const user = await prisma.user.create({
             data:{
+                id:res.locals.id,
                 email: req.body.email,
                 password: hash
             }
@@ -31,7 +34,7 @@ export const NewRegistration = async (req:Request, res:Response) =>{
 
             const profile = await prisma.profile.create({
                 data: {
-                    userId: user.id
+                    userId:user.id
                 }
             })
 
@@ -55,9 +58,7 @@ export const NewRegistration = async (req:Request, res:Response) =>{
 
 
 export const login = async (req:Request, res:Response) => {
-
     try {
-
         let l_user = req.body as User
         
 
@@ -70,7 +71,6 @@ export const login = async (req:Request, res:Response) => {
         
 
         if(user) {
-
             if (await argon2.verify(user.password, l_user.password)) {
 
                 console.log(user);
@@ -104,16 +104,8 @@ export const login = async (req:Request, res:Response) => {
 
 
 // export const LogOut = async (req:Request, res:Response)=>{
-
 //     try{
-
 //         let users= await prisma.user.delete(res.)
-
-
-
 //     }
-
 //     catch(e){}
-
-
 // }
