@@ -40,7 +40,7 @@ export const NewRegistration = async (req:Request, res:Response) =>{
 
             if(profile) {
 
-                res.status(200).json({msg:"user created successfully!"})
+                res.status(200).json({msg:"تم أضافة مستخدم"})
             }
 
         }
@@ -83,16 +83,16 @@ export const login = async (req:Request, res:Response) => {
 
             } else {
 
-                return res.status(200).json({ message: "Invalid username or password" })
+                return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
             }
     
         } else {
 
-            return res.status(200).json({ message: "Invalid username or password" })
+            return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
         }
         
 
-        throw("there was an error, try again!");
+        throw("هناك خطأ ما ، حاول مرة أخرى!");
 
     } catch(err) {
 
