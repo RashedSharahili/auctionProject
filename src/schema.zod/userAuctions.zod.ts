@@ -4,8 +4,8 @@ export const createUserAuctionSchema = z.object({
 
     body: z.object({
         auction_price: z.number({
-            required_error: "auction_price is required!",
-            invalid_type_error: "auction_price must be number"
+            required_error: "سعر المزاد مطلوب",
+            invalid_type_error: "سعر المزاد يجب ان يكون رقم"
         }),
         accepted_privacy: z.boolean()
     })

@@ -26,7 +26,7 @@ export const addAuction=async (req:Request,res:Response)=>{
 
     if(auctions) {
 
-      res.status(200).json({ message: "userAuctions created successfully!", status: res.statusCode })
+      res.status(200).json({ message: "!تمت المزايده بنجاح ", status: res.statusCode })
     }
   } catch(err) {
 

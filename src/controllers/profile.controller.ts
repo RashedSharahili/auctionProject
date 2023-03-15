@@ -26,14 +26,14 @@ export const updateProfile = async(req:Request, res:Response) => {
 
     if(profile.count == 0) {
 
-        res.status(200).json({ message: "No profile updated" });
+        res.status(404).json({ message: "لم يتم تحديث الملف الشخصي " });
 
     } else {
 
-        return res.status(200).json({ message: "profile updated successfully!" });
+        return res.status(200).json({ message: "تم تحديث الملف الشخصي بنجاح" });
     }
 
-    throw("there was an error, try again!");
+    throw("يوجد خطأ , حاول مره اخرى ");
     
     } catch(err) {
 
