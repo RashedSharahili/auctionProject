@@ -15,7 +15,7 @@ export const getAllCategories = async(req:Request, res:Response) => {
             return res.status(200).json(categories);
         }
     
-        throw("there was an error, try again!");
+        throw("يوجد خطأ ما ، حاول مرة أخرى!");
 
     } catch(err) {
 
@@ -38,10 +38,10 @@ export const createCategory = async(req:Request, res:Response) => {
 
         if(category) {
 
-            return res.status(200).json({ message: "category created successfully!" });
+            return res.status(200).json({ message: "تم أضافة التصنيف" });
         }
     
-        throw("there was an error, try again!");
+        throw("يوجد خطأ ما ، حاول مرة أخرى!");
 
     } catch(err) {
 
@@ -70,10 +70,10 @@ export const updateCategory = async(req:Request, res:Response) => {
 
         if(category) {
 
-            return res.status(200).json({ message: "category created successfully!" });
+            return res.status(200).json({ message: "تم تعديل التصنيف" });
         }
 
-        throw("there was an error, try again!");
+        throw("يوجد خطأ ما ، حاول مرة أخرى!");
         
     } catch(err) {
 
