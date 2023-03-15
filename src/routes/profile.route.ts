@@ -11,7 +11,7 @@ let router = express.Router();
 
 
 // update
-router.put('/:name',validate(updateProfileSchema),updateProfile)
+router.put('/:id', auth, validate(updateProfileSchema),updateProfile)
 
 
 

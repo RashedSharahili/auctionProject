@@ -1,40 +1,14 @@
 import {Request, Response} from 'express';
 import {prisma} from '../config/db';
-import { Profile } from '@prisma/client';
-
-
-//post profile
-
-
-// export const createProfile = async (req:Request, res:Response) => {
-
-//     try {
-
-//         const profile = req.body 
-
-//         await prisma.profile.create({
-//             data:profile,
-             
-            
-
-    
-//         });
-        
-
-//         res.json({ message: "profile successfully" });
-
-//     } catch(err) {
-
-//         res.json(err);
-//     }
-
-// }
+import { Gender, Profile } from '@prisma/client';
 
 
 
 export const updateProfile = async(req:Request, res:Response) => {
-    
-    let u_profile = req.body as Profile
+
+    try {
+
+        let u_profile = req.body as Profile
 
     let { id } = req.params
 
@@ -43,7 +17,11 @@ export const updateProfile = async(req:Request, res:Response) => {
             id: id,
             userId: res.locals.user.id
         },
-        data:u_profile
+        data: {
+            name: u_profile.name,
+            phone_number: u_profile.phone_number,
+            gender: u_profile.gender as Gender
+        }
     })
 
     if(profile.count == 0) {
@@ -56,6 +34,12 @@ export const updateProfile = async(req:Request, res:Response) => {
     }
 
     throw("there was an error, try again!");
+    
+    } catch(err) {
+
+        res.status(500).json(err)
+    }
+
 }
 
 

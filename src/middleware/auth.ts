@@ -13,7 +13,7 @@ const auth = (req:Request, res:Response, next:NextFunction)=>{
             return res.status(403).json({message: "You are not authorized, please provide a valid token."});
         }
         
-        console.log(token)
+        // console.log(token)
         const user = jwt.verify(token,process.env.API_SECRET as string) as User;
         res.locals.user = user;
         // console.log(user) 

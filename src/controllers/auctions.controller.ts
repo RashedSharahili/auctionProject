@@ -30,13 +30,13 @@ export const addAuction = async (req: Request, res: Response) => {
     if(auction) {
 
       return res.status(200).json({
-        message: "auction created successfully!",
+        message: "تم اضافه مزاد بنجاح",
         status: res.statusCode,
       });
 
     }
 
-    throw("there was an error, try again!");
+    throw("هناك مشكله حاول مره اخرى");
 
 
   } catch(err) {
@@ -55,11 +55,25 @@ export const addAuction = async (req: Request, res: Response) => {
 
 export const GetallAuctions = async (req: Request, res: Response) => {
   try {
-    let Auctoins = await prisma.auction.findMany();
+    let Auctoins = await prisma.auction.findMany({
+      include: {
+        userAuctions: true
+      }
+    });
 
-    res.json({ "Auctoins": Auctoins });
+    res.json({ "المزادادت": Auctoins });
   } catch (err) {
     console.log(err);
     res.status(500).json(err)
   }
 };
+
+export const deleteAuctions = async(req:Request, res:Response) => {
+
+  let auctions = await prisma.auction.deleteMany()
+
+  if(auctions) {
+
+    res.status(200).json({ message: "تم حذف المزاد بنجاح" })
+  }
+}

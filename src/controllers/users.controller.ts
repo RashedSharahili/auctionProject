@@ -4,6 +4,19 @@ import * as argon2 from 'argon2';
 import * as jwt from 'jsonwebtoken';
 import {User} from '@prisma/client';
 
+export const getAllUsers = async(req:Request, res:Response) => {
+    
+    let users = await prisma.user.findMany({
+        include: {
+
+            
+            profile: true
+        }
+    })
+
+    res.status(200).json({ users, status: res.statusCode })
+}
+
 
 ////////////////////////////////////////////////////////////////////
 
@@ -12,6 +25,7 @@ export const NewRegistration = async (req:Request, res:Response) =>{
     try{
         const user = await prisma.user.create({
             data:{
+                id:res.locals.id,
                 email: req.body.email,
                 password: hash
             }
@@ -19,9 +33,9 @@ export const NewRegistration = async (req:Request, res:Response) =>{
         if(user){
 
             const profile = await prisma.profile.create({
-         data:{
-            userId:user.id
-         }
+                data: {
+                    userId:user.id
+                }
             })
 
             if(profile) {
@@ -44,9 +58,7 @@ export const NewRegistration = async (req:Request, res:Response) =>{
 
 
 export const login = async (req:Request, res:Response) => {
-
     try {
-
         let l_user = req.body as User
         
 
@@ -59,7 +71,6 @@ export const login = async (req:Request, res:Response) => {
         
 
         if(user) {
-
             if (await argon2.verify(user.password, l_user.password)) {
 
                 console.log(user);
@@ -72,12 +83,12 @@ export const login = async (req:Request, res:Response) => {
 
             } else {
 
-                return res.status(200).json({ message: "Invalid username or password" })
+                return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
             }
     
         } else {
 
-            return res.status(200).json({ message: "Invalid username or password" })
+            return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
         }
         
 
@@ -92,43 +103,9 @@ export const login = async (req:Request, res:Response) => {
 
 
 
-
-// export const UpdateProfile = async (req:Request, res:Response)=>{
-
-//     try{
-
-//         let users= await prisma.profile.update({
-//             where:{
-//                 userId: res.locals.user.id,
-            
-//             },
-//             data:{
-//             name: req.body.name
-//             }
-
-//         }
-
-//         )
-
-//     }
-
-// catch(e){}
-
-// }
-
-
-
 // export const LogOut = async (req:Request, res:Response)=>{
-
 //     try{
-
 //         let users= await prisma.user.delete(res.)
-
-
-
 //     }
-
 //     catch(e){}
-
-
 // }
