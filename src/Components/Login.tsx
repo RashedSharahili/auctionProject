@@ -22,7 +22,7 @@ export default function ResetPasswordForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  // const toast = useToast();
+  const toast = useToast();
 
   const loginUrl = "https://acution.onrender.com/users/login";
 
@@ -37,29 +37,33 @@ export default function ResetPasswordForm() {
       });
       const data = await request.json();
       if (request.status !== 200) {
-        // toast({
-        //   title: data.message,
-        //   status: 'error',
-        //   duration: 3000,
-        //   position: 'top',
-        // });
-        return;
+
+        return toast({
+          title: data.message,
+          status: 'error',
+          duration: 3000,
+          position: 'top',
+        });
+        
+      } else {
+
+        toast({
+          title: data.message,
+          status: 'success',
+          duration: 3000,
+          position: 'top',
+        });
+        localStorage.setItem('token', data.token);
+        navigate('/');
       }
-      // toast({
-      //   title: data.message,
-      //   status: 'success',
-      //   duration: 3000,
-      //   position: 'top',
-      // });
-      localStorage.setItem('token', data.token);
-      navigate('/');
+
     } catch (error) {
-      // toast({
-      //   title: 'Server Error !',
-      //   status: 'error',
-      //   duration: 3000,
-      //   position: 'top',
-      // });
+      toast({
+        title: 'Server Error !',
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+      });
     }
   }
 
@@ -99,11 +103,14 @@ export default function ResetPasswordForm() {
             </FormControl>
             <Stack spacing={6}>
               <Button
+              type='submit'
                 bg={'#AFCBAE'}
                 color={'white'}
                 _hover={{
                   bg: '#728d71',
-                }}>
+                }}
+                onClick={ submitLogin }
+                >
                 دخول
               </Button>
                   {/* <Menu>
