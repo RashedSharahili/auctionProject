@@ -27,7 +27,7 @@ import { useNavigate } from 'react-router-dom';
   const [date, setDate] = useState('');
   const navigate = useNavigate();
   const toast = useToast();
-  const submitLogin = async () => {
+  const submitSignUp= async () => {
     try {
       const request = await fetch('/api/v1/auth/login', {
         method: 'POST',
@@ -85,6 +85,8 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="name" isRequired >
                 <FormLabel> الاسم</FormLabel>
                 <Input
+
+        onChange={(e) => setName(e.target.value)}   
                   placeholder="your name"
                   _placeholder={{ color: 'gray.500' }}
                   type="text"
@@ -94,6 +96,7 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="email" isRequired>
                 <FormLabel>البريد الالكتروني</FormLabel>
                 <Input
+                 onChange={(e) => setEmail(e.target.value)}
                   placeholder="your-email@example.com"
                   _placeholder={{ color: 'gray.500' }}
                   type="email"
@@ -103,6 +106,7 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="phone" isRequired >
                 <FormLabel>رقم الجوال </FormLabel>
                 <Input
+                 onChange={(e) => setPhone(e.target.value)}
                   placeholder="your phone number"
                   _placeholder={{ color: 'gray.500' }}
                   type="text"
@@ -112,6 +116,7 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="date" isRequired>
                 <FormLabel>تاريخ الميلاد</FormLabel>
                 <Input
+                 onChange={(e) => setDate(e.target.value)}
                   placeholder="your date"
                   _placeholder={{ color: 'gray.500' }}
                   type="text"
@@ -120,7 +125,10 @@ import { useNavigate } from 'react-router-dom';
       
               <FormControl id="password" isRequired>
                 <FormLabel>كلمة المرور</FormLabel>
-                <Input type="password" />
+                <Input 
+                onChange={(e)=>setPassword(e.target.value)}
+                
+                type="password" />
               </FormControl>
               <Stack spacing={6}>
                 <Button
@@ -128,7 +136,9 @@ import { useNavigate } from 'react-router-dom';
                   color={'white'}
                   _hover={{
                     bg: '#728d71',
-                  }}>
+                  }}
+                  onClick={ submitSignUp }
+                  >
                   تسجيل
                 </Button>
                 
