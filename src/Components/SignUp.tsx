@@ -65,16 +65,6 @@ import { useNavigate } from 'react-router-dom';
                 />
                 
               </FormControl>
-      
-              <FormControl id="ID" isRequired>
-                <FormLabel>رقم الهويه</FormLabel>
-                <Input
-                  placeholder="your ID number"
-                  _placeholder={{ color: 'gray.500' }}
-                  type="text"
-                />
-              </FormControl>
-      
               <FormControl id="date" isRequired>
                 <FormLabel>تاريخ الميلاد</FormLabel>
                 <Input
