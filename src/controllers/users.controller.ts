@@ -83,12 +83,12 @@ export const login = async (req:Request, res:Response) => {
 
             } else {
 
-                return res.status(200).json({ message: "Invalid username or password" })
+                return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
             }
     
         } else {
 
-            return res.status(200).json({ message: "Invalid username or password" })
+            return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
         }
         
 
