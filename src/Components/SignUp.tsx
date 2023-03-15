@@ -19,6 +19,50 @@ import { useNavigate } from 'react-router-dom';
 
   
   export default function ResetPasswordForm() {
+
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [date, setDate] = useState('');
+  const navigate = useNavigate();
+  const toast = useToast();
+  const submitLogin = async () => {
+    try {
+      const request = await fetch('/api/v1/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, password ,email,phone,date}),
+      });
+      const data = await request.json();
+      if (request.status !== 200) {
+        toast({
+          title: data.message,
+          status: 'error',
+          duration: 3000,
+          position: 'top',
+        });
+        return;
+      }
+      toast({
+        title: data.message,
+        status: 'success',
+        duration: 3000,
+        position: 'top',
+      });
+      localStorage.setItem('token', data.token);
+      navigate('/');
+    } catch (error) {
+      toast({
+        title: 'Server Error !',
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+      });
+    }}
+
     return (
       <Box className="container">
         <Box>
@@ -100,5 +144,5 @@ import { useNavigate } from 'react-router-dom';
     );
   }
 
-// }
+
  
