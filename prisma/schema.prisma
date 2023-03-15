@@ -11,10 +11,10 @@ datasource db {
 model Profile {
   id           String  @id @default(uuid())
   name         String?
-  userId       String  @unique
-  gender       Gender?
   phone_number String?
-  user         User    @relation(fields: [userId], references: [id])
+  gender Gender?
+  userId       String @unique
+  user         User   @relation(fields: [userId], references: [id])
 }
 
 model Auction {
@@ -24,7 +24,7 @@ model Auction {
   started_date      String
   end_date          String
   auction_status    Boolean
-  is_accepted       Boolean         @default(false)
+  is_accepted       Boolean @default(false)
   userId            String
   auction_price     Int
   auction_min_price Int

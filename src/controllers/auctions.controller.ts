@@ -55,7 +55,11 @@ export const addAuction = async (req: Request, res: Response) => {
 
 export const GetallAuctions = async (req: Request, res: Response) => {
   try {
-    let Auctoins = await prisma.auction.findMany();
+    let Auctoins = await prisma.auction.findMany({
+      include: {
+        userAuctions: true
+      }
+    });
 
     res.json({ "Auctoins": Auctoins });
   } catch (err) {
@@ -63,3 +67,13 @@ export const GetallAuctions = async (req: Request, res: Response) => {
     res.status(500).json(err)
   }
 };
+
+export const deleteAuctions = async(req:Request, res:Response) => {
+
+  let auctions = await prisma.auction.deleteMany()
+
+  if(auctions) {
+
+    res.status(200).json({ message: "auctions deleted successfully!" })
+  }
+}

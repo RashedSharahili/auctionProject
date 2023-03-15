@@ -27,10 +27,6 @@ export const createAuctionSchema = z.object({
             invalid_type_error: "auction_status must be boolean"
         }),
 
-        is_accepted: z.boolean({
-            invalid_type_error: "is_accepted must be boolean"
-        }),
-
         auction_price: z.number({
             required_error: "auction_price is requird!",
             invalid_type_error: "auction_price must be int"

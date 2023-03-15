@@ -1,5 +1,5 @@
 import  express  from "express";
-import { addAuction, GetallAuctions } from '../controllers/auctions.controller'
+import { addAuction, GetallAuctions, deleteAuctions } from '../controllers/auctions.controller'
 import auth from "../middleware/auth";
 import validate from "../middleware/validate";
 import { createAuctionSchema } from "../schema.zod/aucations.zod";
@@ -11,6 +11,9 @@ router.get('/' ,auth,GetallAuctions);
 
 // create 
 router.post('/', auth, validate(createAuctionSchema), addAuction)
+
+// delete Many 
+router.delete('/delete', deleteAuctions)
 
 // read byid
 // router.get('/:id',auth, GetAuctionByid);
