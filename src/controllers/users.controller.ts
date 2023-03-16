@@ -38,7 +38,7 @@ export const NewRegistration = async (req:Request, res:Response) =>{
                     name: req.body.name,
                     phone_number: req.body.phone_number,
                     gender:req.body.gender,
-                    birthDate:req.body.birthDate
+                    birthDate:req.body.birthDate 
                 }
             })
 
