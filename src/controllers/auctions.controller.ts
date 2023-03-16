@@ -61,7 +61,7 @@ export const GetallAuctions = async (req: Request, res: Response) => {
       }
     });
 
-    res.json({ "المزادادت": Auctoins });
+    res.json(Auctoins);
   } catch (err) {
     console.log(err);
     res.status(500).json(err)
@@ -73,15 +73,14 @@ export const GetallAuctions = async (req: Request, res: Response) => {
 export const GetNewAuctions = async (req: Request, res: Response) => {
   try {
     let Auctoins = await prisma.auction.findMany({
+      take: 3,
     orderBy:{
-
       created_at : 'desc'
     },
-    take:3,
       
     });
 
-    res.json({ "المزادادت": Auctoins });
+    res.json(Auctoins);
   } catch (err) {
     console.log(err);
     res.status(500).json(err)
