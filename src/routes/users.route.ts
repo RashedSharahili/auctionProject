@@ -11,7 +11,7 @@ router.get('/', getAllUsers);
 
 
 // create 
-router.post('/', validate(createUserSchema), NewRegistration)
+router.post('/signup', validate(createUserSchema), NewRegistration)
 
 
 //log in
