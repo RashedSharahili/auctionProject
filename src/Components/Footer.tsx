@@ -41,7 +41,7 @@ export default function Footer(){
             color: "gray.700",
           }}
         >
-          Brand
+       مزادك
         </chakra.a>
 
         <chakra.p
