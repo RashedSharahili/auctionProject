@@ -12,6 +12,6 @@ let router = express.Router();
 // update
 router.put("/:id", auth, validate(updateProfileSchema), updateProfile);
 
-router.get("/:id", auth, getProfile);
+router.get("/", auth, getProfile);
 
 export default router;
