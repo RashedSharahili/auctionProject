@@ -9,7 +9,7 @@ router.get('/', getAllUsers);
 
 
 // create 
-router.post('/', NewRegistration)
+router.post('/signup', NewRegistration)
 
 
 //log in
