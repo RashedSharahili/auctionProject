@@ -26,7 +26,7 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  const cardsinHome = "https://acution.onrender.com";
+  const cardsinHome = "https://acution.onrender.com/auctions";
   function getAllcards() {
     fetch(cardsinHome, {
       headers: {
