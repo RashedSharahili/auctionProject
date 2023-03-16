@@ -48,3 +48,34 @@ export const updateProfile = async(req:Request, res:Response) => {
 
 
 
+export const getProfile = async(req:Request, res:Response) => {
+    try {
+
+        let getprofile = req.body as Profile
+
+
+    let profile = await prisma.profile.findFirst({
+        where: {
+            
+            userId: res.locals.user.id
+        },
+
+        include:{
+            user:true
+        }
+    
+    })
+if(profile){
+
+    res.status(200).json(profile)
+}
+
+}
+
+catch(err) {
+
+    res.status(500).json(err)
+}
+
+
+}

@@ -1,22 +1,17 @@
-import  express  from "express";
+import express from "express";
 import auth from "../middleware/auth";
 import validate from "../middleware/validate";
-import { updateProfile } from "../controllers/profile.controller";
+import { getProfile, updateProfile } from "../controllers/profile.controller";
 import { updateProfileSchema } from "../schema.zod/profile.zod";
 
 let router = express.Router();
 
-// create 
+// create
 // router.post('/',validate(updateProfileSchema),auth,createProfile);
 
-
 // update
-router.put('/:id', auth, validate(updateProfileSchema),updateProfile)
+router.put("/:id", auth, validate(updateProfileSchema), updateProfile);
 
-
-
-
-
-
+router.get("/:id", auth, getProfile);
 
 export default router;
