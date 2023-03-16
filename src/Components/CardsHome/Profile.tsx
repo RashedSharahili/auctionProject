@@ -10,8 +10,48 @@ import {
     Button,
     useColorModeValue,
   } from "@chakra-ui/react";
+import React from "react";
   
   export default function profile() {
+
+    const [data, setData] = React.useState<any[]>([]);
+
+    function parseJwt(token: any) {
+      if (!token) { return; }
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace('-', '+').replace('_', '/');
+      return JSON.parse(window.atob(base64));
+  }
+
+  const userInfo = parseJwt(localStorage.getItem("token"))
+
+    const userProfile = "https://acution.onrender.com/profile";
+
+    function getAllcards() {
+      fetch(userProfile, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((Data) => {
+          // if() {
+  
+          //     navigate("/login");
+  
+          // } else {
+  
+          //     setData(Data)
+          // }
+          setData(Data);
+          console.log(Data);
+        });
+    }
+
+    React.useEffect(() => {
+      // console.log(parseJwt(localStorage.getItem("token")));
+    }, []);
+    
     return (
       <Box className="container">
         <Box>

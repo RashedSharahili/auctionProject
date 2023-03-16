@@ -204,7 +204,7 @@ function Nav() {
             <Flex justify="flex-end" align="center" color="gray.400" gap={2}>
 
             {
-            userToken === null?
+            userToken === null || undefined?
                 <RouteLink to={"/login"}> 
                     <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={"white"} color={"#769589"} _hover={{bg: 'white'}}>
                     تسجيل دخول
@@ -228,7 +228,11 @@ function Nav() {
                         />
                     </MenuButton>
                     <MenuList color={"black"}>
-                        <MenuItem>الملف الشخصي</MenuItem>
+                        <MenuItem>
+                        <RouteLink to={"/profile"}>
+                        الملف الشخصي
+                        </RouteLink>
+                        </MenuItem>
                         <MenuDivider />
                         <MenuItem>تسجيل خروج</MenuItem>
                     </MenuList>

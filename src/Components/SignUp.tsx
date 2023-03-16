@@ -54,7 +54,6 @@ import { useNavigate } from 'react-router-dom';
         duration: 3000,
         position: 'top',
       });
-      localStorage.setItem('token', data.token);
       navigate('/');
     } catch (error) {
       toast({
