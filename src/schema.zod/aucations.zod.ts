@@ -27,7 +27,7 @@ export const createAuctionSchema = z.object({
             invalid_type_error: "اختر الحاله!"
         }),
 
-        auction_price: z.number({
+        auction_price: z.string({
             required_error: "اختر سعر المزاد!",
             invalid_type_error: "يجب ان يكون ارقام"
         }),
