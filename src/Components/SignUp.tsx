@@ -13,6 +13,8 @@ import {
     Stack,
     useColorModeValue,
     useToast,
+    RadioGroup,
+    Radio
   } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -63,7 +65,7 @@ import { useNavigate } from 'react-router-dom';
       });
     }}
 
-    // const myYear = new Date("1998-12-20");
+    // const myYear = new Date("");
     // const myMonth =myYear.getMonth() 
     // const myDay =myYear.getDate();
     // console.log(my brithday ${myYear}-${myMonth}-${myDay});
@@ -148,6 +150,19 @@ import { useNavigate } from 'react-router-dom';
                 
                 type="password" />
               </FormControl>
+
+             
+              <RadioGroup defaultValue='2'>
+                  <Stack spacing={5} direction='row'>
+                    <Radio colorScheme='gray' value='Female'>
+                      انثى
+                    </Radio>
+                    <Radio colorScheme='gray' value='Male'>
+                      ذكر
+                    </Radio>
+                  </Stack>
+                </RadioGroup>
+
               <Stack spacing={6}>
                 <Button
                   bg={'#AFCBAE'}
