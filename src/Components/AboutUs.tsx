@@ -6,15 +6,13 @@ import {
   VStack,
   useBreakpointValue,
 } from '@chakra-ui/react';
-
+import About from "../assets/Styles/AboutImage.png"
 export default function WithBackgroundImage() {
   return (
     <Flex
       w={'full'}
       h={'100vh'}
-      backgroundImage={
-        'url(https://m.economictimes.com/thumb/msid-75043034,width-1200,height-900,resizemode-4,imgsize-439255/online-auction-sales_istock.jpg)'
-      }
+      backgroundImage={About}
       backgroundSize={'cover'}
       backgroundPosition={'center center'}>
       <VStack

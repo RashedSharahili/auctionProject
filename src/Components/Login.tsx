@@ -104,10 +104,10 @@ export default function ResetPasswordForm() {
             <Stack spacing={6}>
               <Button
               type='submit'
-                bg={'#AFCBAE'}
-                color={'white'}
+                bg={'#5E8978'}
+                color={'#FBFAEF'}
                 _hover={{
-                  bg: '#728d71',
+                  bg: '#63907D',
                 }}
                 onClick={ submitLogin }
                 >

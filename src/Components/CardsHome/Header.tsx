@@ -10,6 +10,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
+import header from "../../assets/imageHeader.png"
 
 export default function App(){
   const bg = useColorModeValue("white", "gray.800");
@@ -44,11 +45,17 @@ export default function App(){
       <Box
         w={{base:"none",lg:"full"}}
         h={{base:"50vh",lg:"80vh"}}
-        backgroundImage="url(https://www.econlib.org/wp-content/uploads/2018/02/auction.jpg)"
+
+    //     <HStack>
+    //     {/* <Logo /> */}
+    //     <Avatar src={Logo} w= {{ base: '27vw', md: '15vw',lg:  "11vw" }}></Avatar>
+    // </HStack>
+
+        backgroundImage={header}
         bgPos="center"
         bgSize="cover"
       >
-        <Flex
+        {/* <Flex
           align="center"
           pos="relative"
           justify="center"
@@ -70,11 +77,12 @@ export default function App(){
               textTransform="uppercase"
               w="fit-content"
               bg={"#5E8978"}
-              color={"#D4CCA7"} _hover={{bg: '#4B7967'}}
+              color={"#E3E2D1"} _hover={{bg: '#63907D '}}
             >
-ابدا مزادك الان            </Button>
+                  ابدا مزادك الان      
+                        </Button>
           </Stack>
-        </Flex>
+        </Flex> */}
       </Box>
     </chakra.header>
   );

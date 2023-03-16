@@ -24,15 +24,16 @@ import {
   MdFacebook,
   MdOutlineEmail,
 } from 'react-icons/md';
-import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
+// import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
 
 export default function contact() {
   return (
-    <Container bg="#9DC4FB" maxW="full" mt={0} centerContent overflow="hidden">
+    <Container bg="rgb(248, 243, 240)" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
         <Box
-          bg="#02054B"
-          color="white"
+        boxShadow={'2xl'}
+          bg="#F5F4F5"
+          color="black"
           borderRadius="lg"
           m={{ sm: 4, md: 16, lg: 10 }}
           p={{ sm: 5, md: 5, lg: 16 }}>
@@ -40,9 +41,9 @@ export default function contact() {
             <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
               <WrapItem>
                 <Box>
-                  <Heading>Contact</Heading>
+                  <Heading>تواصل معنا </Heading>
                   <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                    Fill up the form below to contact
+                   
                   </Text>
                   <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
                     <VStack pl={0} spacing={3} alignItems="flex-start">
@@ -51,30 +52,30 @@ export default function contact() {
                         height="48px"
                         width="200px"
                         variant="ghost"
-                        color="#DCE2FF"
-                        _hover={{ border: '2px solid #1C6FEB' }}
-                        leftIcon={<MdPhone color="#1970F1" size="20px" />}>
-                        +91-988888888
+                        color="black"
+                        _hover={{ border: '2px solid #E0E1E7' }}
+                        leftIcon={<MdPhone color="#5E8978" size="20px" />}>
+                        +966 507312699
                       </Button>
                       <Button
                         size="md"
                         height="48px"
                         width="200px"
                         variant="ghost"
-                        color="#DCE2FF"
-                        _hover={{ border: '2px solid #1C6FEB' }}
-                        leftIcon={<MdEmail color="#1970F1" size="20px" />}>
-                        hello@abc.com
+                        color="black"
+                        _hover={{ border: '2px solid #E0E1E7' }}
+                        leftIcon={<MdEmail color="#5E8978" size="20px" />}>
+                        Mazadk@gmail.com
                       </Button>
                       <Button
                         size="md"
                         height="48px"
                         width="200px"
                         variant="ghost"
-                        color="#DCE2FF"
-                        _hover={{ border: '2px solid #1C6FEB' }}
-                        leftIcon={<MdLocationOn color="#1970F1" size="20px" />}>
-                        Karnavati, India
+                        color="black"
+                        _hover={{ border: '2px solid #E0E1E7' }}
+                        leftIcon={<MdLocationOn color="#5E8978" size="20px" />}>
+                        السعودية - الرياض
                       </Button>
                     </VStack>
                   </Box>
@@ -83,49 +84,26 @@ export default function contact() {
                     spacing={5}
                     px={5}
                     alignItems="flex-start">
-                    <IconButton
-                      aria-label="facebook"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: '#0D74FF' }}
-                      icon={<MdFacebook size="28px" />}
-                    />
-                    <IconButton
-                      aria-label="github"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: '#0D74FF' }}
-                      icon={<BsGithub size="28px" />}
-                    />
-                    <IconButton
-                      aria-label="discord"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: '#0D74FF' }}
-                      icon={<BsDiscord size="28px" />}
-                    />
+
                   </HStack>
                 </Box>
               </WrapItem>
               <WrapItem>
                 <Box bg="white" borderRadius="lg">
-                  <Box m={8} color="#0B0E3F">
+                  <Box m={8} color="black">
                     <VStack spacing={5}>
                       <FormControl id="name">
-                        <FormLabel>Your Name</FormLabel>
+                        <FormLabel>الاسم</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
-                            children={<BsPerson color="gray.800" />}
+                            
                           />
                           <Input type="text" size="md" />
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
-                        <FormLabel>Mail</FormLabel>
+                        <FormLabel>البريد الالكتروني</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
@@ -135,7 +113,7 @@ export default function contact() {
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>رسالة</FormLabel>
                         <Textarea
                           borderColor="gray.300"
                           _hover={{
@@ -147,10 +125,10 @@ export default function contact() {
                       <FormControl id="name" float="right">
                         <Button
                           variant="solid"
-                          bg="#0D74FF"
-                          color="white"
-                          _hover={{}}>
-                          Send Message
+                          bg="#5E8978"
+                          color="#E3E2D1"
+                          _hover={{bg: '#63907D'}}>
+                          ارسال الرسالة
                         </Button>
                       </FormControl>
                     </VStack>

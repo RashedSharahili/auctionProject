@@ -153,11 +153,11 @@ function Nav() {
                     <RouteLink to={'/'}>
                 <Button
                     bg={"transparent"}
-                    color={"#D4CCA7"}
+                    color={"#E3E2D1"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
+                    _hover={{ color: "#F5F5E7", bg: "#00000000" }}
                     _focus={{ boxShadow: "none" }}>
                     الصفحة الرئيسية
                 </Button>
@@ -165,11 +165,11 @@ function Nav() {
                 <RouteLink to={'/about'}>
                     <Button
                     bg={"transparent"}
-                    color={"#D4CCC1"}
+                    color={"#E3E2D1"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
+                    _hover={{ color: "#F5F5E7", bg: "#00000000" }}
                     _focus={{ boxShadow: "none" }}>
                         من نحن
                     </Button>
@@ -177,11 +177,11 @@ function Nav() {
                     <RouteLink to={'/auctions'}>
                 <Button
                     bg={"transparent"}
-                    color={"#D4CCC1"}
+                    color={"#E3E2D1"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
+                    _hover={{ color: "#F5F5E7", bg: "#00000000" }}
                     _focus={{ boxShadow: "none" }}>
                         المزادات
                 </Button>
@@ -189,11 +189,11 @@ function Nav() {
                 <RouteLink to={'/contact'}>
                 <Button
                     bg={"transparent"}
-                    color={"#D4CCC1"}
+                    color={"#E3E2D1"}
                     display="inline-flex"
                     alignItems="center"
                     fontSize="md"
-                    _hover={{ color: "#D4CCA7", bg: "#00000000" }}
+                    _hover={{ color: "#F5F5E7", bg: "#00000000" }}
                     _focus={{ boxShadow: "none" }}>
                     تواصل معنا
                 </Button>
@@ -206,7 +206,7 @@ function Nav() {
             {
             userToken === null?
                 <RouteLink to={"/login"}> 
-                    <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={"white"} color={"#769589"} _hover={{bg: 'white'}}>
+                    <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={"#A2B6A9"} color={"#EFEFDF"} _hover={{bg: '#A9BDB1 '}}>
                     تسجيل دخول
                     </Button>
                 </RouteLink>  

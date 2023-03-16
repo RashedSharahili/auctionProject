@@ -37,7 +37,7 @@ export default function Home() {
             maxW={'350px'}
             w={'full'}
             // bg={useColorModeValue('white', 'gray.800')}
-            bg='#FEF9E7'
+            bg='#FAF7F5'
             boxShadow={'2xl'}
             rounded={'lg'}
             pos={'relative'}
@@ -106,10 +106,10 @@ export default function Home() {
                 //onClick={showAlert}
                 variant='solid' 
                 bg='#5E8978'
-                color='white'
+                color='#FBFAEF'
                 py='6'
                 px='8'
-                _hover={{ bg: '#4B7967' }}>
+                _hover={{ bg: '#63907D' }}>
                     التفاصيل
                 </Button>)
                 }
@@ -138,7 +138,7 @@ export default function Home() {
             maxW={'350px'}
             w={'full'}
             // bg={useColorModeValue('white', 'gray.800')}
-            bg='#FEF9E7'
+            bg='#FAF7F5'
             boxShadow={'2xl'}
             rounded={'lg'}
             pos={'relative'}
@@ -191,11 +191,11 @@ export default function Home() {
                 // onClick={onOpen}
               // onClick={showConfirmAlert}
                 variant='solid' 
-                bg='#221409'
-                color='white'
+                bg='#5E8978'
+                color='#FBFAEF'
                 py='6'
                 px='8'
-                _hover={{ bg: '#221409' }}>
+                _hover={{ bg: '#63907D' }}>
                     التفاصيل
                 </Button>)
                 :
@@ -207,10 +207,10 @@ export default function Home() {
                 //onClick={showAlert}
                 variant='solid' 
                 bg='#5E8978'
-                color='white'
+                color='#FBFAEF'
                 py='6'
                 px='8'
-                _hover={{ bg: '#4B7967' }}>
+                _hover={{ bg: '#63907D' }}>
                     التفاصيل
                 </Button>)
                 }
@@ -231,7 +231,7 @@ export default function Home() {
             maxW={'350px'}
             w={'full'}
             // bg={useColorModeValue('white', 'gray.800')}
-            bg='#FEF9E7'
+            bg='#FAF7F5'
             boxShadow={'2xl'}
             rounded={'lg'}
             pos={'relative'}
@@ -284,7 +284,7 @@ export default function Home() {
                 // onClick={onOpen}
               // onClick={showConfirmAlert}
                 variant='solid' 
-                bg='#221409'
+                bg='#5E8978'
                 color='white'
                 py='6'
                 px='8'
@@ -300,10 +300,10 @@ export default function Home() {
                 //onClick={showAlert}
                 variant='solid' 
                 bg='#5E8978'
-                color='white'
+                color='#FBFAEF'
                 py='6'
                 px='8'
-                _hover={{ bg: '#4B7967' }}>
+                _hover={{ bg: '#63907D' }}>
                     التفاصيل
                 </Button>)
                 }
