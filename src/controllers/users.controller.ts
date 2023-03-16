@@ -34,7 +34,11 @@ export const NewRegistration = async (req:Request, res:Response) =>{
 
             const profile = await prisma.profile.create({
                 data: {
-                    userId:user.id
+                    userId:user.id,
+                    name: req.body.name,
+                    phone_number: req.body.phone_number,
+                    gender:req.body.gender,
+                    birthDate:req.body.birthDate
                 }
             })
 

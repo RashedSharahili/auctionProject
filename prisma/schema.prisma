@@ -11,17 +11,11 @@ datasource db {
 model Profile {
   id           String  @id @default(uuid())
   name         String?
-<<<<<<< HEAD
-  phone_numper String?
-  userId       String  @unique
-  gender       Gender?
-  user         User    @relation(fields: [userId], references: [id])
-=======
   phone_number String?
   gender Gender?
+  birthDate String?
   userId       String @unique
   user         User   @relation(fields: [userId], references: [id])
->>>>>>> 7c6359104c74e1edfdcad01c4e15fa20f537161a
 }
 
 model Auction {
