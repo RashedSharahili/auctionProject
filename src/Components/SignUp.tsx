@@ -126,7 +126,7 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="phone" isRequired >
                 <FormLabel>رقم الجوال </FormLabel>
                 <Input
-                 onChange={(e) => setPhone(e.target.value)}
+                 onChange={(e) => setPhone(e.target.value.trim())}
                   placeholder="your phone number"
                   _placeholder={{ color: 'gray.500' }}
                   type="text"
@@ -146,7 +146,7 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="password" isRequired>
                 <FormLabel>كلمة المرور</FormLabel>
                 <Input 
-                onChange={(e)=>setPassword(e.target.value)}
+                onChange={(e)=>setPassword(e.target.value.trim())}
                 
                 type="password" />
               </FormControl>

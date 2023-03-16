@@ -65,14 +65,13 @@ export default function Home() {
           <Center py={5}>
             <Heading>يحدث الان </Heading>
           </Center>
-          <Grid
-            templateColumns={{ base: "none", md: "", lg: "repeat(3, 1fr)" }}
+          <Grid templateColumns={{ base: "none", md: "", lg: "repeat(3, 1fr)" }}
             gap={3}
             py="100px"
           >
-            <Center py={12}>
             {data.map((item: any) => (
               <>
+            <Center py={12}>
               <Box
                 role={"group"}
                 p={6}
@@ -177,10 +176,10 @@ export default function Home() {
                   )}
                 </Stack>
               </Box>
+              </Center>
               </>
               ))}
-            </Center>
-          </Grid>
+              </Grid>
     </>
 
 
