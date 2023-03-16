@@ -164,12 +164,13 @@ import { useNavigate } from 'react-router-dom';
                       color: 'gray.500',
                     }}
                   />
+
                 <RadioGroup defaultValue='2'>
                   <Stack spacing={5} direction='row'>
-                    <Radio colorScheme='gray' value='1'>
+                    <Radio colorScheme='gray' value='false'>
                       المزاد حضوري
                     </Radio>
-                    <Radio colorScheme='gray' value='2'>
+                    <Radio colorScheme='gray' value='true'>
                       المزاد عن بعد
                     </Radio>
                   </Stack>
