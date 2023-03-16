@@ -48,6 +48,8 @@ export const NewRegistration = async (req:Request, res:Response) =>{
             }
 
         }
+
+        throw("يوجد خطأ ما، حاول مره أخرى")
     }catch(e){
         res.status(500).json({message:`Error: ${e}`});
     }
