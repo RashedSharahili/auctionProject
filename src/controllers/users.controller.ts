@@ -44,12 +44,12 @@ export const NewRegistration = async (req:Request, res:Response) =>{
 
             if(profile) {
 
-                res.status(200).json({msg:"تم أضافة مستخدم"})
+                res.status(200).json({message:"تم أضافة مستخدم"})
             }
 
         }
     }catch(e){
-        res.status(500).json({msg:`Error: ${e}`});
+        res.status(500).json({message:`Error: ${e}`});
     }
 }
 
