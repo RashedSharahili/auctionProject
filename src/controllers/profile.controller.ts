@@ -52,12 +52,12 @@ export const getProfile = async(req:Request, res:Response) => {
     try {
 
         let getprofile = req.body as Profile
-
+        let { id } = req.params
 
     let profile = await prisma.profile.findFirst({
         where: {
             
-            userId: res.locals.user.id
+            userId:id
         },
 
         include:{
