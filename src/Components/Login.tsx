@@ -91,7 +91,7 @@ export default function ResetPasswordForm() {
             <FormControl id="email" isRequired>
               <FormLabel>البريد الالكتروني</FormLabel>
               <Input
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value.trim())}
                 placeholder="your-email@example.com"
                 _placeholder={{ color: 'gray.500' }}
                 type="email"
@@ -99,7 +99,7 @@ export default function ResetPasswordForm() {
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>كلمة المرور</FormLabel>
-              <Input type="password" onChange={ (e) => setPassword(e.target.value) } />
+              <Input type="password" onChange={ (e) => setPassword(e.target.value.trim()) } />
             </FormControl>
             <Stack spacing={6}>
               <Button
@@ -113,7 +113,13 @@ export default function ResetPasswordForm() {
                 >
                 دخول
               </Button>
-               
+                  {/* <Menu>
+                  <MenuButton>Open menu</MenuButton>
+                  <MenuList>
+                  <MenuItem as='a' href='#'>Link 1</MenuItem>
+                  <MenuItem as='a' href='#'>Link 2</MenuItem>
+                  </MenuList>
+                  </Menu> */}
               
               <FormLabel fontSize={14} as='a' href='signup'>انشاء حساب جديد ؟</FormLabel>
             </Stack>
@@ -122,5 +128,10 @@ export default function ResetPasswordForm() {
       </Box>
     </Box>
 
+// const getInfo = ()=>{
+//   const nameValue = localStorage.getItem('name');
+//   if(name === nameValue){   
+//       navigate("/")
+//   }
   );
 }
