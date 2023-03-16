@@ -85,7 +85,7 @@ export const login = async (req:Request, res:Response) => {
 
                 // console.log(enToken);
 
-                return res.status(200).json({ message: `Welcome Back ${user.email}`, token: enToken })
+                return res.status(200).json({ message: `مرحبا بعودتك ${user.email}`, token: enToken })
 
             } else {
 
