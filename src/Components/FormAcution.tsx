@@ -12,12 +12,62 @@ import {
     IconProps,
     Icon,
     RadioGroup,
-    Radio
+    Radio,
+    useToast
 
   } from '@chakra-ui/react';
-
+  import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
   
   export default function JoinOurTeam() {
+
+    const [CategoryAution, setCategoryAution] = useState('');
+    const [AdressAuction, setAdressAuction] = useState('');
+    const [DateAuction, setDateAuction] = useState('');
+    const [PriceAuction, setPriceAuction] = useState('');
+    const [ImageAuction, setImageAuction] = useState('');
+    const navigate = useNavigate();
+    const toast = useToast();
+    const submitAddAuction = async () => {
+      try {
+        const request = await fetch('https://acution.onrender.com/users/FormAuction', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ CategoryAution, AdressAuction ,DateAuction,PriceAuction,ImageAuction}),
+        });
+        const data = await request.json();
+        if (request.status !== 200) {
+          toast({
+            title: data.message,
+            status: 'error',
+            duration: 3000,
+            position: 'top',
+          });
+          return;
+        }
+        toast({
+          title: data.message,
+          status: 'success',
+          duration: 3000,
+          position: 'top',
+        });
+        localStorage.setItem('token', data.token);
+        navigate('/');
+      } catch (error) {
+        toast({
+          title: 'Server Error !',
+          status: 'error',
+          duration: 3000,
+          position: 'top',
+        });
+      }}
+
+
+
+
+
     return (
       <Box className="container">
         <Box position={'relative'}>
@@ -71,6 +121,9 @@ import {
               <Box as={'form'} mt={10}>
                 <Stack spacing={10}>
                   <Input
+
+                  onChange={(e) => setAdressAuction(e.target.value)}
+
                     placeholder="عنوان المزاد"
                     bg={'gray.100'}
                     border={0}
@@ -80,6 +133,7 @@ import {
                     }}
                   />
                   <Input
+                  onChange={(e) => setCategoryAution(e.target.value)}
                     placeholder="تصنيف المزاد "
                     bg={'gray.100'}
                     border={0}
@@ -89,6 +143,7 @@ import {
                     }}
                   />
                   <Input
+                  onChange={(e) => setPriceAuction(e.target.value)}
                     placeholder="سعر المزاد"
                     bg={'gray.100'}
                     border={0}
@@ -99,6 +154,8 @@ import {
                   />
 
                 <Input
+                onChange={(e) => setDateAuction(e.target.value)}
+
                     placeholder="تاريخ المزاد"
                     bg={'gray.100'}
                     border={0}
@@ -117,7 +174,9 @@ import {
                     </Radio>
                   </Stack>
                 </RadioGroup>
-                  <Input type='file' placeholder='صور المزاد'></Input>
+                  <Input 
+                  onChange={(e) => setImageAuction(e.target.value)}
+                  type='file' placeholder='صور المزاد'></Input>
                   {/* <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
                     صور المزاد
                   </Button> */}
@@ -131,7 +190,10 @@ import {
                     _hover={{
                       bgGradient: 'linear(green.90,white)',
                       boxShadow: 'xl',
-                    }}>
+                    }}
+                    
+                    onClick={submitAddAuction}
+                    >
                     أضف المزاد
                   </Button>
                 </Box>

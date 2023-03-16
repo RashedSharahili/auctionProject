@@ -29,7 +29,7 @@ import { useNavigate } from 'react-router-dom';
   const toast = useToast();
   const submitSignUp= async () => {
     try {
-      const request = await fetch('/api/v1/auth/login', {
+      const request = await fetch('https://acution.onrender.com/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,25 @@ import { useNavigate } from 'react-router-dom';
       });
     }}
 
+    // const myYear = new Date("1998-12-20");
+    // const myMonth =myYear.getMonth() 
+    // const myDay =myYear.getDate();
+    // console.log(my brithday ${myYear}-${myMonth}-${myDay});
+    
+  
+    // const currYear = new Date("2023-1-19");
+    // const currMonth =currYear.getMonth() 
+    // const currDay =currYear.getDate();
+    // console.log(Current Day :  ${currYear}-${currMonth}-${currDay});
+    // if( myMonth === currMonth && myDay  === currDay){
+    //     console.log("success");
+    // }
+    // else{
+    //     console.log("error");
+    // }
+    
     return (
+
       <Box className="container">
         <Box>
           <Flex
