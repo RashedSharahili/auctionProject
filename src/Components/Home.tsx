@@ -62,8 +62,6 @@ export default function Home() {
        <Header/>
       <Box className="container">
       <>
-      {data.map((item: any) => (
-        <>
           <Center py={5}>
             <Heading>يحدث الان </Heading>
           </Center>
@@ -73,6 +71,8 @@ export default function Home() {
             py="100px"
           >
             <Center py={12}>
+            {data.map((item: any) => (
+              <>
               <Box
                 role={"group"}
                 p={6}
@@ -177,10 +177,10 @@ export default function Home() {
                   )}
                 </Stack>
               </Box>
+              </>
+              ))}
             </Center>
           </Grid>
-        </>
-      ))}
     </>
 
 
