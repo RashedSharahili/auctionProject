@@ -7,7 +7,7 @@ import { createAuctionSchema } from "../schema.zod/aucations.zod";
 let router = express.Router();
 
 // read
-router.get('/' ,auth,GetallAuctions);
+router.get('/' ,GetallAuctions);
 
 // create 
 router.post('/', auth, validate(createAuctionSchema), addAuction)
