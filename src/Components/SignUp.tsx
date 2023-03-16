@@ -19,7 +19,69 @@ import { useNavigate } from 'react-router-dom';
 
   
   export default function ResetPasswordForm() {
+
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [date, setDate] = useState('');
+  const navigate = useNavigate();
+  const toast = useToast();
+  const submitSignUp= async () => {
+    try {
+      const request = await fetch('https://acution.onrender.com/users/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, password ,email,phone,date}),
+      });
+      const data = await request.json();
+      if (request.status !== 200) {
+        toast({
+          title: data.message,
+          status: 'error',
+          duration: 3000,
+          position: 'top',
+        });
+        return;
+      }
+      toast({
+        title: data.message,
+        status: 'success',
+        duration: 3000,
+        position: 'top',
+      });
+      localStorage.setItem('token', data.token);
+      navigate('/');
+    } catch (error) {
+      toast({
+        title: 'Server Error !',
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+      });
+    }}
+
+    // const myYear = new Date("1998-12-20");
+    // const myMonth =myYear.getMonth() 
+    // const myDay =myYear.getDate();
+    // console.log(my brithday ${myYear}-${myMonth}-${myDay});
+    
+  
+    // const currYear = new Date("2023-1-19");
+    // const currMonth =currYear.getMonth() 
+    // const currDay =currYear.getDate();
+    // console.log(Current Day :  ${currYear}-${currMonth}-${currDay});
+    // if( myMonth === currMonth && myDay  === currDay){
+    //     console.log("success");
+    // }
+    // else{
+    //     console.log("error");
+    // }
+    
     return (
+
       <Box className="container">
         <Box>
           <Flex
@@ -41,6 +103,8 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="name" isRequired >
                 <FormLabel> الاسم</FormLabel>
                 <Input
+
+        onChange={(e) => setName(e.target.value)}   
                   placeholder="your name"
                   _placeholder={{ color: 'gray.500' }}
                   type="text"
@@ -50,6 +114,7 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="email" isRequired>
                 <FormLabel>البريد الالكتروني</FormLabel>
                 <Input
+                 onChange={(e) => setEmail(e.target.value)}
                   placeholder="your-email@example.com"
                   _placeholder={{ color: 'gray.500' }}
                   type="email"
@@ -59,25 +124,17 @@ import { useNavigate } from 'react-router-dom';
               <FormControl id="phone" isRequired >
                 <FormLabel>رقم الجوال </FormLabel>
                 <Input
+                 onChange={(e) => setPhone(e.target.value)}
                   placeholder="your phone number"
                   _placeholder={{ color: 'gray.500' }}
                   type="text"
                 />
                 
               </FormControl>
-      
-              <FormControl id="ID" isRequired>
-                <FormLabel>رقم الهويه</FormLabel>
-                <Input
-                  placeholder="your ID number"
-                  _placeholder={{ color: 'gray.500' }}
-                  type="text"
-                />
-              </FormControl>
-      
               <FormControl id="date" isRequired>
                 <FormLabel>تاريخ الميلاد</FormLabel>
                 <Input
+                 onChange={(e) => setDate(e.target.value)}
                   placeholder="your date"
                   _placeholder={{ color: 'gray.500' }}
                   type="text"
@@ -86,7 +143,10 @@ import { useNavigate } from 'react-router-dom';
       
               <FormControl id="password" isRequired>
                 <FormLabel>كلمة المرور</FormLabel>
-                <Input type="password" />
+                <Input 
+                onChange={(e)=>setPassword(e.target.value)}
+                
+                type="password" />
               </FormControl>
               <Stack spacing={6}>
                 <Button
@@ -94,7 +154,9 @@ import { useNavigate } from 'react-router-dom';
                   color={'white'}
                   _hover={{
                     bg: '#728d71',
-                  }}>
+                  }}
+                  onClick={ submitSignUp }
+                  >
                   تسجيل
                 </Button>
                 
@@ -110,5 +172,5 @@ import { useNavigate } from 'react-router-dom';
     );
   }
 
-// }
+
  
