@@ -61,7 +61,7 @@ export const GetallAuctions = async (req: Request, res: Response) => {
       }
     });
 
-    res.json({ "المزادادت": Auctoins });
+    res.json(Auctoins);
   } catch (err) {
     console.log(err);
     res.status(500).json(err)
