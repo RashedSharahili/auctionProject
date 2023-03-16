@@ -18,7 +18,7 @@ export const createUserSchema = z.object({
             invalid_type_error:"يجب ان يكون رقم"
         }),
         birthDate:z.string({
-            required_error:"تاريح الميلاد مطلوب"
+            required_error:"تاريخ الميلاد مطلوب"
            
         })
 
