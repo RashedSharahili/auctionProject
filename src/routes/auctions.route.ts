@@ -1,5 +1,5 @@
 import  express  from "express";
-import { addAuction, GetallAuctions, deleteAuctions } from '../controllers/auctions.controller'
+import { addAuction, GetallAuctions, deleteAuctions, GetNewAuctions } from '../controllers/auctions.controller'
 import auth from "../middleware/auth";
 import validate from "../middleware/validate";
 import { createAuctionSchema } from "../schema.zod/aucations.zod";
@@ -7,7 +7,9 @@ import { createAuctionSchema } from "../schema.zod/aucations.zod";
 let router = express.Router();
 
 // read
-router.get('/' ,auth,GetallAuctions);
+router.get('/' ,GetallAuctions);
+
+router.get('/news' ,GetNewAuctions);
 
 // create 
 router.post('/', auth, validate(createAuctionSchema), addAuction)

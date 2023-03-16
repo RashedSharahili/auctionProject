@@ -68,6 +68,26 @@ export const GetallAuctions = async (req: Request, res: Response) => {
   }
 };
 
+
+
+export const GetNewAuctions = async (req: Request, res: Response) => {
+  try {
+    let Auctoins = await prisma.auction.findMany({
+    orderBy:{
+
+      created_at : 'desc'
+    },
+    take:3,
+      
+    });
+
+    res.json({ "المزادادت": Auctoins });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err)
+  }
+};
+
 export const deleteAuctions = async(req:Request, res:Response) => {
 
   let auctions = await prisma.auction.deleteMany()
