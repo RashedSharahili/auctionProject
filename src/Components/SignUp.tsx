@@ -29,7 +29,7 @@ import { useNavigate } from 'react-router-dom';
   const toast = useToast();
   const submitSignUp= async () => {
     try {
-      const request = await fetch('https://acution.onrender.com/users/NewRegistration', {
+      const request = await fetch('https://acution.onrender.com/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
