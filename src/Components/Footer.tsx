@@ -42,7 +42,7 @@ export default function Footer(){
             color: "gray.700",
           }}
         >
-          منصة مزادك
+       مزادك
         </chakra.a>
 
         <chakra.p

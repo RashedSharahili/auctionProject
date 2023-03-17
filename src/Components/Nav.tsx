@@ -104,17 +104,17 @@ function Nav() {
         <Button
             w="full"
             variant="ghost"
-            leftIcon={<AiOutlineInbox />}>
+          >
             <RouteLink to={'/about'}>
             من نحن
             </RouteLink>
         </Button>
-        <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
+        <Button w="full" variant="ghost" >
             <RouteLink to={'/auctions'}>
             المزادات
             </RouteLink>
         </Button>
-        <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
+        <Button w="full" variant="ghost" >
             <RouteLink to={'/contact'}>
             تواصل معنا
             </RouteLink>
