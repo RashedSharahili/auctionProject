@@ -192,6 +192,31 @@ import { useNavigate } from 'react-router-dom';
                     }}
                   />
 
+               <Input
+                onChange={(e) => setDateAuction(e.target.value)}
+
+                    placeholder="تاريخ بداية المزاد"
+                    bg={'gray.100'}
+                    border={0}
+                    color={'gray.500'}
+                    _placeholder={{
+                      color: 'gray.500',
+                    }}
+                  />
+
+                <Input
+                onChange={(e) => setDateAuction(e.target.value)}
+
+                    placeholder="تاريخ انتهاء لمزاد"
+                    bg={'gray.100'}
+                    border={0}
+                    color={'gray.500'}
+                    _placeholder={{
+                      color: 'gray.500',
+                    }}
+                  />
+
+
                 <RadioGroup defaultValue='2'>
                   <Stack spacing={5} direction='row'>
                     <Radio colorScheme='gray' value='false'>
