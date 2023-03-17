@@ -12,6 +12,7 @@ import FormAcution from "./FormAcution";
 import AdminPanel from "./Admin/AdminPanel";
 import Admin from "./Admin/Admin";
 import AdminRoutes from "./Admin/AdminRoutes";
+import Profile from "./CardsHome/Profile";
 
 function Routes() {
   return (
@@ -25,6 +26,7 @@ function Routes() {
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/FormAuction" element={<FormAcution/>}></Route>
       <Route path="/adminPanel" element={<AdminRoutes />}></Route>
+      <Route path="/profile" element={<Profile />}></Route>
 
     </Routess>
   );
