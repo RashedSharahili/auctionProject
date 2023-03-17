@@ -56,8 +56,8 @@ export const getProfile = async(req:Request, res:Response) => {
 
     let profile = await prisma.profile.findFirst({
         where: {
-            
-            userId:id
+            id: id,
+            userId:res.locals.user.id
         },
 
         include:{

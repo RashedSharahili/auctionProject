@@ -1,5 +1,6 @@
 import { Auction } from '@prisma/client';
 import { Request, Response } from 'express';
+import expressFileUpload from 'express-fileupload'
 import { prisma } from '../config/db';
 
 
@@ -9,7 +10,23 @@ export const addAuction = async (req: Request, res: Response) => {
 
   const c_aucation = req.body as Auction
 
+  let isUploaded = ""
+
   try {
+
+    let sampleFile;
+    let uploadPath;
+
+    if(!req.files || Object.keys(req.files).length === 0) {
+
+      isUploaded = "No files were uploaded.";
+
+    } else {
+
+      sampleFile = req.files.file;
+      // uploadPath = '../auctionsImages/' + sampleFile.name;
+
+    }
 
     const auction =  await prisma.auction.create({
       data: {
@@ -23,6 +40,7 @@ export const addAuction = async (req: Request, res: Response) => {
         auction_price: c_aucation.auction_price,
         auction_min_price: c_aucation.auction_min_price,
         auction_max_price: c_aucation.auction_max_price,
+        auctionImage: c_aucation.auctionImage,
         is_online: c_aucation.is_online
       }
     })
@@ -32,6 +50,7 @@ export const addAuction = async (req: Request, res: Response) => {
       return res.status(200).json({
         message: "تم اضافه مزاد بنجاح",
         status: res.statusCode,
+        isUploaded: isUploaded
       });
 
     }

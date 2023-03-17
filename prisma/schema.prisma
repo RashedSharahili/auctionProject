@@ -31,6 +31,7 @@ model Auction {
   auction_min_price Int
   auction_max_price Int
   is_online         Boolean
+  auctionImage      String?
   created_at        DateTime        @default(now())
   auctions_images   Auction_image[]
   userAuctions      userAuction[]

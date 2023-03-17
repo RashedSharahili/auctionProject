@@ -71,6 +71,9 @@ export const login = async (req:Request, res:Response) => {
         let user = await prisma.user.findFirst({
             where: {
                 email: l_user.email
+            },
+            include: {
+                profile: true
             }
         })
         
@@ -81,11 +84,11 @@ export const login = async (req:Request, res:Response) => {
 
                 console.log(user);
 
-                let enToken = jwt.sign({ id: user.id, email: user.email }, process.env.API_SECRET as string, { expiresIn: "1 day" })
+                let enToken = jwt.sign({ id: user.id, email: user.email, name: user.profile?.name, profileId: user.profile?.id }, process.env.API_SECRET as string, { expiresIn: "1 days" })
 
                 // console.log(enToken);
 
-                return res.status(200).json({ message: `مرحبا بعودتك ${user.email}`, token: enToken })
+                return res.status(200).json({ message: `مرحبا بعودتك ${user.profile?.name}`, token: enToken })
 
             } else {
 
@@ -109,9 +112,27 @@ export const login = async (req:Request, res:Response) => {
 
 
 
-// export const LogOut = async (req:Request, res:Response)=>{
-//     try{
-//         let users= await prisma.user.delete(res.)
-//     }
-//     catch(e){}
-// }
+export const logOut = async (req:Request, res:Response)=>{
+    try{
+        let user = await prisma.user.findFirst({
+
+            where: {
+
+                id: res.locals.user.id
+            }
+        })
+
+        if(user) {
+
+            res.status(200).json({ message: "تم تسجيل الخروج بنجاح", status: res.statusCode })
+
+        } else {
+
+            res.status(401).json({ message: "يرجى اعادة تسجيل الدخول" })
+        }
+    }
+    catch(e){
+
+        res.status(500).json(e)
+    }
+}
