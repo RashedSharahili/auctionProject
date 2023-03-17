@@ -14,10 +14,13 @@ import {
   Flex,
   useColorModeValue,
   SimpleGrid,
-  Grid
+  Grid,
+  HStack,
+  Divider,
+  VStack
 } from "@chakra-ui/react";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as RouteLink } from "react-router-dom";
 import Header from "./CardsHome/Header";
 
 export default function Home() {
@@ -26,9 +29,10 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  const cardsinHome = "https://acution.onrender.com/auctions";
-  function getAllcards() {
-    fetch(cardsinHome, {
+  // const cardsinHome = "https://acution.onrender.com/auctions";
+  const cardsinHome = "http://localhost:8000/auctions/news";
+  async function getAllcards() {
+    await fetch(cardsinHome, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -46,7 +50,8 @@ export default function Home() {
         setData(Data);
         console.log(Data);
       });
-  }
+
+    }
 
   React.useEffect(() => {
     getAllcards();
@@ -61,126 +66,70 @@ export default function Home() {
     <Box>
        <Header/>
       <Box className="container">
-      <>
           <Center py={5}>
             <Heading>يحدث الان </Heading>
           </Center>
-          <Grid templateColumns={{ base: "none", md: "", lg: "repeat(3, 1fr)" }}
-            gap={3}
-            py="100px"
-          >
+          <SimpleGrid templateColumns={{ base: "none", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} w={"100%"} justifyItems={"center"}>
             {data.map((item: any) => (
-              <>
-            <Center py={12}>
-              <Box
-                role={"group"}
-                p={6}
-                maxW={"350px"}
-                w={"full"}
-                // bg={useColorModeValue('white', 'gray.800')}
-                bg="#FEF9E7"
-                boxShadow={"2xl"}
-                rounded={"lg"}
-                pos={"relative"}
-                zIndex={0}
-              >
-                <Box
-                  rounded={"lg"}
-                  mt={-12}
-                  pos={"relative"}
-                  height={"230px"}
-                  _after={{
-                    transition: "all .3s ease",
-                    content: '""',
-                    w: "full",
-                    h: "full",
-                    pos: "absolute",
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(})`,
-                    filter: "blur(15px)",
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: "blur(20px)",
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={"lg"}
-                    height={230}
-                    width={350}
-                    objectFit={"cover"}
-                    src={
-                      "https://sa.aqar.fm/blog/wp-content/uploads/2021/01/%D8%A7%D9%84%D8%A7%D8%B1%D8%B63.jpg"
-                    }
-                  />
-                </Box>
-                <Stack pt={10} align={"center"}>
-                  <Heading
-                    fontSize={"2xl"}
-                    fontFamily={"body"}
-                    fontWeight={500}
-                  >
-                    {<i>{item.title}</i>}
-                  </Heading>
-                  <Stack direction={"row"} align={"center"}>
-                    <Text color={"gray.600"} w={"200px"}>
-                      {<i>{item.started_date}</i>}
-                    </Text>
-                  </Stack>
-                  <Text fontWeight={400} fontSize={"xl"}>
-                    {<i>{item.auction_price}</i>}
-                  </Text>
-
-                  <Text fontWeight={400} fontSize={"xl"}>
-                    {<i>{item.auction_type}</i>}
-                  </Text>
-                  <Text fontWeight={400} fontSize={"xl"}>
-                    {<i>{item.is_online}</i>}
-                  </Text>
-
-                  {localStorage.getItem("name") != null ? (
-                    <Button
-                      // onClick={onOpen}
-                      // onClick={showConfirmAlert}
-                      variant="solid"
-                      bg="#221409"
-                      color="white"
-                      py="6"
-                      px="8"
-                      _hover={{ bg: "#221409" }}
-                   onClick={()=>{
-
-                    navigate('/auctionDetails/:id');
-                   }} >
-                      التفاصيل
-                    </Button>
-                  ) : (
-                    <Button
-                      // onClick={()=> {
-                      //   alert("please you need Log In first")
-                      //   navigate('/logIn')
-                      // }}
-                      //onClick={showAlert}
-                      variant="solid"
-                      bg="#5E8978"
-                      color="white"
-                      py="6"
-                      px="8"
-                      _hover={{ bg: "#4B7967" }}
-                    >
-                      التفاصيل
-                    </Button>
-                  )}
-                </Stack>
-              </Box>
-              </Center>
-              </>
-              ))}
-              </Grid>
-    </>
+            <Card maxW='sm' boxShadow={'2xl'} key={item.id} mb={8} mt={8}>
+                <CardBody>
+                    <Badge colorScheme='green' bg={"#56C596"} pos={"absolute"} right={"-2vh"} top={"4vh"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"}>جاري</Badge>
+                    <Image
+                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    alt=''
+                    borderRadius='lg'
+                    />
+                    <Stack mt='6' spacing='3'>
+                    <Heading size='md' fontFamily={"Cairo"}>{item.title}</Heading>
+                    <HStack>
+                        <VStack>
+                            <Text>الأحد</Text>
+                            <Text>1444/08/20 هـ</Text>
+                            <Text>{item.started_date}</Text>
+                        </VStack>
+                        <VStack>
+                            <Flex gap={3} alignItems={"center"} boxShadow={"md"} p={"0.5vh"} color={"#56C596"} fontWeight={"bold"}>
+                                <Text>ينتهي بعد</Text>
+                                <HStack>
+                                <VStack>
+                                    <Text>ثانية</Text>
+                                    <Text>02</Text>
+                                </VStack>
+                                <VStack>
+                                    <Text>دقيقة</Text>
+                                    <Text>02</Text>
+                                </VStack>
+                                <VStack>
+                                    <Text>ساعة</Text>
+                                    <Text>02</Text>
+                                </VStack>
+                                <VStack>
+                                    <Text>يوم</Text>
+                                    <Text>02</Text>
+                                </VStack>
+                                </HStack>
+                            </Flex>
+                            <Flex gap={2}>
+                                <Text>العربون</Text>
+                                <Text fontWeight={"bold"}>$450</Text>
+                            </Flex>
+                            <Badge p={"1vh"} bg={"blue.500"} fontSize='0.8em' borderRadius={"1vh"} fontWeight={"bold"} color={"white"}>{
+                            item.is_online? "عن بعد": "حضوري"
+                            }</Badge>
+                        </VStack>
+                    </HStack>
+                    {/* <Text color='blue.600' fontSize='2xl'>$450</Text> */}
+                    </Stack>
+                </CardBody>
+                <Divider />
+                <CardFooter justifyContent={"center"}>
+                    <RouteLink to={'/auctionDetails/1'}>
+                    <Button variant='solid' colorScheme='green' bg={"#56C596"}>التفاصيل</Button>
+                    </RouteLink>
+                </CardFooter>
+            </Card>
+            ))}    
+            </SimpleGrid>
       </Box>
     </Box>
   );

@@ -28,12 +28,16 @@ import { useNavigate } from 'react-router-dom';
     const [ImageAuction, setImageAuction] = useState('');
     const navigate = useNavigate();
     const toast = useToast();
+    
+    const addAuctionUrl = "http://localhost:8000/auctions";
+
     const submitAddAuction = async () => {
       try {
-        const request = await fetch('https://acution.onrender.com/users/FormAuction', {
+        const request = await fetch(addAuctionUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            "authorization": localStorage.getItem("token") as string
           },
           body: JSON.stringify({ CategoryAution, AdressAuction ,DateAuction,PriceAuction,ImageAuction}),
         });
@@ -46,15 +50,14 @@ import { useNavigate } from 'react-router-dom';
             position: 'top',
           });
           return;
-        }
+        } 
         toast({
           title: data.message,
           status: 'success',
           duration: 3000,
           position: 'top',
         });
-        localStorage.setItem('token', data.token);
-        navigate('/');
+        navigate('/auctions');
       } catch (error) {
         toast({
           title: 'Server Error !',

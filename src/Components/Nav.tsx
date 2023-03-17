@@ -24,7 +24,9 @@ import {
     MenuButton,
     MenuDivider,
     MenuItem,
-    MenuList
+    MenuList,
+    Text,
+    useToast
 } from "@chakra-ui/react";
 import { useScroll } from "framer-motion";
 
@@ -41,11 +43,67 @@ const reduser =(state:any,action:any)=>{
     if(action.type === 'user LogOut')return {user: state.user   = false}
 }
 
+function parseJwt(token: any) {
+    if (!token) { return; }
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+}
+
+const userInfo = parseJwt(localStorage.getItem("token"))
+
 function Nav() {
+
+    const [userName, setName] = React.useState<string>();
 
     const navigate = useNavigate();
 
+    const toast = useToast();
+
     const userToken=localStorage.getItem("token")
+
+    const logoutUrl = "http://localhost:8000/users/logout";
+
+    const submitLogout = async () => {
+        try {
+          const request = await fetch(logoutUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              "authorization": localStorage.getItem("token") as string
+            }
+          });
+          const data = await request.json();
+          if (request.status !== 200) {
+    
+            return toast({
+              title: data.message,
+              status: 'error',
+              duration: 3000,
+              position: 'top',
+            });
+            
+          } else {
+    
+            toast({
+              title: data.message,
+              status: 'success',
+              duration: 3000,
+              position: 'top',
+            });
+            localStorage.removeItem("token")
+            navigate('/');
+          }
+    
+        } catch (error) {
+          toast({
+            title: 'Server Error !',
+            status: 'error',
+            duration: 3000,
+            position: 'top',
+          });
+        }
+      }
 
     const removeUser =()=>{
 
@@ -68,6 +126,8 @@ function Nav() {
     const { scrollY } = useScroll();
     React.useEffect(() => {
         // return scrollY.onChange(() => setY(scrollY.get()));
+        
+        // setName(userInfo.name)
         return scrollY.on("change", () => { setY(scrollY.get()) })
     }, [scrollY]);
     const cl = useColorModeValue("gray.800", "white");
@@ -217,15 +277,10 @@ function Nav() {
                         rounded={'full'}
                         variant={'link'}
                         cursor={'pointer'}
-                        border={"1px"}
-                        borderColor={"whiteAlpha.600"}
                         minW={0}>
-                        <Avatar
-                        size={'sm'}
-                        src={
-                            '../assets/user.png'
-                        }
-                        />
+                            <Text color={"white"}>
+                                مرحباً {userName}
+                            </Text>
                     </MenuButton>
                     <MenuList color={"black"}>
                         <MenuItem>
@@ -234,7 +289,7 @@ function Nav() {
                         </RouteLink>
                         </MenuItem>
                         <MenuDivider />
-                        <MenuItem>تسجيل خروج</MenuItem>
+                        <MenuItem onClick={ submitLogout }>تسجيل خروج</MenuItem>
                     </MenuList>
                 </Menu>
             }
