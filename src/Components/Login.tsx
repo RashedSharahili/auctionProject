@@ -77,7 +77,7 @@ export default function ResetPasswordForm() {
           align={'center'}
           justify={'center'}>
           <Stack
-            spacing={6}
+            spacing={10}
             w={'full'}
             maxW={'md'}
             bg={useColorModeValue('gray.50', 'gray.900')}
