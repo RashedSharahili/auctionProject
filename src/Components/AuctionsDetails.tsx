@@ -53,15 +53,16 @@ function AuctionsDetails() {
           textAlign={"center"}
           fontWeight="bold"
           fontSize="2xl"
+          fontFamily={'Amiri'}
           mt={2}>
           أرض في العليا
         </Heading>
         <Stack mt='6' spacing='3'>
           <Box pos={"absolute"} left={"-16vh"} top={"4vh"}>
-            <Badge colorScheme="purple" bg={"purple.600"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"}>عن بعد</Badge>
-            <HStack bg={"purple.600"} color={"white"} mt={"2"} p={"2"} borderRadius={"8"}>
-                                <VStack>
-                                    <Text>ثانية</Text>
+            <Badge  bg={"#94B49F"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"} >عن بعد</Badge>
+            <HStack bg={"#94B49F"} color={"white"} mt={"2"} p={"2"} borderRadius={"8"}>
+                                <VStack >
+                                    <Text >ثانية</Text>
                                     <Text>02</Text>
                                 </VStack>
                                 <VStack>
@@ -114,13 +115,13 @@ function AuctionsDetails() {
         </Flex>
       </Box>
       <Box mt={8}>
-        <Heading textAlign={"center"}>أعلى مزايدة</Heading>
+        <Heading textAlign={"center"} fontSize={"30"} fontFamily={'Amiri'}>أعلى مزايدة</Heading>
         <Flex alignItems="center" mt={2}>
-          <Container maxWidth={"container.xl"}>
-                <TableContainer>
+          <Container maxWidth={"container.xl"} >
+                <TableContainer fontFamily={'Amiri'}>
                     <Table size='sm'>
                         <Thead>
-                          <Tr>
+                          <Tr fontFamily={'Amiri'}>
                               <Th>المزايد</Th>
                               <Th>القيمة</Th>
                               <Th>الوقت</Th>
@@ -139,7 +140,8 @@ function AuctionsDetails() {
         </Flex>
         <br></br>
         <Flex w={"100%"} justifyContent={"center"}>
-          <Button colorScheme={"green"} bg={"#56C596"} onClick={onOpen}>سجل في المزاد</Button>
+          <Button  bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}} onClick={onOpen}>سجل في المزاد</Button>
           <Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
@@ -149,7 +151,7 @@ function AuctionsDetails() {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalHeader>سجل في المزاد</ModalHeader>
+          <ModalHeader fontFamily={'Amiri'}>سجل في المزاد</ModalHeader>
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>الشروط</FormLabel>
@@ -167,7 +169,8 @@ function AuctionsDetails() {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3}>
+            <Button  bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}} mr={3}>
               سجل
             </Button>
             <Button onClick={onClose}>إلغاء</Button>

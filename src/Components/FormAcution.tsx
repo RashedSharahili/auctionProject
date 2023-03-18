@@ -23,7 +23,8 @@ import { useNavigate } from 'react-router-dom';
 
     const [CategoryAution, setCategoryAution] = useState('');
     const [AdressAuction, setAdressAuction] = useState('');
-    const [DateAuction, setDateAuction] = useState('');
+    const [StartDateAuction, setStartDateAuction] = useState('');
+    const [EndDateAuction, setEndDateAuction] = useState('');
     const [PriceAuction, setPriceAuction] = useState('');
     const [ImageAuction, setImageAuction] = useState('');
     const [minPrice, setminPrice] = useState('');
@@ -41,7 +42,7 @@ import { useNavigate } from 'react-router-dom';
             'Content-Type': 'application/json',
             "authorization": localStorage.getItem("token") as string
           },
-          body: JSON.stringify({ CategoryAution, AdressAuction ,DateAuction,PriceAuction,ImageAuction,minPrice,maxPrice}),
+          body: JSON.stringify({ CategoryAution, AdressAuction ,StartDateAuction,EndDateAuction,PriceAuction,ImageAuction,minPrice,maxPrice}),
         });
         const data = await request.json();
         if (request.status !== 200) {
@@ -74,7 +75,7 @@ import { useNavigate } from 'react-router-dom';
 
 
     return (
-      <Box className="container">
+      <Box className="container" >
         <Box position={'relative'}>
           <Container
             as={SimpleGrid}
@@ -93,12 +94,9 @@ import { useNavigate } from 'react-router-dom';
                   bgClip="text">
                   و
                 </Text>{' '}
-              بكل أمان وسهولة
+               بكل أمان وسهولة.
               </Heading>
-              <Stack direction={'row'} spacing={4} align={'center'}>
-                {/* <Text fontFamily={'heading'} fontSize={{ base: '4xl', md: '6xl' }}>
-                </Text> */}
-              </Stack>
+            
             </Stack>
             <Stack
               bg={'gray.50'}
@@ -110,9 +108,10 @@ import { useNavigate } from 'react-router-dom';
                 <Heading
                   color={'gray.800'}
                   lineHeight={1.1}
+                  fontFamily={'Amiri'}
                   fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
-                    ! أضف مزادك
-                  <Text
+                      أضف مزادك ..
+                   <Text
                     as={'span'}
                     bgGradient="linear(to-r, red.400,pink.400)"
                     bgClip="text">
@@ -183,20 +182,8 @@ import { useNavigate } from 'react-router-dom';
                     }}
                   />
 
-                 <Input
-                onChange={(e) => setDateAuction(e.target.value)}
-
-                    placeholder="تاريخ المزاد"
-                    bg={'gray.100'}
-                    border={0}
-                    color={'gray.500'}
-                    _placeholder={{
-                      color: 'gray.500',
-                    }}
-                  />
-
                <Input
-                onChange={(e) => setDateAuction(e.target.value)}
+                onChange={(e) => setStartDateAuction(e.target.value)}
 
                     placeholder="تاريخ بداية المزاد"
                     bg={'gray.100'}
@@ -208,7 +195,7 @@ import { useNavigate } from 'react-router-dom';
                   />
 
                 <Input
-                onChange={(e) => setDateAuction(e.target.value)}
+                onChange={(e) => setEndDateAuction(e.target.value)}
 
                     placeholder="تاريخ انتهاء لمزاد"
                     bg={'gray.100'}
@@ -241,12 +228,8 @@ import { useNavigate } from 'react-router-dom';
                     fontFamily={'heading'}
                     mt={8}
                     w={'full'}
-                    bgGradient="linear(to-r,#466652,#466652)"
-                    color={'white'}
-                    _hover={{
-                      bgGradient: 'linear(green.90,white)',
-                      boxShadow: 'xl',
-                    }}
+                    bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}}
                     
                     onClick={submitAddAuction}
                     >
