@@ -11,10 +11,13 @@ import {
     useColorModeValue,
   } from "@chakra-ui/react";
 import React from "react";
+import { useNavigate, Link as RouteLink } from "react-router-dom";
   
   export default function profile() {
 
     const [data, setData] = React.useState<any[]>([]);
+
+    const navigate = useNavigate();
 
     function parseJwt(token: any) {
       if (!token) { return; }
@@ -25,32 +28,48 @@ import React from "react";
 
   const userInfo = parseJwt(localStorage.getItem("token"))
 
-    const userProfile = "https://acution.onrender.com/profile";
+  // console.log(userInfo.profileId);
+  
 
-    function getAllcards() {
+    // const userProfile = `https://acution.onrender.com/profile/${userInfo.profileId}`;
+    const userProfile = `http://localhost:8000/profile/${userInfo.profileId}`;
+    // const userProfile = `http://localhost:8000/profile/`;
+
+    function getUserProfile() {
       fetch(userProfile, {
         headers: {
           "Content-Type": "application/json",
+          "authorization": localStorage.getItem("token") as string
         },
       })
         .then((res) => res.json())
-        .then((Data) => {
-          // if() {
+        .then((uData) => {
+          // if(uData.status == 403) {
   
           //     navigate("/login");
   
           // } else {
   
-          //     setData(Data)
+          //     setData(uData)
           // }
-          setData(Data);
-          console.log(Data);
+          setData(uData);
+          // console.log(uData);
         });
     }
 
     React.useEffect(() => {
-      // console.log(parseJwt(localStorage.getItem("token")));
+
+      getUserProfile()
+
     }, []);
+
+    // console.log(Object.keys(data));
+
+    let userData = Object.values(data);
+
+    // console.log(userData);
+    
+    
     
     return (
       <Box className="container">
@@ -81,7 +100,7 @@ import React from "react";
                 <Stack spacing={0} align={"center"} mb={5}>
       
                   <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
-              الاسم
+              {userData[1]}
                   </Heading>
                   <br></br>
                   <br></br>
@@ -114,6 +133,7 @@ import React from "react";
                   </Stack>
               </Stack>*/}
                 <Center>
+                  <RouteLink to={"/FormAuction"}>
                   <Button
                     w={40}
                     mt={8}
@@ -127,6 +147,7 @@ import React from "react";
                   >
                 اضف مزاد
                   </Button>
+                  </RouteLink>
                 </Center>
               </Box>
             </Box>

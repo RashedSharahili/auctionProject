@@ -26,16 +26,22 @@ import { useNavigate } from 'react-router-dom';
     const [DateAuction, setDateAuction] = useState('');
     const [PriceAuction, setPriceAuction] = useState('');
     const [ImageAuction, setImageAuction] = useState('');
+    const [minPrice, setminPrice] = useState('');
+    const [maxPrice, setmaxPrice] = useState('');
     const navigate = useNavigate();
     const toast = useToast();
+    
+    const addAuctionUrl = "http://localhost:8000/auctions";
+
     const submitAddAuction = async () => {
       try {
-        const request = await fetch('https://acution.onrender.com/users/FormAuction', {
+        const request = await fetch(addAuctionUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            "authorization": localStorage.getItem("token") as string
           },
-          body: JSON.stringify({ CategoryAution, AdressAuction ,DateAuction,PriceAuction,ImageAuction}),
+          body: JSON.stringify({ CategoryAution, AdressAuction ,DateAuction,PriceAuction,ImageAuction,minPrice,maxPrice}),
         });
         const data = await request.json();
         if (request.status !== 200) {
@@ -46,15 +52,14 @@ import { useNavigate } from 'react-router-dom';
             position: 'top',
           });
           return;
-        }
+        } 
         toast({
           title: data.message,
           status: 'success',
           duration: 3000,
           position: 'top',
         });
-        localStorage.setItem('token', data.token);
-        navigate('/');
+        navigate('/auctions');
       } catch (error) {
         toast({
           title: 'Server Error !',
@@ -100,7 +105,7 @@ import { useNavigate } from 'react-router-dom';
               rounded={'xl'}
               p={{ base: 4, sm: 6, md: 8 }}
               spacing={{ base: 8 }}
-              maxW={{ lg: 'lg' }}>
+              maxW={{ full:"full" }}>
               <Stack spacing={4}>
                 <Heading
                   color={'gray.800'}
@@ -154,6 +159,31 @@ import { useNavigate } from 'react-router-dom';
                   />
 
                 <Input
+                onChange={(e) => setmaxPrice(e.target.value)}
+
+                    placeholder="اعلى سعر للمزايده"
+                    bg={'gray.100'}
+                    border={0}
+                    color={'gray.500'}
+                    _placeholder={{
+                      color: 'gray.500',
+                    }}
+                  />
+
+
+                <Input
+                onChange={(e) => setminPrice(e.target.value)}
+
+                    placeholder="اقل سعر للمزايده"
+                    bg={'gray.100'}
+                    border={0}
+                    color={'gray.500'}
+                    _placeholder={{
+                      color: 'gray.500',
+                    }}
+                  />
+
+                 <Input
                 onChange={(e) => setDateAuction(e.target.value)}
 
                     placeholder="تاريخ المزاد"
@@ -164,6 +194,31 @@ import { useNavigate } from 'react-router-dom';
                       color: 'gray.500',
                     }}
                   />
+
+               <Input
+                onChange={(e) => setDateAuction(e.target.value)}
+
+                    placeholder="تاريخ بداية المزاد"
+                    bg={'gray.100'}
+                    border={0}
+                    color={'gray.500'}
+                    _placeholder={{
+                      color: 'gray.500',
+                    }}
+                  />
+
+                <Input
+                onChange={(e) => setDateAuction(e.target.value)}
+
+                    placeholder="تاريخ انتهاء لمزاد"
+                    bg={'gray.100'}
+                    border={0}
+                    color={'gray.500'}
+                    _placeholder={{
+                      color: 'gray.500',
+                    }}
+                  />
+
 
                 <RadioGroup defaultValue='2'>
                   <Stack spacing={5} direction='row'>
@@ -200,6 +255,7 @@ import { useNavigate } from 'react-router-dom';
                 </Box>
                 form
               </Stack>
+             
             </Container>
             <Blur
               position={'absolute'}

@@ -25,18 +25,23 @@ import { useNavigate } from 'react-router-dom';
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [date, setDate] = useState('');
+  const [phone_number, setPhone] = useState('');
+  // const [gender, setGender] = useState('');
+  const [birthDate, setDate] = useState('');
   const navigate = useNavigate();
   const toast = useToast();
+
+  // const signUpUrl = "https://acution.onrender.com/users/signup";
+  const signUpUrl = "http://localhost:8000/users/signup";
+
   const submitSignUp= async () => {
     try {
-      const request = await fetch('https://acution.onrender.com/users/signup', {
+      const request = await fetch(signUpUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, password ,email,phone,date}),
+        body: JSON.stringify({ name, password ,email,phone_number,birthDate}),
       });
       const data = await request.json();
       if (request.status !== 200) {
@@ -80,6 +85,10 @@ import { useNavigate } from 'react-router-dom';
     // else{
     //     console.log("error");
     // }
+
+    // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //   setGender((event.target as HTMLInputElement).value);
+    // };
     
     return (
 
@@ -151,7 +160,7 @@ import { useNavigate } from 'react-router-dom';
               </FormControl>
 
              
-              <RadioGroup defaultValue='2'>
+              {/* <RadioGroup defaultValue={gender} onChange={ (e) => handleChange }>
                   <Stack spacing={5} direction='row'>
                     <Radio colorScheme='gray' value='Female'>
                       انثى
@@ -160,7 +169,7 @@ import { useNavigate } from 'react-router-dom';
                       ذكر
                     </Radio>
                   </Stack>
-                </RadioGroup>
+                </RadioGroup> */}
 
               <Stack spacing={6}>
                 <Button
