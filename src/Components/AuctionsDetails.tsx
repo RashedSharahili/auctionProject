@@ -169,7 +169,8 @@ function AuctionsDetails() {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3}>
+            <Button  bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}} mr={3}>
               سجل
             </Button>
             <Button onClick={onClose}>إلغاء</Button>

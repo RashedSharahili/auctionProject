@@ -79,7 +79,7 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
               w={{ base: "150", md: "500", lg: "600px" }}
               padding={{ base: "70px", md: "70px", lg: "70px" }}
               paddingBottom={10}
-              bg={useColorModeValue("#FFFAF0", "gray.800")}
+              bg={useColorModeValue("#FFFFFF", "#FFFFFD")}
               boxShadow={"2xl"}
               rounded={"md"}
               overflow={"hidden"}
@@ -107,14 +107,14 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
       
         
       
-                  <Text color={"gray.500"}>الايميل</Text>
+                  <Text color={"gray.800"} fontFamily={'Amiri'} >الايميل</Text>
                   <br></br>
       
                   <br></br>
       
       
       
-                  <Text color={"gray.500"}>رقم الجوال</Text>
+                  <Text color={"gray.800"} fontFamily={'Amiri'}>رقم الجوال</Text>
                 </Stack>
       
       
@@ -137,13 +137,8 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
                   <Button
                     w={40}
                     mt={8}
-                    bg={useColorModeValue("#151f21", "gray.900")}
-                    color={"white"}
-                    rounded={"md"}
-                    _hover={{
-                      transform: "translateY(-2px)",
-                      boxShadow: "lg",
-                    }}
+                    bg={"#5E8978"}  color="#E3E2D1"
+                    _hover={{bg: '#63907D'}}
                   >
                 اضف مزاد
                   </Button>
