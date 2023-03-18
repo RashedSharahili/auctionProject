@@ -205,7 +205,9 @@ function Nav() {
                 <RouteLink to="/">
                 <HStack>
                     {/* <Logo /> */}
-                    <Avatar src={Logo} w= {{ base: '27vw', md: '15vw',lg:  "11vw" }}></Avatar>
+                    <Avatar src={Logo} w= {{ base: '27vw', md: '15vw',lg:  "11vw" }}
+                    mr={"-25px"}
+                    ></Avatar>
                 </HStack>
                 </RouteLink>
                 <Flex>
