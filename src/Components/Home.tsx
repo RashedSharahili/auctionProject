@@ -30,7 +30,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   // const cardsinHome = "https://acution.onrender.com/auctions";
-  const cardsinHome = "http://localhost:8000/auctions/news";
+  const cardsinHome = "https://acution.onrender.com/auctions/news";
   async function getAllcards() {
     await fetch(cardsinHome, {
       headers: {
