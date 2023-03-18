@@ -141,6 +141,7 @@ export default function GridBlurredBackdrop() {
           influencers use EEZY to manage their social media content!
         </chakra.h2>
       </Box>
+      
       <SimpleGrid
         columns={{ base: 1, xl: 2 }}
         spacing={'20'}
@@ -148,7 +149,7 @@ export default function GridBlurredBackdrop() {
         mb={16}
         mx={'auto'}>
         {testimonials.map((cardInfo, index) => (
-          <TestimonialCard {...cardInfo} index={index} />
+          <TestimonialCard avatar={''} {...cardInfo} index={index} />
         ))}
       </SimpleGrid>
       <Box>
