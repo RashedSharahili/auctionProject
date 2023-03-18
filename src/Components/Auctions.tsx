@@ -8,8 +8,8 @@ function Auctions() {
 
     const navigate = useNavigate();
 
-    //const auctions = "http://localhost:8000/auctions";
-    const auctions = "https://acution.onrender.com/auctions";
+    const auctions = "http://localhost:8000/auctions";
+    //const auctions = "https://acution.onrender.com/auctions";
 
 
     async function getAllcards() {
@@ -19,7 +19,7 @@ function Auctions() {
           },
         })
           .then((res) => res.json())
-          .then((Data) => {
+          .then((data) => {
             // if() {
     
             //     navigate("/login");
@@ -28,7 +28,8 @@ function Auctions() {
     
             //     setData(Data)
             // }
-            setData(Data);
+            setData(data);
+            
             // console.log(Data);
           });
       }
