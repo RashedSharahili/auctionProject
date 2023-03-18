@@ -35,7 +35,7 @@ import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Link as RouteLink, useNavigate } from 'react-router-dom'
-import Logo from '../assets/logo.png';
+import Logo from '../assets/logo4.png';
 
 const reduser =(state:any,action:any)=>{
     
