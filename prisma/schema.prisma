@@ -31,12 +31,12 @@ model Auction {
   auction_min_price Int
   auction_max_price Int
   is_online         Boolean
-  auctionImage      String?
   created_at        DateTime        @default(now())
+  auctionImage      String?
   auctions_images   Auction_image[]
   userAuctions      userAuction[]
   User              User?           @relation(fields: [userId], references: [id])
-  category          Categorie       @relation(fields: [auction_type], references: [id])
+  category          Categorie?      @relation(fields: [auction_type], references: [id])
 
   @@index([userId])
   @@index([auction_type])

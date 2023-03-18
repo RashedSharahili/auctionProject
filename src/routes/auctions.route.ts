@@ -2,7 +2,7 @@ import  express  from "express";
 import { addAuction, GetallAuctions, deleteAuctions, GetNewAuctions } from '../controllers/auctions.controller'
 import auth from "../middleware/auth";
 import validate from "../middleware/validate";
-import { createAuctionSchema } from "../schema.zod/aucations.zod";
+// import { createAuctionSchema } from "../schema.zod/aucations.zod";
 
 let router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/' ,GetallAuctions);
 router.get('/news' ,GetNewAuctions);
 
 // create 
-router.post('/', auth, validate(createAuctionSchema), addAuction)
+router.post('/', auth, addAuction)
 
 // delete Many 
 router.delete('/delete', deleteAuctions)
