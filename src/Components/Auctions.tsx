@@ -8,7 +8,9 @@ function Auctions() {
 
     const navigate = useNavigate();
 
+    //const auctions = "http://localhost:8000/auctions";
     const auctions = "https://acution.onrender.com/auctions";
+
 
     async function getAllcards() {
         await fetch(auctions, {
