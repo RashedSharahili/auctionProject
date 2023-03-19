@@ -155,12 +155,20 @@ function AuctionsDetails() {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>الشروط</FormLabel>
-              {/* <Input ref={initialRef} placeholder='First name' /> */}
+              <Input ref={initialRef} placeholder='
+          التسجيل بموقع المزاد الالكتروني حسب التعليمات السابقة-
+
+          تأكيد بيانات الحساب الشخصي حسب التعليمات السابقة -   
+
+          سداد عربون دخول المزايد بقيمة 500 خمس مئة ريال سعودي باستخدام قنوات السداد المتاحة - 
+
+         الالمام بجميع الانظمة والتعلميات الحكومية المتعلقة بعمليات المزاد وتنفيذها ومنها نظام المرور ولائحته التنفيذية وجميع التعليمات المتعلقة به - ' />
+         
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>العربون</FormLabel>
-              {/* <Input placeholder='Last name' /> */}
+              <Input placeholder='500 ريال' />
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>أقر بالموافقة على الشروط أعلاه</FormLabel>
