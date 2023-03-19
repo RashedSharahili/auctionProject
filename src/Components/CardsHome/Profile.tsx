@@ -15,7 +15,7 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
   
   export default function profile() {
 
-    const [data, setData] = React.useState<any[]>([]);
+    const [data, setData] = React.useState<any>();
 
     const navigate = useNavigate();
 
