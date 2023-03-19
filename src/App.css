@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+
+*{
+  font-family: 'Cairo', sans-serif;
+}
+
+
+.container {
+
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.chakra-ui-light{
+  background-color: rgb(248, 243, 240);
+  height: 100vh;
+}
