@@ -35,7 +35,7 @@ import { AiFillHome, AiOutlineInbox, AiOutlineMenu } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Link as RouteLink, useNavigate } from 'react-router-dom'
-import Logo from '../assets/logo.png';
+import Logo from '../assets/logo4.png';
 
 const reduser =(state:any,action:any)=>{
     
@@ -127,9 +127,9 @@ function Nav() {
     React.useEffect(() => {
         // return scrollY.onChange(() => setY(scrollY.get()));
 
-        if(userToken !== null || userToken !== undefined) {
-            setName(userInfo.name)
-        }
+        // if(userToken !== null || userToken !== undefined) {
+        //     setName(userInfo.name)
+        // }
         
         // setName(userInfo.name)
         return scrollY.on("change", () => { setY(scrollY.get()) })
@@ -209,7 +209,9 @@ function Nav() {
                 <RouteLink to="/">
                 <HStack>
                     {/* <Logo /> */}
-                    <Avatar src={Logo} w= {{ base: '27vw', md: '15vw',lg:  "11vw" }}></Avatar>
+                    <Avatar src={Logo} w= {{ base: '27vw', md: '15vw',lg:  "11vw" }}
+                    mr={"-25px"}
+                    ></Avatar>
                 </HStack>
                 </RouteLink>
                 <Flex>

@@ -1,5 +1,5 @@
-import { Box, chakra, Flex, Link, Image, Heading, Stack, Text, HStack, Container, IconButton, Table, TableContainer, Tbody, Td, Th, Thead, Tr, Button, Badge, VStack, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, Checkbox } from '@chakra-ui/react'
-import React from 'react'
+import { Box, chakra, Flex, Link, Image, Heading, Stack, Text, HStack, Container, IconButton, Table, TableContainer, Tbody, Td, Th, Thead, Tr, Button, Badge, VStack, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, Checkbox, useToast } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import { BsPencilSquare, BsFillTrashFill } from 'react-icons/bs';
 import ImageGallery from 'react-image-gallery';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -23,19 +23,34 @@ const images = [
 
 function AuctionsDetails() {
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const modal1 = useDisclosure()
+  const modal2 = useDisclosure()
+
 
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
 
   const [data, setData] = React.useState<any[]>([]);
+  const [userAuctiondata, setuserAuctionData] = React.useState<any[]>([]);
+  const [userAuctiondata2, setuserAuctionData2] = React.useState<any[]>([]);
 
   const navigate = useNavigate();
+  const toast = useToast();
+  
+  const [accepted_privacy, setAccepted_privacy] = useState('');
+  const [auction_price, setAuction_price] = useState('');
+  // const [auction_deposit, setAuction_deposit] = useState('');
 
   const parmams= useParams()
     const id=parmams.id
 
   const auctionUrl = `http://localhost:8000/auctions/auction/${id}`;
+  const auctionRegisterUrl = `http://localhost:8000/userRegisterAuctions/${id}`;
+  const auctionUserUrl = 'http://localhost:8000/userAuctions';
+
+  const auctionGetRegisterUrl = `http://localhost:8000/userRegisterAuctions/${id}`;
+
+  const auctionUserAdd = `http://localhost:8000/userAuctions/${id}`;
 
   function getAuction() {
     fetch(auctionUrl, {
@@ -57,13 +72,130 @@ function AuctionsDetails() {
         console.log(uData);
       });
   }
+  
+  function getUserRegisterAuction() {
+    fetch(auctionGetRegisterUrl, {
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": localStorage.getItem("token") as string
+      },
+    })
+      .then((res) => res.json())
+      .then((uAData) => {
+        // if(uData.status == 403) {
+
+        //     navigate("/login");
+
+        // } else {
+
+        //     setData(uData)
+        // }
+        setuserAuctionData(uAData);
+        console.log(uAData);
+      });
+  }
+
+  function getUserAuction() {
+    fetch(auctionUserUrl, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+    })
+      .then((res) => res.json())
+      .then((uAData) => {
+        // if(uData.status == 403) {
+
+        //     navigate("/login");
+
+        // } else {
+
+        //     setData(uData)
+        // }
+        setuserAuctionData2(uAData);
+        console.log(uAData);
+      });
+  }
 
   // console.log(data.title);
+
+  const submitAddRegister = async () => {
+    try {
+      const request = await fetch(auctionRegisterUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "authorization": localStorage.getItem("token") as string
+        },
+        body: JSON.stringify({ accepted_privacy }),
+      });
+      const data = await request.json();
+      if (request.status !== 200) {
+        toast({
+          title: data.message,
+          status: 'error',
+          duration: 3000,
+          position: 'top',
+        });
+        return;
+      } 
+      toast({
+        title: data.message,
+        status: 'success',
+        duration: 3000,
+        position: 'top',
+      });
+    } catch (error) {
+      toast({
+        title: 'Server Error !',
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+      });
+    }
+  }
+  
+  const submitAddAuction = async () => {
+    try {
+      const request = await fetch(auctionUserAdd, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "authorization": localStorage.getItem("token") as string
+        },
+        body: JSON.stringify({ auction_price }),
+      });
+      const data = await request.json();
+      if (request.status !== 200) {
+        toast({
+          title: data.message,
+          status: 'error',
+          duration: 3000,
+          position: 'top',
+        });
+        return;
+      } 
+      toast({
+        title: data.message,
+        status: 'success',
+        duration: 3000,
+        position: 'top',
+      });
+    } catch (error) {
+      toast({
+        title: 'Server Error !',
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+      });
+    }
+  }
   
 
   React.useEffect(() => {
 
     getAuction()
+    getUserRegisterAuction()
+    getUserAuction()
 
   }, []);
 
@@ -180,13 +312,21 @@ function AuctionsDetails() {
         </Flex>
         <br></br>
         <Flex w={"100%"} justifyContent={"center"}>
-          <Button  bg={"#5E8978"}  color="#E3E2D1"
-                          _hover={{bg: '#63907D'}} onClick={onOpen}>سجل في المزاد</Button>
-          <Modal
+        {
+            userAuctiondata === null || userAuctiondata === undefined? 
+          
+            <Button  bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}} onClick={modal1.onOpen}>سجل في المزاد</Button>
+            :
+            <Button  bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}} onClick={modal2.onOpen}>أضف مزايدة</Button>
+          }
+
+<Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
+        isOpen={modal1.isOpen}
+        onClose={modal1.onClose}
       >
         <ModalOverlay />
         <ModalContent>
@@ -195,25 +335,68 @@ function AuctionsDetails() {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>الشروط</FormLabel>
-              {/* <Input ref={initialRef} placeholder='First name' /> */}
+              <Text>
+          التسجيل بموقع المزاد الالكتروني حسب التعليمات السابقة-
+
+          تأكيد بيانات الحساب الشخصي حسب التعليمات السابقة -   
+
+          سداد عربون دخول المزايد بقيمة 500 خمس مئة ريال سعودي باستخدام قنوات السداد المتاحة - 
+
+         الالمام بجميع الانظمة والتعلميات الحكومية المتعلقة بعمليات المزاد وتنفيذها ومنها نظام المرور ولائحته التنفيذية وجميع التعليمات المتعلقة به - </Text>
+         
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>العربون</FormLabel>
-              {/* <Input placeholder='Last name' /> */}
+              <Text>{(data.auction_price / 50)} ريال</Text>
             </FormControl>
             <FormControl mt={4}>
+              {/* <Input type={"hidden"} defaultValue={ setAuction_deposit((data.auction_price / 50)) }></Input> */}
               <FormLabel>أقر بالموافقة على الشروط أعلاه</FormLabel>
-              <Checkbox></Checkbox>
+              <Checkbox onChange={(e) => setAccepted_privacy(e.target.value)} ></Checkbox>
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button  bg={"#5E8978"}  color="#E3E2D1"
+            <Button
+            onClick={ submitAddRegister }
+              bg={"#5E8978"}  color="#E3E2D1"
                           _hover={{bg: '#63907D'}} mr={3}>
               سجل
             </Button>
-            <Button onClick={onClose}>إلغاء</Button>
+            <Button onClick={ modal1.onClose }>إلغاء</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+          <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={modal2.isOpen}
+        onClose={modal2.onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalHeader fontFamily={'Amiri'}>اضف مزايده</ModalHeader>
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>اضف السعر</FormLabel>
+            <Input type="number" onChange={(e) => setAuction_price(e.target.value)} />
+            </FormControl>
+
+           
+           
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+            onClick={ submitAddAuction }
+              bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}} mr={3}>
+              اضف مزايده
+            </Button>
+            <Button onClick={modal2.onClose}>إلغاء</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

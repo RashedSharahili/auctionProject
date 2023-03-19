@@ -83,11 +83,11 @@ export default function Home() {
                     </Text>
                     
                     <Badge colorScheme='green' bg={"#94AF9F"} pos={"absolute"} right={"-2vh"} top={"4vh"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"black"}>جاري</Badge>
-                    {/* <Image
-                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    <Image
+                    src={item.auctionImage}
                     alt=''
                     borderRadius='lg'
-                    /> */}
+                    />
                     <Stack mt='16' spacing='6'>
                     <Heading size='md' fontFamily={"Cairo"}>{item.title}</Heading>
                     <HStack >

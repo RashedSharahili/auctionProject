@@ -9,7 +9,7 @@ function Auctions() {
     const navigate = useNavigate();
 
     const auctions = "http://localhost:8000/auctions";
-    // const auctions = "https://acution.onrender.com/auctions";
+    //const auctions = "https://acution.onrender.com/auctions";
 
 
     async function getAllcards() {
@@ -19,7 +19,7 @@ function Auctions() {
           },
         })
           .then((res) => res.json())
-          .then((Data) => {
+          .then((data) => {
             // if() {
     
             //     navigate("/login");
@@ -28,7 +28,8 @@ function Auctions() {
     
             //     setData(Data)
             // }
-            setData(Data);
+            setData(data);
+            
             // console.log(Data);
           });
       }
@@ -54,11 +55,11 @@ function Auctions() {
                     </Text>
                     
                     <Badge colorScheme='green' bg={"#94AF9F"} pos={"absolute"} right={"-2vh"} top={"4vh"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"black"}>جاري</Badge>
-                    {/* <Image
-                    src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                    <Image
+                    src={item.auctionImage}
                     alt=''
                     borderRadius='lg'
-                    /> */}
+                    />
                     <Stack mt='16' spacing='6'>
                     <Heading size='md' fontFamily={"Cairo"}>{item.title}</Heading>
                     <HStack >
@@ -110,7 +111,7 @@ function Auctions() {
                
 
                 <CardFooter justifyContent={"center"}>     
-                    <RouteLink to={'/auctionDetails/1'}>
+                    <RouteLink to={`/auctionDetails/${item.id}`}>
                     <Button variant='solid' colorScheme='green'
                      bg={"#5E8978"}  color="#E3E2D1"
                           _hover={{bg: '#63907D'}}>التفاصيل</Button>

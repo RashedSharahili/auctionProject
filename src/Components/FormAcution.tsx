@@ -16,7 +16,7 @@ import {
     useToast
 
   } from '@chakra-ui/react';
-  import { useState } from 'react';
+  import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
   
   export default function JoinOurTeam() {
@@ -26,7 +26,7 @@ import { useNavigate } from 'react-router-dom';
     const [started_date, setStartDateAuction] = useState('');
     const [end_date, setEndDateAuction] = useState('');
     const [auction_price, setPriceAuction] = useState('');
-    const [auctionImage, setImageAuction] = useState('');
+    const [auctionImage, setImg] = useState<any>("");
     const [auction_min_price, setminPrice] = useState('');
     const [auction_max_price, setmaxPrice] = useState('');
     const navigate = useNavigate();
@@ -68,12 +68,28 @@ import { useNavigate } from 'react-router-dom';
           duration: 3000,
           position: 'top',
         });
-      }}
+      }
+    }
 
+    var fileAsBase64 = useCallback((file:File)=>{
+      return new Promise((resolve:any, reject:any)=>{
+          const reader = new FileReader();
+      
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result)
+          reader.onerror = err => reject(err)
+          })
+     },[])
+   
+    const uploadFileHandler = async (e : any) => {
+      var file = e.target.files[0];
+      var auctionImage  = await fileAsBase64(file).then(auctionImage => auctionImage).then(auctionImage => auctionImage)
+      setImg(auctionImage);
+    }
 
+    console.log(auctionImage);
 
-
-
+    
     return (
       <Box className="container" >
         <Box position={'relative'}>
@@ -220,9 +236,11 @@ import { useNavigate } from 'react-router-dom';
                     </Radio>
                   </Stack>
                 </RadioGroup>
-                  {/* <Input 
-                  onChange={(e) => setImageAuction(e.target.value)}
-                  type='file' placeholder='صور المزاد'></Input> */}
+                  <Input 
+                  onChange={(e) => {
+                    uploadFileHandler(e);
+                  }}
+                  type='file' placeholder='صور المزاد'></Input>
                   {/* <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
                     صور المزاد
                   </Button> */}
