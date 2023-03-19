@@ -6,18 +6,16 @@ const app:Application = express();
 const prisma = new PrismaClient()
 import * as dotenv from 'dotenv'
 import cors from 'cors';
-import fileUpload from "express-fileupload";
+import multer from 'multer';
 
 app.use(cors());
 
 dotenv.config();
 
-var multer = require('multer');
-var upload = multer();
+// const upload = multer({ dest: 'uploads/' });
 // for parsing multipart/form-data
-app.use(upload.array()); 
-// app.use(express.static('public'));
-app.use(fileUpload());
+// app.use(upload.array()); 
+app.use(express.static('public'));
 
 app.use(express.json());
 

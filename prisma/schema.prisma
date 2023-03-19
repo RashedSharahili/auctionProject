@@ -24,29 +24,28 @@ model Auction {
   title             String
   started_date      String
   end_date          String
-  auction_status    Boolean
+  auction_status    Boolean?
   is_accepted       Boolean         @default(false)
   userId            String
-  auction_price     Int
-  auction_min_price Int
-  auction_max_price Int
-  is_online         Boolean
+  auction_price     String
+  auction_min_price String
+  auction_max_price String
+  is_online         Boolean?
+  auctionImage      String? @db.LongText
   created_at        DateTime        @default(now())
-  auctionImage      String?
   auctions_images   Auction_image[]
   userAuctions      userAuction[]
+  userRegisterAuctions      userRegisterAuction[]
   User              User?           @relation(fields: [userId], references: [id])
-  category          Categorie?      @relation(fields: [auction_type], references: [id])
 
   @@index([userId])
-  @@index([auction_type])
 }
 
-model Categorie {
-  id       String    @id @default(uuid())
-  name     String
-  category Auction[]
-}
+// model Categorie {
+//   id       String    @id @default(uuid())
+//   name     String
+//   category Auction[]
+// }
 
 model User {
   id           String        @id @default(uuid())
@@ -56,15 +55,27 @@ model User {
   profile      Profile?
   auctions     Auction[]
   userAuctions userAuction[]
+  userRegisterAuctions userRegisterAuction[]
+}
+
+model userRegisterAuction {
+  id               String   @id @default(uuid())
+  auctionId        String?
+  userId           String?
+  accepted_privacy String?
+  auction_deposit  String?
+  auctions         Auction? @relation(fields: [auctionId], references: [id])
+  user             User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([auctionId])
 }
 
 model userAuction {
   id               String   @id @default(uuid())
   auctionId        String?
   userId           String?
-  auction_deposit  Int
-  accepted_privacy Boolean
-  auction_price    Int
+  auction_price    String?
   auction_date     DateTime @default(now())
   auctions         Auction? @relation(fields: [auctionId], references: [id])
   user             User?    @relation(fields: [userId], references: [id])

@@ -95,13 +95,13 @@ export const login = async (req:Request, res:Response) => {
                 return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
             }
     
-        }
-         else {
+        } else {
 
             return res.status(401).json({ message: "اسم المستخدم أو كلمة المرور غير صحيحة" })
         }
         
 
+        throw("هناك خطأ ما ، حاول مرة أخرى!");
 
     } catch(err) {
 

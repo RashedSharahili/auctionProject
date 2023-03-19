@@ -1,9 +1,22 @@
-
-
 import {Request, Response} from 'express';
 import {prisma} from '../config/db';
 
 
+export const GetallUserAuctions = async (req: Request, res: Response) => {
+  try {
+    let Auctoins = await prisma.userAuction.findMany({
+      take: 1,
+      orderBy: {
+        auction_date: 'desc'
+      }
+    });
+
+    res.json(Auctoins);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err)
+  }
+};
 
 export const addAuction=async (req:Request,res:Response)=>{
 
@@ -15,8 +28,6 @@ export const addAuction=async (req:Request,res:Response)=>{
  
       data:{
         auction_price:req.body.auction_price,
-        auction_deposit :req.body.auction_deposit, 
-        accepted_privacy :req.body.accepted_privacy,
         auctionId:id,
         userId:res.locals.user.id
     
