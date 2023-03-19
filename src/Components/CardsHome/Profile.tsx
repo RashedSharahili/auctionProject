@@ -28,7 +28,7 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
 
   const userInfo = parseJwt(localStorage.getItem("token"))
 
-  // console.log(userInfo.profileId);
+  console.log(userInfo.email);
   
 
     // const userProfile = `https://acution.onrender.com/profile/${userInfo.profileId}`;
@@ -53,9 +53,12 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
           //     setData(uData)
           // }
           setData(uData);
-          // console.log(uData);
+          console.log(uData);
         });
     }
+
+    // console.log(data);
+    
 
     React.useEffect(() => {
 
@@ -65,7 +68,7 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
 
     // console.log(Object.keys(data));
 
-    let userData = Object.values(data);
+    // let userData = Object.values(data);
 
     // console.log(userData);
     
@@ -100,21 +103,21 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
                 <Stack spacing={0} align={"center"} mb={5}>
       
                   <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
-              {userData[1]}
+              {data.name}
                   </Heading>
                   <br></br>
                   <br></br>
       
         
       
-                  <Text color={"gray.800"} fontFamily={'Amiri'} >الايميل</Text>
+                  <Text color={"gray.800"} fontFamily={'Amiri'} >{userInfo.email}</Text>
                   <br></br>
       
                   <br></br>
       
       
       
-                  <Text color={"gray.800"} fontFamily={'Amiri'}>رقم الجوال</Text>
+                  <Text color={"gray.800"} fontFamily={'Amiri'}>{data.phone_number}</Text>
                 </Stack>
       
       

@@ -17,7 +17,8 @@ import {
   Grid,
   HStack,
   Divider,
-  VStack
+  VStack,
+  Container
 } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate, Link as RouteLink } from "react-router-dom";
@@ -30,7 +31,8 @@ export default function Home() {
   const navigate = useNavigate();
 
   // const cardsinHome = "https://acution.onrender.com/auctions";
-  const cardsinHome = "https://acution.onrender.com/auctions/news";
+  // const cardsinHome = "https://acution.onrender.com/auctions/news";
+  const cardsinHome = "http://localhost:8000/auctions/news";
   async function getAllcards() {
     await fetch(cardsinHome, {
       headers: {
@@ -70,28 +72,38 @@ export default function Home() {
             <Heading>يحدث الان </Heading>
           </Center>
           <SimpleGrid templateColumns={{ base: "none", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} w={"100%"} justifyItems={"center"}>
-            {data.map((item: any) => (
+          {data.map((item: any) => (
             <Card maxW='sm' boxShadow={'2xl'} key={item.id} mb={8} mt={8}>
                 <CardBody>
-                    <Badge colorScheme='green' bg={"#56C596"} pos={"absolute"} right={"-2vh"} top={"4vh"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"}>جاري</Badge>
-                    <Image
+                {/* <Text p={"3vh"} fontSize='0.8em'  fontWeight={"bold"} color={"black"} right={"-2vh"}  >
+                    { item.is_online? "عن بعد": "حضوري" }
+                </Text> */}
+                    <Text bg={"#ECE8DD"} pos={"absolute"} right={"-2vh"} top={"0vh"} pr={"1vh"} pl={"2vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1vh"} fontWeight={"bold"} color={"black"}fontSize='0.8em' >
+                    { item.is_online? "عن بعد": "حضوري" }
+                    </Text>
+                    
+                    <Badge colorScheme='green' bg={"#94AF9F"} pos={"absolute"} right={"-2vh"} top={"4vh"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"black"}>جاري</Badge>
+                    {/* <Image
                     src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
                     alt=''
                     borderRadius='lg'
-                    />
-                    <Stack mt='6' spacing='3'>
+                    /> */}
+                    <Stack mt='16' spacing='6'>
                     <Heading size='md' fontFamily={"Cairo"}>{item.title}</Heading>
-                    <HStack>
-                        <VStack>
-                            <Text>الأحد</Text>
-                            <Text>1444/08/20 هـ</Text>
+                    <HStack >
+                        <VStack fontSize={"sm"}>
+                            <Text>يبدأ بتاريخ</Text>
                             <Text>{item.started_date}</Text>
                         </VStack>
-                        <VStack>
-                            <Flex gap={3} alignItems={"center"} boxShadow={"md"} p={"0.5vh"} color={"#56C596"} fontWeight={"bold"}>
-                                <Text>ينتهي بعد</Text>
+                        <VStack >
+                            <Container  >
+                        <Flex gap={4} boxShadow={"md"} p={"1.5vh"} color={"#8B7E74"} fontWeight={"bold"} >
+                                <Text>ينتهي بتاريخ</Text>
+                                
                                 <HStack>
-                                <VStack>
+                                <Text>{item.end_date}</Text>
+                                {/* <VStack>
+                                    
                                     <Text>ثانية</Text>
                                     <Text>02</Text>
                                 </VStack>
@@ -106,25 +118,31 @@ export default function Home() {
                                 <VStack>
                                     <Text>يوم</Text>
                                     <Text>02</Text>
-                                </VStack>
+                                </VStack> */}
                                 </HStack>
+                                
                             </Flex>
-                            <Flex gap={2}>
+                            </Container>
+                            <br></br>
+                            <Flex gap={3}>
                                 <Text>العربون</Text>
-                                <Text fontWeight={"bold"}>$450</Text>
+                                <Text fontWeight={"bold"}>{(item.auction_price / 50)} ريال</Text>
                             </Flex>
-                            <Badge p={"1vh"} bg={"blue.500"} fontSize='0.8em' borderRadius={"1vh"} fontWeight={"bold"} color={"white"}>{
-                            item.is_online? "عن بعد": "حضوري"
-                            }</Badge>
+                            
+                            
                         </VStack>
                     </HStack>
                     {/* <Text color='blue.600' fontSize='2xl'>$450</Text> */}
                     </Stack>
                 </CardBody>
                 <Divider />
-                <CardFooter justifyContent={"center"}>
-                    <RouteLink to={'/auctionDetails/1'}>
-                    <Button variant='solid' colorScheme='green' bg={"#56C596"}>التفاصيل</Button>
+               
+
+                <CardFooter justifyContent={"center"}>     
+                    <RouteLink to={`/auctionDetails/${item.id}`}>
+                    <Button variant='solid' colorScheme='green'
+                     bg={"#5E8978"}  color="#E3E2D1"
+                          _hover={{bg: '#63907D'}}>التفاصيل</Button>
                     </RouteLink>
                 </CardFooter>
             </Card>

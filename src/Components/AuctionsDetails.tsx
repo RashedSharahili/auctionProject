@@ -2,6 +2,7 @@ import { Box, chakra, Flex, Link, Image, Heading, Stack, Text, HStack, Container
 import React from 'react'
 import { BsPencilSquare, BsFillTrashFill } from 'react-icons/bs';
 import ImageGallery from 'react-image-gallery';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import "../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
@@ -26,6 +27,45 @@ function AuctionsDetails() {
 
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
+
+  const [data, setData] = React.useState<any[]>([]);
+
+  const navigate = useNavigate();
+
+  const parmams= useParams()
+    const id=parmams.id
+
+  const auctionUrl = `http://localhost:8000/auctions/auction/${id}`;
+
+  function getAuction() {
+    fetch(auctionUrl, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+    })
+      .then((res) => res.json())
+      .then((uData) => {
+        // if(uData.status == 403) {
+
+        //     navigate("/login");
+
+        // } else {
+
+        //     setData(uData)
+        // }
+        setData(uData);
+        console.log(uData);
+      });
+  }
+
+  // console.log(data.title);
+  
+
+  React.useEffect(() => {
+
+    getAuction()
+
+  }, []);
 
   return (
     <Box className="container">
@@ -55,12 +95,12 @@ function AuctionsDetails() {
           fontSize="2xl"
           fontFamily={'Amiri'}
           mt={2}>
-          أرض في العليا
+          {data.title}
         </Heading>
         <Stack mt='6' spacing='3'>
-          <Box pos={"absolute"} left={"-16vh"} top={"4vh"}>
-            <Badge  bg={"#94B49F"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"} >عن بعد</Badge>
-            <HStack bg={"#94B49F"} color={"white"} mt={"2"} p={"2"} borderRadius={"8"}>
+          <Box pos={"absolute"} top={"4vh"}>
+            <Badge  bg={"#94B49F"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"} >{ data.is_online? "عن بعد": "حضوري" }</Badge>
+            {/* <HStack bg={"#94B49F"} color={"white"} mt={"2"} p={"2"} borderRadius={"8"}>
                                 <VStack >
                                     <Text >ثانية</Text>
                                     <Text>02</Text>
@@ -77,22 +117,22 @@ function AuctionsDetails() {
                                     <Text>يوم</Text>
                                     <Text>02</Text>
                                 </VStack>
-                                </HStack>
+                                </HStack> */}
           </Box>
-          <HStack>
+          {/* <HStack>
             <Text fontWeight={"bold"}>مساحة الأرض</Text>
             <Text>٥٠٠ متر مربع</Text>
           </HStack>
           <HStack>
             <Text fontWeight={"bold"}>موقع الأرض</Text>
             <Text>العليا</Text>
-          </HStack>
+          </HStack> */}
         </Stack>
         <HStack justifyContent={"end"}>
           <Stack mt='6' spacing='3'>
             <HStack>
               <Text fontWeight={"bold"}>يبدأ المزاد بسعر</Text>
-              <Text>١٠٠ ألف</Text>
+              <Text>{data.auction_price}</Text>
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>سعر المزاد الحالي</Text>
@@ -100,18 +140,18 @@ function AuctionsDetails() {
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>أقل سعر للمزايدة</Text>
-              <Text>٥ ألف</Text>
+              <Text>{data.auction_min_price}</Text>
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>أعلى سعر للمزايدة</Text>
-              <Text>١٠ ألف</Text>
+              <Text>{data.auction_max_price}</Text>
             </HStack>
           </Stack>
         </HStack>
       </Box>
       <Box mt={4}>
         <Flex alignItems="center">
-          <ImageGallery items={images} />
+          {/* <ImageGallery items={images} /> */}
         </Flex>
       </Box>
       <Box mt={8}>

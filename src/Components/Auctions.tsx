@@ -8,8 +8,8 @@ function Auctions() {
 
     const navigate = useNavigate();
 
-    //const auctions = "http://localhost:8000/auctions";
-    const auctions = "https://acution.onrender.com/auctions";
+    const auctions = "http://localhost:8000/auctions";
+    // const auctions = "https://acution.onrender.com/auctions";
 
 
     async function getAllcards() {
@@ -54,27 +54,26 @@ function Auctions() {
                     </Text>
                     
                     <Badge colorScheme='green' bg={"#94AF9F"} pos={"absolute"} right={"-2vh"} top={"4vh"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"black"}>جاري</Badge>
-                    <Image
+                    {/* <Image
                     src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
                     alt=''
                     borderRadius='lg'
-                    />
-                    <Stack mt='6' spacing='6'>
+                    /> */}
+                    <Stack mt='16' spacing='6'>
                     <Heading size='md' fontFamily={"Cairo"}>{item.title}</Heading>
                     <HStack >
                         <VStack fontSize={"sm"}>
-                            <Text>الأحد</Text>
-                            <Text>1444/08/20 هـ</Text>
+                            <Text>يبدأ بتاريخ</Text>
                             <Text>{item.started_date}</Text>
                         </VStack>
                         <VStack >
                             <Container  >
-                        <Flex gap={4} boxShadow={"md"} p={"1.5vh"} color={"#8B7E74"} fontWeight={"bold"} marginLeft={16}  >
-                                <Text>ينتهي بعد</Text>
+                        <Flex gap={4} boxShadow={"md"} p={"1.5vh"} color={"#8B7E74"} fontWeight={"bold"} >
+                                <Text>ينتهي بتاريخ</Text>
                                 
                                 <HStack>
-                                
-                                <VStack>
+                                <Text>{item.end_date}</Text>
+                                {/* <VStack>
                                     
                                     <Text>ثانية</Text>
                                     <Text>02</Text>
@@ -90,7 +89,7 @@ function Auctions() {
                                 <VStack>
                                     <Text>يوم</Text>
                                     <Text>02</Text>
-                                </VStack>
+                                </VStack> */}
                                 </HStack>
                                 
                             </Flex>
@@ -98,7 +97,7 @@ function Auctions() {
                             <br></br>
                             <Flex gap={3}>
                                 <Text>العربون</Text>
-                                <Text fontWeight={"bold"}>ريال  450</Text>
+                                <Text fontWeight={"bold"}>{(item.auction_price / 50)} ريال</Text>
                             </Flex>
                             
                             

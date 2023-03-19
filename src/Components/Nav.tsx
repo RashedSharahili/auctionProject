@@ -126,6 +126,10 @@ function Nav() {
     const { scrollY } = useScroll();
     React.useEffect(() => {
         // return scrollY.onChange(() => setY(scrollY.get()));
+
+        if(userToken !== null || userToken !== undefined) {
+            setName(userInfo.name)
+        }
         
         // setName(userInfo.name)
         return scrollY.on("change", () => { setY(scrollY.get()) })
@@ -264,7 +268,7 @@ function Nav() {
             <Flex justify="flex-end" align="center" color="gray.400" gap={2}>
 
             {
-            userToken === null || undefined?
+            userToken === null || userToken === undefined?
                 <RouteLink to={"/login"}> 
                     <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} bg={"#A2B6A9"} color={"#EFEFDF"} _hover={{bg: '#A9BDB1 '}}>
                     تسجيل دخول

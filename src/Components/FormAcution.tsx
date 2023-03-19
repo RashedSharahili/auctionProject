@@ -21,14 +21,14 @@ import { useNavigate } from 'react-router-dom';
   
   export default function JoinOurTeam() {
 
-    const [CategoryAution, setCategoryAution] = useState('');
-    const [AdressAuction, setAdressAuction] = useState('');
-    const [StartDateAuction, setStartDateAuction] = useState('');
-    const [EndDateAuction, setEndDateAuction] = useState('');
-    const [PriceAuction, setPriceAuction] = useState('');
-    const [ImageAuction, setImageAuction] = useState('');
-    const [minPrice, setminPrice] = useState('');
-    const [maxPrice, setmaxPrice] = useState('');
+    const [auction_type, setCategoryAution] = useState('');
+    const [title, setAdressAuction] = useState('');
+    const [started_date, setStartDateAuction] = useState('');
+    const [end_date, setEndDateAuction] = useState('');
+    const [auction_price, setPriceAuction] = useState('');
+    const [auctionImage, setImageAuction] = useState('');
+    const [auction_min_price, setminPrice] = useState('');
+    const [auction_max_price, setmaxPrice] = useState('');
     const navigate = useNavigate();
     const toast = useToast();
     
@@ -42,7 +42,7 @@ import { useNavigate } from 'react-router-dom';
             'Content-Type': 'application/json',
             "authorization": localStorage.getItem("token") as string
           },
-          body: JSON.stringify({ CategoryAution, AdressAuction ,StartDateAuction,EndDateAuction,PriceAuction,ImageAuction,minPrice,maxPrice}),
+          body: JSON.stringify({ auction_type, title ,started_date,end_date,auction_price,auctionImage,auction_min_price,auction_max_price}),
         });
         const data = await request.json();
         if (request.status !== 200) {
@@ -147,6 +147,7 @@ import { useNavigate } from 'react-router-dom';
                     }}
                   />
                   <Input
+                  type={"number"}
                   onChange={(e) => setPriceAuction(e.target.value)}
                     placeholder="سعر المزاد"
                     bg={'gray.100'}
@@ -158,6 +159,7 @@ import { useNavigate } from 'react-router-dom';
                   />
 
                 <Input
+                type={"number"}
                 onChange={(e) => setmaxPrice(e.target.value)}
 
                     placeholder="اعلى سعر للمزايده"
@@ -171,6 +173,7 @@ import { useNavigate } from 'react-router-dom';
 
 
                 <Input
+                type={"number"}
                 onChange={(e) => setminPrice(e.target.value)}
 
                     placeholder="اقل سعر للمزايده"
@@ -217,9 +220,9 @@ import { useNavigate } from 'react-router-dom';
                     </Radio>
                   </Stack>
                 </RadioGroup>
-                  <Input 
+                  {/* <Input 
                   onChange={(e) => setImageAuction(e.target.value)}
-                  type='file' placeholder='صور المزاد'></Input>
+                  type='file' placeholder='صور المزاد'></Input> */}
                   {/* <Button fontFamily={'heading'} bg={'gray.200'} color={'gray.800'}>
                     صور المزاد
                   </Button> */}
