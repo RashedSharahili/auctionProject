@@ -44,13 +44,18 @@ function AuctionsDetails() {
   const parmams= useParams()
     const id=parmams.id
 
-  const auctionUrl = `http://localhost:8000/auctions/auction/${id}`;
-  const auctionRegisterUrl = `http://localhost:8000/userRegisterAuctions/${id}`;
-  const auctionUserUrl = 'http://localhost:8000/userAuctions';
+  // const auctionUrl = `http://localhost:8000/auctions/auction/${id}`;
+  const auctionUrl = `https://auctionproject.onrender.com/auctions/auction/${id}`;
+  // const auctionRegisterUrl = `http://localhost:8000/userRegisterAuctions/${id}`;
+  const auctionRegisterUrl = `https://auctionproject.onrender.com/userRegisterAuctions/${id}`;
+  // const auctionUserUrl = 'http://localhost:8000/userAuctions';
+  const auctionUserUrl = 'https://auctionproject.onrender.com/userAuctions';
 
-  const auctionGetRegisterUrl = `http://localhost:8000/userRegisterAuctions/${id}`;
+  // const auctionGetRegisterUrl = `http://localhost:8000/userRegisterAuctions/${id}`;
+  const auctionGetRegisterUrl = `https://auctionproject.onrender.com/userRegisterAuctions/${id}`;
 
-  const auctionUserAdd = `http://localhost:8000/userAuctions/${id}`;
+  // const auctionUserAdd = `http://localhost:8000/userAuctions/${id}`;
+  const auctionUserAdd = `https://auctionproject.onrender.com/userAuctions/${id}`;
 
   function getAuction() {
     fetch(auctionUrl, {

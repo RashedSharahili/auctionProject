@@ -8,8 +8,8 @@ function Auctions() {
 
     const navigate = useNavigate();
 
-    const auctions = "http://localhost:8000/auctions";
-    //const auctions = "https://acution.onrender.com/auctions";
+    // const auctions = "http://localhost:8000/auctions";
+    const auctions = "https://auctionproject.onrender.com/auctions";
 
 
     async function getAllcards() {

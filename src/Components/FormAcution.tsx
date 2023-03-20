@@ -32,7 +32,8 @@ import { useNavigate } from 'react-router-dom';
     const navigate = useNavigate();
     const toast = useToast();
     
-    const addAuctionUrl = "http://localhost:8000/auctions";
+    // const addAuctionUrl = "http://localhost:8000/auctions";
+    const addAuctionUrl = "https://auctionproject.onrender.com/auctions";
 
     const submitAddAuction = async () => {
       try {

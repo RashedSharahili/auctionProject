@@ -62,7 +62,8 @@ function Nav() {
 
     const userToken=localStorage.getItem("token")
 
-    const logoutUrl = "http://localhost:8000/users/logout";
+    // const logoutUrl = "http://localhost:8000/users/logout";
+    const logoutUrl = "https://auctionproject.onrender.com/users/logout";
 
     const submitLogout = async () => {
         try {

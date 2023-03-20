@@ -31,8 +31,8 @@ import { useNavigate } from 'react-router-dom';
   const navigate = useNavigate();
   const toast = useToast();
 
-  // const signUpUrl = "https://acution.onrender.com/users/signup";
-  const signUpUrl = "http://localhost:8000/users/signup";
+  // const signUpUrl = "http://localhost:8000/users/signup";
+  const signUpUrl = "https://auctionproject.onrender.com/users/signup";
 
   const submitSignUp= async () => {
     try {

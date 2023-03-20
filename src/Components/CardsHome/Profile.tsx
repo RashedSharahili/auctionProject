@@ -31,9 +31,8 @@ import { useNavigate, Link as RouteLink } from "react-router-dom";
   console.log(userInfo.email);
   
 
-    // const userProfile = `https://acution.onrender.com/profile/${userInfo.profileId}`;
-    const userProfile = `http://localhost:8000/profile/${userInfo.profileId}`;
-    // const userProfile = `http://localhost:8000/profile/`;
+  // const userProfile = `http://localhost:8000/profile/${userInfo.profileId}`;
+  const userProfile = `https://auctionproject.onrender.com/profile/${userInfo.profileId}`;
 
     function getUserProfile() {
       fetch(userProfile, {
