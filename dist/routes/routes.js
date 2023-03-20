@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const users_route_1 = __importDefault(require("../routes/users.route"));
+// import categoriesRoute from '../routes/categorise.route';
+const auctions_route_1 = __importDefault(require("../routes/auctions.route"));
+const profile_route_1 = __importDefault(require("../routes/profile.route"));
+const userauctions_route_1 = __importDefault(require("../routes/userauctions.route"));
+const userRegisterAuction_1 = __importDefault(require("../routes/userRegisterAuction"));
+let router = express_1.default.Router();
+router.use('/users', users_route_1.default);
+// router.use('/categories',categoriesRoute);
+router.use('/auctions', auctions_route_1.default);
+router.use('/profile', profile_route_1.default);
+router.use('/userAuctions', userauctions_route_1.default);
+router.use('/userRegisterAuctions', userRegisterAuction_1.default);
+exports.default = router;
