@@ -30,7 +30,7 @@ function AuctionsDetails() {
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
 
-  const [data, setData] = React.useState<any[]>();
+  const [data, setData] = React.useState<any>();
   const [userAuctiondata, setuserAuctionData] = React.useState<any[]>([]);
   const [userAuctiondata2, setuserAuctionData2] = React.useState<any[]>([]);
 
