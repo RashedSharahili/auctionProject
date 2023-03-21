@@ -232,7 +232,7 @@ function AuctionsDetails() {
           fontSize="2xl"
           fontFamily={'Amiri'}
           mt={2}>
-          {data.title}
+          {/* {data.title} */}
         </Heading>
         <Stack mt='6' spacing='3'>
           <Box pos={"absolute"} top={"4vh"}>
