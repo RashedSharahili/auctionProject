@@ -236,7 +236,7 @@ function AuctionsDetails() {
         </Heading>
         <Stack mt='6' spacing='3'>
           <Box pos={"absolute"} top={"4vh"}>
-            <Badge  bg={"#94B49F"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"} >{ data.is_online? "عن بعد": "حضوري" }</Badge>
+            <Badge  bg={"#94B49F"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"} >{ /* { data.is_online? "عن بعد": "حضوري" } */ }</Badge>
             {/* <HStack bg={"#94B49F"} color={"white"} mt={"2"} p={"2"} borderRadius={"8"}>
                                 <VStack >
                                     <Text >ثانية</Text>
@@ -269,7 +269,7 @@ function AuctionsDetails() {
           <Stack mt='6' spacing='3'>
             <HStack>
               <Text fontWeight={"bold"}>يبدأ المزاد بسعر</Text>
-              <Text>{data.auction_price}</Text>
+              <Text>{ /* {data.auction_price} */ }</Text>
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>سعر المزاد الحالي</Text>
@@ -277,11 +277,11 @@ function AuctionsDetails() {
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>أقل سعر للمزايدة</Text>
-              <Text>{data.auction_min_price}</Text>
+              <Text>{ /* {data.auction_min_price} */ }</Text>
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>أعلى سعر للمزايدة</Text>
-              <Text>{data.auction_max_price}</Text>
+              <Text>{ /* {data.auction_max_price} */ }</Text>
             </HStack>
           </Stack>
         </HStack>
