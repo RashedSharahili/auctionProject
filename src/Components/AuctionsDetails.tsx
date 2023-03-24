@@ -30,7 +30,7 @@ function AuctionsDetails() {
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
 
-  const [data, setData] = React.useState<any>();
+  const [data, setData] = React.useState<any>([]);
   const [userAuctiondata, setuserAuctionData] = React.useState<any[]>([]);
   const [userAuctiondata2, setuserAuctionData2] = React.useState<any[]>([]);
 
@@ -56,6 +56,8 @@ function AuctionsDetails() {
 
   // const auctionUserAdd = `http://localhost:8000/userAuctions/${id}`;
   const auctionUserAdd = `https://auctionproject.onrender.com/userAuctions/${id}`;
+
+  const userToken=localStorage.getItem("token")
 
   function getAuction() {
     fetch(auctionUrl, {
@@ -232,11 +234,11 @@ function AuctionsDetails() {
           fontSize="2xl"
           fontFamily={'Amiri'}
           mt={2}>
-          {/* {data.title} */}
+          {data.title}
         </Heading>
         <Stack mt='6' spacing='3'>
           <Box pos={"absolute"} top={"4vh"}>
-            <Badge  bg={"#94B49F"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"} >{ /* { data.is_online? "عن بعد": "حضوري" } */ }</Badge>
+            <Badge  bg={"#94B49F"} pr={"3vh"} pl={"3vh"} pt={"0.5vh"} pb={"0.5vh"} borderRadius={"1.5vh"} fontWeight={"bold"} color={"white"} >{ data.is_online? "عن بعد": "حضوري" }</Badge>
             {/* <HStack bg={"#94B49F"} color={"white"} mt={"2"} p={"2"} borderRadius={"8"}>
                                 <VStack >
                                     <Text >ثانية</Text>
@@ -269,7 +271,7 @@ function AuctionsDetails() {
           <Stack mt='6' spacing='3'>
             <HStack>
               <Text fontWeight={"bold"}>يبدأ المزاد بسعر</Text>
-              <Text>{ /* {data.auction_price} */ }</Text>
+              <Text>{data.auction_price}</Text>
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>سعر المزاد الحالي</Text>
@@ -277,11 +279,11 @@ function AuctionsDetails() {
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>أقل سعر للمزايدة</Text>
-              <Text>{ /* {data.auction_min_price} */ }</Text>
+              <Text>{data.auction_min_price}</Text>
             </HStack>
             <HStack>
               <Text fontWeight={"bold"}>أعلى سعر للمزايدة</Text>
-              <Text>{ /* {data.auction_max_price} */ }</Text>
+              <Text>{data.auction_max_price}</Text>
             </HStack>
           </Stack>
         </HStack>
@@ -318,7 +320,7 @@ function AuctionsDetails() {
         <br></br>
         <Flex w={"100%"} justifyContent={"center"}>
         {
-            userAuctiondata === null || userAuctiondata === undefined? 
+            userAuctiondata === null || userAuctiondata === undefined || userToken === null || userToken === undefined? 
           
             <Button  bg={"#5E8978"}  color="#E3E2D1"
                           _hover={{bg: '#63907D'}} onClick={modal1.onOpen}>سجل في المزاد</Button>
